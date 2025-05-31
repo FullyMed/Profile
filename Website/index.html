@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maximilliano Felix - Portfolio</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -20,134 +19,327 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              secondary: "#10b981",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
 
-    <link href="Max.css" rel="stylesheet" />
-    <script src="Max.js"></script>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .skill-bar {
+        height: 8px;
+        border-radius: 4px;
+        background-color: #e5e7eb;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1s ease-in-out;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -37px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #3b82f6;
+        border: 3px solid white;
+        z-index: 1;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: #e5e7eb;
+      }
+
+      .custom-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #d1d5db;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .custom-checkbox:checked {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+      }
+
+      .custom-checkbox:checked::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 24px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e5e7eb;
+        transition: 0.4s;
+        border-radius: 24px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #3b82f6;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(24px);
+      }
+
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .cursor-effect {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #3b82f6;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        transition: width 0.3s, height 0.3s, border-color 0.3s;
+        mix-blend-mode: difference;
+      }
+
+      .cursor-dot {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background-color: #3b82f6;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        transition: width 0.3s, height 0.3s, background-color 0.3s;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .parallax {
+        transition: transform 0.2s ease-out;
+      }
+    </style>
   </head>
   <body class="font-sans bg-gray-50 text-gray-800">
-    <div class="cursor-effect hidden md:block" id="cursor"></div>
-    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div id="cursor" class="cursor-effect hidden md:block"></div>
+    <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
+
     <header
       class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-sm z-50 transition-all duration-300"
     >
       <div
         class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-20"
       >
-        <a class="text-2xl font-['Pacifico'] text-primary" href="#home"
+        <a href="#home" class="text-2xl font-['Pacifico'] text-primary"
           >Maximilliano Felix</a
         >
+
         <nav class="hidden md:flex items-center space-x-8">
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#home"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >Home</a
           >
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#projects"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >Projects</a
           >
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#skills"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >Skills</a
           >
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#experience"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >Experience</a
           >
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#about"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >About</a
           >
           <a
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
             href="#contact"
+            class="text-gray-700 hover:text-primary font-medium transition-colors"
             >Contact</a
           >
         </nav>
+
         <div class="flex items-center space-x-4">
           <div class="flex items-center space-x-3">
             <a
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
               href="https://github.com/johnanderson"
               target="_blank"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
             >
               <i class="ri-github-line ri-lg"></i>
             </a>
             <a
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
               href="https://linkedin.com/in/johnanderson"
               target="_blank"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
             >
               <i class="ri-linkedin-line ri-lg"></i>
             </a>
             <a
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
               href="https://twitter.com/johnanderson"
               target="_blank"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
             >
               <i class="ri-twitter-x-line ri-lg"></i>
             </a>
           </div>
+
           <label class="switch">
-            <input id="theme-toggle" type="checkbox" />
+            <input type="checkbox" id="theme-toggle" />
             <span class="slider"></span>
           </label>
+
           <button
-            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary transition-colors !rounded-button"
             id="mobile-menu-button"
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary transition-colors !rounded-button"
           >
             <i class="ri-menu-line ri-lg"></i>
           </button>
         </div>
       </div>
+
       <div
-        class="md:hidden hidden bg-white border-t border-gray-100 shadow-md"
         id="mobile-menu"
+        class="md:hidden hidden bg-white border-t border-gray-100 shadow-md"
       >
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#home"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >Home</a
           >
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#projects"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >Projects</a
           >
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#skills"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >Skills</a
           >
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#experience"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >Experience</a
           >
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#about"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >About</a
           >
           <a
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             href="#contact"
+            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
             >Contact</a
           >
         </div>
       </div>
     </header>
+
     <main>
       <section
-        class="relative min-h-screen flex items-center pt-16 overflow-hidden"
         id="home"
+        class="relative min-h-screen flex items-center pt-16 overflow-hidden"
         style="
-          background-image: url('https://readdy.ai/api/search-image?query=modern%20abstract%20technology%20background%20with%20geometric%20shapes%2C%20subtle%20gradient%2C%20professional%20elegant%20design%20for%20portfolio%20website%2C%20clean%20minimalist%20style%20with%20blue%20and%20gray%20tones%2C%20high-end%20professional%20look&amp;width=1920&amp;height=1080&amp;seq=hero1&amp;orientation=landscape');
+          background-image: url('https://readdy.ai/api/search-image?query=modern%20abstract%20technology%20background%20with%20geometric%20shapes%2C%20subtle%20gradient%2C%20professional%20elegant%20design%20for%20portfolio%20website%2C%20clean%20minimalist%20style%20with%20blue%20and%20gray%20tones%2C%20high-end%20professional%20look&width=1920&height=1080&seq=hero1&orientation=landscape');
           background-size: cover;
           background-position: center;
         "
@@ -164,6 +356,7 @@
               <span class="block">Hi, I'm Maximilliano Felix</span>
               <span class="block text-primary">Full Stack Developer</span>
             </h1>
+
             <p
               class="text-xl md:text-2xl text-gray-200 mb-8 parallax"
               data-speed="0.15"
@@ -171,20 +364,22 @@
               Crafting innovative digital experiences with clean code and
               creative solutions
             </p>
+
             <div class="flex flex-wrap gap-4 parallax" data-speed="0.2">
               <a
-                class="px-6 py-3 bg-primary text-white font-medium rounded-button shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 whitespace-nowrap !rounded-button"
                 href="#projects"
+                class="px-6 py-3 bg-primary text-white font-medium rounded-button shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 whitespace-nowrap !rounded-button"
               >
                 View Projects
               </a>
               <a
-                class="px-6 py-3 bg-white text-gray-800 font-medium rounded-button shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 whitespace-nowrap !rounded-button"
                 href="#contact"
+                class="px-6 py-3 bg-white text-gray-800 font-medium rounded-button shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 whitespace-nowrap !rounded-button"
               >
                 Contact Me
               </a>
             </div>
+
             <div class="mt-16 flex items-center">
               <span class="text-white text-sm mr-4">Scroll to explore</span>
               <div class="animate-bounce">
@@ -194,7 +389,8 @@
           </div>
         </div>
       </section>
-      <section class="py-20 bg-white" id="projects">
+
+      <section id="projects" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -205,6 +401,7 @@
               applications, and UI/UX design
             </p>
           </div>
+
           <div class="mb-10 flex justify-center">
             <div class="inline-flex p-1 bg-gray-100 rounded-full">
               <button
@@ -233,6 +430,7 @@
               </button>
             </div>
           </div>
+
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
@@ -240,9 +438,9 @@
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20dashboard%20with%20clean%20user%20interface%2C%20showing%20product%20analytics%20and%20sales%20data%2C%20professional%20business%20application%20with%20charts%20and%20data%20visualization%2C%20blue%20color%20scheme&width=600&height=400&seq=proj1&orientation=landscape"
                   alt="E-commerce Platform"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20dashboard%20with%20clean%20user%20interface%2C%20showing%20product%20analytics%20and%20sales%20data%2C%20professional%20business%20application%20with%20charts%20and%20data%20visualization%2C%20blue%20color%20scheme&amp;width=600&amp;height=400&amp;seq=proj1&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -271,15 +469,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     Live Demo
                     <i class="ri-external-link-line ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     GitHub
                     <i class="ri-github-line ml-1"></i>
@@ -287,15 +485,16 @@
                 </div>
               </div>
             </div>
+
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
               data-category="mobile"
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=fitness%20tracking%20mobile%20app%20interface%20with%20workout%20tracking%2C%20statistics%20and%20health%20metrics%2C%20clean%20modern%20UI%20design%20with%20activity%20charts%20and%20progress%20indicators%2C%20professional%20mobile%20application%20design&width=600&height=400&seq=proj2&orientation=landscape"
                   alt="Fitness Tracker App"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=fitness%20tracking%20mobile%20app%20interface%20with%20workout%20tracking%2C%20statistics%20and%20health%20metrics%2C%20clean%20modern%20UI%20design%20with%20activity%20charts%20and%20progress%20indicators%2C%20professional%20mobile%20application%20design&amp;width=600&amp;height=400&amp;seq=proj2&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -324,15 +523,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     App Store
                     <i class="ri-apple-fill ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     GitHub
                     <i class="ri-github-line ml-1"></i>
@@ -340,15 +539,16 @@
                 </div>
               </div>
             </div>
+
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
               data-category="design"
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=modern%20banking%20application%20dashboard%20UI%20design%20with%20financial%20analytics%2C%20transaction%20history%2C%20and%20account%20management%20interface%2C%20professional%20fintech%20application%20with%20clean%20design%20and%20data%20visualization&width=600&height=400&seq=proj3&orientation=landscape"
                   alt="Banking Dashboard UI"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=modern%20banking%20application%20dashboard%20UI%20design%20with%20financial%20analytics%2C%20transaction%20history%2C%20and%20account%20management%20interface%2C%20professional%20fintech%20application%20with%20clean%20design%20and%20data%20visualization&amp;width=600&amp;height=400&amp;seq=proj3&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -377,15 +577,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     Case Study
                     <i class="ri-file-list-3-line ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     Dribbble
                     <i class="ri-dribbble-line ml-1"></i>
@@ -393,15 +593,16 @@
                 </div>
               </div>
             </div>
+
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
               data-category="web"
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=real%20estate%20property%20management%20web%20application%20showing%20property%20listings%2C%20tenant%20management%20interface%2C%20and%20maintenance%20requests%20tracking%2C%20professional%20real%20estate%20software%20with%20clean%20modern%20design&width=600&height=400&seq=proj4&orientation=landscape"
                   alt="Property Management System"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=real%20estate%20property%20management%20web%20application%20showing%20property%20listings%2C%20tenant%20management%20interface%2C%20and%20maintenance%20requests%20tracking%2C%20professional%20real%20estate%20software%20with%20clean%20modern%20design&amp;width=600&amp;height=400&amp;seq=proj4&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -432,15 +633,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     Live Demo
                     <i class="ri-external-link-line ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     GitHub
                     <i class="ri-github-line ml-1"></i>
@@ -448,15 +649,16 @@
                 </div>
               </div>
             </div>
+
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
               data-category="mobile"
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=travel%20planning%20mobile%20application%20with%20itinerary%20management%2C%20destination%20discovery%2C%20and%20booking%20features%2C%20modern%20travel%20app%20UI%20with%20maps%20and%20location%20services%2C%20professional%20mobile%20interface%20design&width=600&height=400&seq=proj5&orientation=landscape"
                   alt="Travel Companion App"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=travel%20planning%20mobile%20application%20with%20itinerary%20management%2C%20destination%20discovery%2C%20and%20booking%20features%2C%20modern%20travel%20app%20UI%20with%20maps%20and%20location%20services%2C%20professional%20mobile%20interface%20design&amp;width=600&amp;height=400&amp;seq=proj5&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -485,15 +687,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     Play Store
                     <i class="ri-google-play-fill ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     GitHub
                     <i class="ri-github-line ml-1"></i>
@@ -501,15 +703,16 @@
                 </div>
               </div>
             </div>
+
             <div
               class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
               data-category="design"
             >
               <div class="h-56 overflow-hidden">
                 <img
+                  src="https://readdy.ai/api/search-image?query=educational%20learning%20platform%20interface%20with%20course%20management%2C%20student%20progress%20tracking%2C%20and%20interactive%20learning%20materials%2C%20modern%20e-learning%20application%20with%20clean%20professional%20design&width=600&height=400&seq=proj6&orientation=landscape"
                   alt="E-Learning Platform"
                   class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                  src="https://readdy.ai/api/search-image?query=educational%20learning%20platform%20interface%20with%20course%20management%2C%20student%20progress%20tracking%2C%20and%20interactive%20learning%20materials%2C%20modern%20e-learning%20application%20with%20clean%20professional%20design&amp;width=600&amp;height=400&amp;seq=proj6&amp;orientation=landscape"
                 />
               </div>
               <div class="p-6">
@@ -538,15 +741,15 @@
                 </div>
                 <div class="flex justify-between">
                   <a
-                    class="text-primary font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-primary font-medium flex items-center hover:underline"
                   >
                     Case Study
                     <i class="ri-file-list-3-line ml-1"></i>
                   </a>
                   <a
-                    class="text-gray-700 font-medium flex items-center hover:underline"
                     href="#"
+                    class="text-gray-700 font-medium flex items-center hover:underline"
                   >
                     Behance
                     <i class="ri-behance-line ml-1"></i>
@@ -555,10 +758,11 @@
               </div>
             </div>
           </div>
+
           <div class="text-center mt-12">
             <a
-              class="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-button shadow-sm hover:bg-gray-50 transition-colors whitespace-nowrap !rounded-button"
               href="#"
+              class="inline-flex items-center px-6 py-3 bg-white border border-gray-300 text-gray-700 font-medium rounded-button shadow-sm hover:bg-gray-50 transition-colors whitespace-nowrap !rounded-button"
             >
               View All Projects
               <i class="ri-arrow-right-line ml-2"></i>
@@ -566,17 +770,19 @@
           </div>
         </div>
       </section>
-      <section class="py-20 bg-gray-50" id="skills">
+
+      <section id="skills" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
-              My Skills &amp; Expertise
+              My Skills & Expertise
             </h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
               A comprehensive overview of my technical abilities, design skills,
               and professional competencies
             </p>
           </div>
+
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
               class="bg-white rounded-lg shadow-md p-8 border border-gray-100"
@@ -587,6 +793,7 @@
                 <i class="ri-code-s-slash-line ri-2x"></i>
               </div>
               <h3 class="text-xl font-bold mb-4">Technical Skills</h3>
+
               <div class="space-y-5">
                 <div>
                   <div class="flex justify-between mb-1">
@@ -600,6 +807,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">React/Vue.js</span>
@@ -612,6 +820,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Node.js/Express</span>
@@ -624,6 +833,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">HTML5/CSS3/SASS</span>
@@ -636,6 +846,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">MongoDB/SQL</span>
@@ -648,6 +859,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">AWS/Firebase</span>
@@ -662,6 +874,7 @@
                 </div>
               </div>
             </div>
+
             <div
               class="bg-white rounded-lg shadow-md p-8 border border-gray-100"
             >
@@ -671,6 +884,7 @@
                 <i class="ri-palette-line ri-2x"></i>
               </div>
               <h3 class="text-xl font-bold mb-4">Design Skills</h3>
+
               <div class="space-y-5">
                 <div>
                   <div class="flex justify-between mb-1">
@@ -684,6 +898,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Figma/Adobe XD</span>
@@ -696,6 +911,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Responsive Design</span>
@@ -708,6 +924,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Prototyping</span>
@@ -720,6 +937,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">User Research</span>
@@ -732,6 +950,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Accessibility</span>
@@ -746,6 +965,7 @@
                 </div>
               </div>
             </div>
+
             <div
               class="bg-white rounded-lg shadow-md p-8 border border-gray-100"
             >
@@ -755,6 +975,7 @@
                 <i class="ri-team-line ri-2x"></i>
               </div>
               <h3 class="text-xl font-bold mb-4">Soft Skills</h3>
+
               <div class="space-y-5">
                 <div>
                   <div class="flex justify-between mb-1">
@@ -768,6 +989,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Problem Solving</span>
@@ -780,6 +1002,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Communication</span>
@@ -792,6 +1015,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Team Leadership</span>
@@ -804,6 +1028,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Agile Methodology</span>
@@ -816,6 +1041,7 @@
                     ></div>
                   </div>
                 </div>
+
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="font-medium">Time Management</span>
@@ -831,6 +1057,7 @@
               </div>
             </div>
           </div>
+
           <div class="mt-16">
             <h3 class="text-2xl font-bold mb-8 text-center">
               Technology Stack
@@ -848,6 +1075,7 @@
                 </div>
                 <span class="font-medium">React</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -858,6 +1086,7 @@
                 </div>
                 <span class="font-medium">Vue.js</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -868,6 +1097,7 @@
                 </div>
                 <span class="font-medium">JavaScript</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -878,6 +1108,7 @@
                 </div>
                 <span class="font-medium">TypeScript</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -888,6 +1119,7 @@
                 </div>
                 <span class="font-medium">Node.js</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -898,6 +1130,7 @@
                 </div>
                 <span class="font-medium">HTML5</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -908,6 +1141,7 @@
                 </div>
                 <span class="font-medium">CSS3</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -918,6 +1152,7 @@
                 </div>
                 <span class="font-medium">SASS</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -928,6 +1163,7 @@
                 </div>
                 <span class="font-medium">MongoDB</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -938,6 +1174,7 @@
                 </div>
                 <span class="font-medium">SQL</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -948,6 +1185,7 @@
                 </div>
                 <span class="font-medium">Firebase</span>
               </div>
+
               <div
                 class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
               >
@@ -962,7 +1200,8 @@
           </div>
         </div>
       </section>
-      <section class="py-20 bg-white" id="experience">
+
+      <section id="experience" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -973,8 +1212,10 @@
               industry
             </p>
           </div>
+
           <div class="max-w-3xl mx-auto relative pl-10">
             <div class="timeline-line"></div>
+
             <div class="timeline-item relative mb-16">
               <div
                 class="bg-white rounded-lg shadow-md p-6 border border-gray-100"
@@ -1002,11 +1243,13 @@
                     >
                   </div>
                 </div>
+
                 <p class="text-gray-600 mb-4">
                   Led the development of enterprise-level web applications,
                   mentored junior developers, and implemented CI/CD pipelines to
                   improve development efficiency.
                 </p>
+
                 <div class="space-y-2">
                   <div class="flex">
                     <div
@@ -1042,6 +1285,7 @@
                     </p>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap gap-2 mt-4">
                   <span
                     class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded"
@@ -1066,6 +1310,7 @@
                 </div>
               </div>
             </div>
+
             <div class="timeline-item relative mb-16">
               <div
                 class="bg-white rounded-lg shadow-md p-6 border border-gray-100"
@@ -1091,11 +1336,13 @@
                     >
                   </div>
                 </div>
+
                 <p class="text-gray-600 mb-4">
                   Specialized in building responsive, user-friendly interfaces
                   for web applications with a focus on performance optimization
                   and accessibility.
                 </p>
+
                 <div class="space-y-2">
                   <div class="flex">
                     <div
@@ -1131,6 +1378,7 @@
                     </p>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap gap-2 mt-4">
                   <span
                     class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded"
@@ -1155,6 +1403,7 @@
                 </div>
               </div>
             </div>
+
             <div class="timeline-item relative mb-16">
               <div
                 class="bg-white rounded-lg shadow-md p-6 border border-gray-100"
@@ -1164,7 +1413,7 @@
                 >
                   <div>
                     <h3 class="text-xl font-bold">
-                      UI/UX Designer &amp; Developer
+                      UI/UX Designer & Developer
                     </h3>
                     <div class="flex items-center mt-1">
                       <div
@@ -1182,11 +1431,13 @@
                     >
                   </div>
                 </div>
+
                 <p class="text-gray-600 mb-4">
                   Combined design and development skills to create visually
                   appealing and functional websites for clients across various
                   industries.
                 </p>
+
                 <div class="space-y-2">
                   <div class="flex">
                     <div
@@ -1222,6 +1473,7 @@
                     </p>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap gap-2 mt-4">
                   <span
                     class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded"
@@ -1246,6 +1498,7 @@
                 </div>
               </div>
             </div>
+
             <div class="timeline-item relative">
               <div
                 class="bg-white rounded-lg shadow-md p-6 border border-gray-100"
@@ -1271,10 +1524,12 @@
                     >
                   </div>
                 </div>
+
                 <p class="text-gray-600 mb-4">
                   Gained hands-on experience in web development while assisting
                   senior developers on various client projects.
                 </p>
+
                 <div class="space-y-2">
                   <div class="flex">
                     <div
@@ -1310,6 +1565,7 @@
                     </p>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap gap-2 mt-4">
                   <span
                     class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded"
@@ -1331,10 +1587,11 @@
               </div>
             </div>
           </div>
+
           <div class="text-center mt-16">
             <a
-              class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
               href="#"
+              class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
             >
               Download Full Resume
               <i class="ri-download-line ml-2"></i>
@@ -1342,24 +1599,28 @@
           </div>
         </div>
       </section>
-      <section class="py-20 bg-gray-50" id="about">
+
+      <section id="about" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <img
+                src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20software%20developer%20in%20his%2030s%20with%20a%20friendly%20smile%2C%20modern%20office%20environment%2C%20casual%20professional%20attire%2C%20natural%20lighting%2C%20high%20quality%20professional%20headshot&width=600&height=800&seq=about1&orientation=portrait"
                 alt="Maximilliano Felix"
                 class="w-full h-auto rounded-lg shadow-lg"
-                src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20male%20software%20developer%20in%20his%2030s%20with%20a%20friendly%20smile%2C%20modern%20office%20environment%2C%20casual%20professional%20attire%2C%20natural%20lighting%2C%20high%20quality%20professional%20headshot&amp;width=600&amp;height=800&amp;seq=about1&amp;orientation=portrait"
               />
             </div>
+
             <div>
               <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+
               <p class="text-lg text-gray-700 mb-6">
                 I'm a passionate Full Stack Developer with over 8 years of
                 experience creating innovative digital solutions. My journey in
                 technology began with a curiosity about how websites work, which
                 led me to pursue a degree in Computer Science.
               </p>
+
               <p class="text-lg text-gray-700 mb-6">
                 Throughout my career, I've had the opportunity to work with
                 diverse teams and clients across various industries, from
@@ -1367,11 +1628,13 @@
                 my ability to translate complex business requirements into
                 elegant technical solutions.
               </p>
+
               <p class="text-lg text-gray-700 mb-8">
                 When I'm not coding, you'll find me exploring new technologies,
                 contributing to open-source projects, or sharing my knowledge
                 through technical articles and mentoring junior developers.
               </p>
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div
                   class="bg-white p-5 rounded-lg shadow-sm border border-gray-100"
@@ -1411,6 +1674,7 @@
                     </li>
                   </ul>
                 </div>
+
                 <div
                   class="bg-white p-5 rounded-lg shadow-sm border border-gray-100"
                 >
@@ -1453,6 +1717,7 @@
                     </li>
                   </ul>
                 </div>
+
                 <div
                   class="bg-white p-5 rounded-lg shadow-sm border border-gray-100"
                 >
@@ -1491,6 +1756,7 @@
                     </li>
                   </ul>
                 </div>
+
                 <div
                   class="bg-white p-5 rounded-lg shadow-sm border border-gray-100"
                 >
@@ -1532,7 +1798,8 @@
           </div>
         </div>
       </section>
-      <section class="py-20 bg-white" id="contact">
+
+      <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-4 md:px-6">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -1541,98 +1808,107 @@
               I'd love to hear from you!
             </p>
           </div>
+
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div
               class="bg-white rounded-lg shadow-md p-8 border border-gray-100"
             >
               <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
-              <form class="space-y-6" id="contact-form">
+
+              <form id="contact-form" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
-                      class="block text-gray-700 font-medium mb-2"
                       for="name"
+                      class="block text-gray-700 font-medium mb-2"
                       >Name</label
                     >
                     <input
-                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      type="text"
                       id="name"
                       name="name"
-                      required=""
-                      type="text"
+                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      required
                     />
                   </div>
+
                   <div>
                     <label
-                      class="block text-gray-700 font-medium mb-2"
                       for="email"
+                      class="block text-gray-700 font-medium mb-2"
                       >Email</label
                     >
                     <input
-                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      type="email"
                       id="email"
                       name="email"
-                      required=""
-                      type="email"
+                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      required
                     />
                   </div>
                 </div>
+
                 <div>
                   <label
-                    class="block text-gray-700 font-medium mb-2"
                     for="subject"
+                    class="block text-gray-700 font-medium mb-2"
                     >Subject</label
                   >
                   <input
-                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    type="text"
                     id="subject"
                     name="subject"
-                    required=""
-                    type="text"
+                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    required
                   />
                 </div>
+
                 <div>
                   <label
-                    class="block text-gray-700 font-medium mb-2"
                     for="message"
+                    class="block text-gray-700 font-medium mb-2"
                     >Message</label
                   >
                   <textarea
-                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     id="message"
                     name="message"
-                    required=""
                     rows="5"
+                    class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    required
                   ></textarea>
                 </div>
+
                 <div class="flex items-center">
                   <input
-                    class="custom-checkbox"
+                    type="checkbox"
                     id="privacy"
                     name="privacy"
-                    required=""
-                    type="checkbox"
+                    class="custom-checkbox"
+                    required
                   />
-                  <label class="ml-2 text-gray-700" for="privacy"
+                  <label for="privacy" class="ml-2 text-gray-700"
                     >I agree to the
-                    <a class="text-primary hover:underline" href="#"
+                    <a href="#" class="text-primary hover:underline"
                       >privacy policy</a
                     ></label
                   >
                 </div>
+
                 <button
-                  class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
                   type="submit"
+                  class="w-full px-6 py-3 bg-primary text-white font-medium rounded-button shadow-md hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
                 >
                   Send Message
                 </button>
               </form>
             </div>
+
             <div>
               <div
                 class="bg-white rounded-lg shadow-md p-8 border border-gray-100 mb-8"
               >
                 <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+
                 <div class="space-y-6">
                   <div class="flex items-start">
                     <div
@@ -1643,12 +1919,13 @@
                     <div>
                       <h4 class="text-lg font-medium mb-1">Email</h4>
                       <a
-                        class="text-gray-700 hover:text-primary"
                         href="mailto:john.anderson@example.com"
+                        class="text-gray-700 hover:text-primary"
                         >john.anderson@example.com</a
                       >
                     </div>
                   </div>
+
                   <div class="flex items-start">
                     <div
                       class="w-12 h-12 flex items-center justify-center bg-green-100 text-secondary rounded-lg mr-4"
@@ -1658,12 +1935,13 @@
                     <div>
                       <h4 class="text-lg font-medium mb-1">Phone</h4>
                       <a
-                        class="text-gray-700 hover:text-primary"
                         href="tel:+14155552671"
+                        class="text-gray-700 hover:text-primary"
                         >+1 (415) 555-2671</a
                       >
                     </div>
                   </div>
+
                   <div class="flex items-start">
                     <div
                       class="w-12 h-12 flex items-center justify-center bg-yellow-100 text-yellow-600 rounded-lg mr-4"
@@ -1677,6 +1955,7 @@
                       </p>
                     </div>
                   </div>
+
                   <div class="flex items-start">
                     <div
                       class="w-12 h-12 flex items-center justify-center bg-purple-100 text-purple-600 rounded-lg mr-4"
@@ -1691,75 +1970,79 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="mt-8">
                   <h4 class="text-lg font-medium mb-3">Connect With Me</h4>
                   <div class="flex space-x-4">
                     <a
-                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                       href="https://github.com/johnanderson"
                       target="_blank"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                     >
                       <i class="ri-github-line"></i>
                     </a>
                     <a
-                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                       href="https://linkedin.com/in/johnanderson"
                       target="_blank"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                     >
                       <i class="ri-linkedin-line"></i>
                     </a>
                     <a
-                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                       href="https://twitter.com/johnanderson"
                       target="_blank"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                     >
                       <i class="ri-twitter-x-line"></i>
                     </a>
                     <a
-                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                       href="https://dribbble.com/johnanderson"
                       target="_blank"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                     >
                       <i class="ri-dribbble-line"></i>
                     </a>
                     <a
-                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                       href="https://medium.com/@johnanderson"
                       target="_blank"
+                      class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-colors"
                     >
                       <i class="ri-medium-line"></i>
                     </a>
                   </div>
                 </div>
               </div>
+
               <div
                 class="bg-white rounded-lg shadow-md p-8 border border-gray-100"
               >
                 <h3 class="text-2xl font-bold mb-6">Schedule a Meeting</h3>
+
                 <div class="space-y-6">
                   <div>
                     <label
-                      class="block text-gray-700 font-medium mb-2"
                       for="meeting-date"
+                      class="block text-gray-700 font-medium mb-2"
                       >Preferred Date</label
                     >
                     <input
-                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      type="date"
                       id="meeting-date"
                       name="meeting-date"
-                      type="date"
+                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </div>
+
                   <div>
                     <label
-                      class="block text-gray-700 font-medium mb-2"
                       for="meeting-time"
+                      class="block text-gray-700 font-medium mb-2"
                       >Preferred Time</label
                     >
                     <select
-                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8"
                       id="meeting-time"
                       name="meeting-time"
+                      class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8"
                     >
                       <option value="">Select a time slot</option>
                       <option value="9:00">9:00 AM - 10:00 AM</option>
@@ -1771,43 +2054,45 @@
                       <option value="16:00">4:00 PM - 5:00 PM</option>
                     </select>
                   </div>
+
                   <div>
                     <label
-                      class="block text-gray-700 font-medium mb-2"
                       for="meeting-type"
+                      class="block text-gray-700 font-medium mb-2"
                       >Meeting Type</label
                     >
                     <div class="space-y-2">
                       <div class="flex items-center">
                         <input
-                          checked=""
-                          class="custom-checkbox"
+                          type="radio"
                           id="video-call"
                           name="meeting-type"
-                          type="radio"
                           value="video-call"
+                          class="custom-checkbox"
+                          checked
                         />
-                        <label class="ml-2 text-gray-700" for="video-call"
+                        <label for="video-call" class="ml-2 text-gray-700"
                           >Video Call</label
                         >
                       </div>
                       <div class="flex items-center">
                         <input
-                          class="custom-checkbox"
+                          type="radio"
                           id="phone-call"
                           name="meeting-type"
-                          type="radio"
                           value="phone-call"
+                          class="custom-checkbox"
                         />
-                        <label class="ml-2 text-gray-700" for="phone-call"
+                        <label for="phone-call" class="ml-2 text-gray-700"
                           >Phone Call</label
                         >
                       </div>
                     </div>
                   </div>
+
                   <button
-                    class="w-full px-6 py-3 bg-white border border-primary text-primary font-medium rounded-button shadow-sm hover:bg-primary/10 transition-colors whitespace-nowrap !rounded-button"
                     type="button"
+                    class="w-full px-6 py-3 bg-white border border-primary text-primary font-medium rounded-button shadow-sm hover:bg-primary/10 transition-colors whitespace-nowrap !rounded-button"
                   >
                     Request Meeting
                   </button>
@@ -1815,6 +2100,7 @@
               </div>
             </div>
           </div>
+
           <div
             class="mt-16 bg-white rounded-lg shadow-md p-8 border border-gray-100"
           >
@@ -1833,6 +2119,7 @@
         </div>
       </section>
     </main>
+
     <footer class="bg-gray-900 text-white pt-16 pb-8">
       <div class="container mx-auto px-4 md:px-6">
         <div
@@ -1840,8 +2127,8 @@
         >
           <div>
             <a
-              class="text-2xl font-['Pacifico'] text-white mb-4 block"
               href="#home"
+              class="text-2xl font-['Pacifico'] text-white mb-4 block"
               >Maximilliano Felix</a
             >
             <p class="text-gray-400 mb-6">
@@ -1850,82 +2137,84 @@
             </p>
             <div class="flex space-x-4">
               <a
-                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
                 href="https://github.com/johnanderson"
                 target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
               >
                 <i class="ri-github-line"></i>
               </a>
               <a
-                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
                 href="https://linkedin.com/in/johnanderson"
                 target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
               >
                 <i class="ri-linkedin-line"></i>
               </a>
               <a
-                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
                 href="https://twitter.com/johnanderson"
                 target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
               >
                 <i class="ri-twitter-x-line"></i>
               </a>
               <a
-                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
                 href="https://dribbble.com/johnanderson"
                 target="_blank"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 text-gray-400 rounded-full hover:bg-primary hover:text-white transition-colors"
               >
                 <i class="ri-dribbble-line"></i>
               </a>
             </div>
           </div>
+
           <div>
             <h3 class="text-lg font-bold mb-4">Quick Links</h3>
             <ul class="space-y-3">
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#home"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >Home</a
                 >
               </li>
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#projects"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >Projects</a
                 >
               </li>
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#skills"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >Skills</a
                 >
               </li>
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#experience"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >Experience</a
                 >
               </li>
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#about"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >About</a
                 >
               </li>
               <li>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >Contact</a
                 >
               </li>
             </ul>
           </div>
+
           <div>
             <h3 class="text-lg font-bold mb-4">Contact Info</h3>
             <ul class="space-y-3">
@@ -1936,8 +2225,8 @@
                   <i class="ri-mail-line"></i>
                 </div>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="mailto:john.anderson@example.com"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >john.anderson@example.com</a
                 >
               </li>
@@ -1948,8 +2237,8 @@
                   <i class="ri-phone-line"></i>
                 </div>
                 <a
-                  class="text-gray-400 hover:text-white transition-colors"
                   href="tel:+14155552671"
+                  class="text-gray-400 hover:text-white transition-colors"
                   >+1 (415) 555-2671</a
                 >
               </li>
@@ -1965,6 +2254,7 @@
               </li>
             </ul>
           </div>
+
           <div>
             <h3 class="text-lg font-bold mb-4">Newsletter</h3>
             <p class="text-gray-400 mb-4">
@@ -1974,13 +2264,13 @@
             <form class="space-y-3">
               <div class="flex">
                 <input
-                  class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Your email address"
                   type="email"
+                  placeholder="Your email address"
+                  class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
                 <button
-                  class="px-4 py-2 bg-primary text-white rounded-r hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
                   type="submit"
+                  class="px-4 py-2 bg-primary text-white rounded-r hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button"
                 >
                   Subscribe
                 </button>
@@ -1991,32 +2281,277 @@
             </form>
           </div>
         </div>
+
         <div
           class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
         >
           <p class="text-gray-500 mb-4 md:mb-0">
-            © 2025 Maximilliano Felix. All rights reserved.
+            &copy; 2025 Maximilliano Felix. All rights reserved.
           </p>
+
           <div class="flex space-x-6">
-            <a class="text-gray-500 hover:text-white transition-colors" href="#"
+            <a href="#" class="text-gray-500 hover:text-white transition-colors"
               >Privacy Policy</a
             >
-            <a class="text-gray-500 hover:text-white transition-colors" href="#"
+            <a href="#" class="text-gray-500 hover:text-white transition-colors"
               >Terms of Service</a
             >
-            <a class="text-gray-500 hover:text-white transition-colors" href="#"
+            <a href="#" class="text-gray-500 hover:text-white transition-colors"
               >Cookies Policy</a
             >
           </div>
         </div>
       </div>
     </footer>
+
     <a
-      class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90"
       href="#home"
       id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90"
     >
       <i class="ri-arrow-up-line ri-lg"></i>
     </a>
+
+    <script id="navigation-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector("header");
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const backToTopButton = document.getElementById("back-to-top");
+
+        // Handle scroll events
+        window.addEventListener("scroll", function () {
+          // Header styling on scroll
+          if (window.scrollY > 50) {
+            header.classList.add("h-16", "shadow-md");
+            header.classList.remove("h-20", "shadow-sm");
+          } else {
+            header.classList.remove("h-16", "shadow-md");
+            header.classList.add("h-20", "shadow-sm");
+          }
+
+          // Back to top button visibility
+          if (window.scrollY > 500) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.add("opacity-0", "invisible");
+            backToTopButton.classList.remove("opacity-100", "visible");
+          }
+        });
+
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+
+          // Toggle icon
+          const icon = mobileMenuButton.querySelector("i");
+          if (mobileMenu.classList.contains("hidden")) {
+            icon.classList.remove("ri-close-line");
+            icon.classList.add("ri-menu-line");
+          } else {
+            icon.classList.remove("ri-menu-line");
+            icon.classList.add("ri-close-line");
+          }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            const icon = mobileMenuButton.querySelector("i");
+            icon.classList.remove("ri-close-line");
+            icon.classList.add("ri-menu-line");
+          });
+        });
+      });
+    </script>
+
+    <script id="theme-toggle-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem("theme");
+
+        // Apply saved theme or default to light
+        if (savedTheme === "dark") {
+          html.classList.add("dark");
+          themeToggle.checked = true;
+        }
+
+        // Toggle theme on switch change
+        themeToggle.addEventListener("change", function () {
+          if (this.checked) {
+            html.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            html.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          }
+        });
+      });
+    </script>
+
+    <script id="project-filter-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".project-filter-btn");
+        const projectCards = document.querySelectorAll(".project-card");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("active", "bg-primary", "text-white");
+              btn.classList.add("text-gray-700", "hover:bg-gray-200");
+            });
+
+            // Add active class to clicked button
+            this.classList.add("active", "bg-primary", "text-white");
+            this.classList.remove("text-gray-700", "hover:bg-gray-200");
+
+            const filter = this.getAttribute("data-filter");
+
+            // Filter projects
+            projectCards.forEach((card) => {
+              if (
+                filter === "all" ||
+                card.getAttribute("data-category") === filter
+              ) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+
+    <script id="skill-animation-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const skillBars = document.querySelectorAll(".skill-progress");
+
+        // Reset all skill bars to 0 width
+        skillBars.forEach((bar) => {
+          bar.style.width = "0";
+        });
+
+        // Function to animate skill bars when they come into view
+        function animateSkillBars() {
+          skillBars.forEach((bar) => {
+            const barPosition = bar.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (barPosition < screenPosition) {
+              const width =
+                bar.parentElement.previousElementSibling.querySelector(
+                  "span:last-child"
+                ).textContent;
+              bar.style.width = width;
+            }
+          });
+        }
+
+        // Initial check
+        animateSkillBars();
+
+        // Check on scroll
+        window.addEventListener("scroll", animateSkillBars);
+      });
+    </script>
+
+    <script id="contact-form-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+              alert("Please fill in all fields");
+              return;
+            }
+
+            // Simulate form submission
+            alert(
+              `Thank you for your message, ${name}! I'll get back to you soon.`
+            );
+            contactForm.reset();
+          });
+        }
+      });
+    </script>
+
+    <script id="cursor-effect-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const cursor = document.getElementById("cursor");
+        const cursorDot = document.getElementById("cursor-dot");
+
+        if (window.innerWidth > 768) {
+          document.addEventListener("mousemove", function (e) {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+
+            cursorDot.style.left = e.clientX + "px";
+            cursorDot.style.top = e.clientY + "px";
+          });
+
+          // Add hover effect to interactive elements
+          const interactiveElements = document.querySelectorAll(
+            "a, button, input, textarea, select, .project-card"
+          );
+
+          interactiveElements.forEach((element) => {
+            element.addEventListener("mouseenter", function () {
+              cursor.style.width = "60px";
+              cursor.style.height = "60px";
+              cursor.style.borderColor = "#3b82f6";
+
+              cursorDot.style.width = "0";
+              cursorDot.style.height = "0";
+            });
+
+            element.addEventListener("mouseleave", function () {
+              cursor.style.width = "40px";
+              cursor.style.height = "40px";
+              cursor.style.borderColor = "#3b82f6";
+
+              cursorDot.style.width = "8px";
+              cursorDot.style.height = "8px";
+            });
+          });
+        }
+      });
+    </script>
+
+    <script id="parallax-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const parallaxElements = document.querySelectorAll(".parallax");
+
+        window.addEventListener("mousemove", function (e) {
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+
+          parallaxElements.forEach((element) => {
+            const speed = element.getAttribute("data-speed");
+            const x = (window.innerWidth - mouseX * speed) / 100;
+            const y = (window.innerHeight - mouseY * speed) / 100;
+
+            element.style.transform = `translateX(${x}px) translateY(${y}px)`;
+          });
+        });
+      });
+    </script>
   </body>
 </html>
