@@ -25,7 +25,7 @@
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class', 
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
@@ -216,7 +216,9 @@
     </style>
   </head>
 
-  <body class="font-sans bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+  <body
+    class="font-sans bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100"
+  >
     <div id="cursor" class="cursor-effect hidden md:block"></div>
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
 
@@ -403,14 +405,18 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
               Featured Projects
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p
+              class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Showcasing my best work across Web Development, Mobile
               Applications, and Data Science
             </p>
           </div>
 
           <div class="mb-10 flex justify-center">
-            <div class="inline-flex p-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+            <div
+              class="inline-flex p-1 bg-gray-100 dark:bg-gray-700 rounded-full"
+            >
               <button
                 class="project-filter-btn active px-4 py-2 text-sm font-medium rounded-full bg-primary text-white whitespace-nowrap !rounded-button"
                 data-filter="all"
@@ -671,8 +677,8 @@
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-2">Taiwan Fare Finder App</h3>
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
-                  Mobile app for travelers with itinerary planning to Taiwan
-                  and real-time cost estimation.
+                  Mobile app for travelers with itinerary planning to Taiwan and
+                  real-time cost estimation.
                 </p>
                 <div class="flex flex-wrap gap-2 mb-4">
                   <span
@@ -784,7 +790,9 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
               My Skills & Expertise
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p
+              class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               A comprehensive overview of my technical abilities, design skills,
               and professional competencies
             </p>
@@ -1175,7 +1183,9 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
               Professional Experience
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p
+              class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               My career journey and professional achievements in the tech
               industry
             </p>
@@ -1682,7 +1692,9 @@
                         <p class="font-medium">
                           Google Professional Cloud Developer
                         </p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Google Cloud, 2022</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                          Google Cloud, 2022
+                        </p>
                       </div>
                     </li>
                   </ul>
@@ -1747,7 +1759,9 @@
                       </div>
                       <div>
                         <p class="font-medium">Indonesian</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Native</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                          Native
+                        </p>
                       </div>
                     </li>
                     <li class="flex">
@@ -1758,7 +1772,9 @@
                       </div>
                       <div>
                         <p class="font-medium">English</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Intermediate</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                          Intermediate
+                        </p>
                       </div>
                     </li>
                     <li class="flex">
@@ -1769,7 +1785,9 @@
                       </div>
                       <div>
                         <p class="font-medium">Chinese</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Intermediate</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                          Intermediate
+                        </p>
                       </div>
                     </li>
                   </ul>
@@ -1784,7 +1802,9 @@
         <div class="container mx-auto px-4 md:px-6">
           <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p
+              class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Have a project in mind or want to discuss potential opportunities?
               I'd love to hear from you!
             </p>
@@ -1796,7 +1816,12 @@
             >
               <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
 
-              <form id="contact-form" class="space-y-6">
+              <form
+                id="contact-form"
+                action="contact.php"
+                method="POST"
+                class="space-y-6"
+              >
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -1808,6 +1833,7 @@
                       type="text"
                       id="name"
                       name="name"
+                      placeholder="Your Name"
                       class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       required
                     />
@@ -1823,6 +1849,7 @@
                       type="email"
                       id="email"
                       name="email"
+                      placeholder="Your Email"
                       class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       required
                     />
@@ -1839,6 +1866,7 @@
                     type="text"
                     id="subject"
                     name="subject"
+                    placeholder="The Subject"
                     class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
                   />
@@ -1854,6 +1882,7 @@
                     id="message"
                     name="message"
                     rows="5"
+                    placeholder="Your Message"
                     class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     required
                   ></textarea>
@@ -1867,7 +1896,9 @@
                     class="custom-checkbox"
                     required
                   />
-                  <label for="privacy" class="ml-2 text-gray-700 dark:text-gray-300"
+                  <label
+                    for="privacy"
+                    class="ml-2 text-gray-700 dark:text-gray-300"
                     >I agree to the
                     <a href="#" class="text-primary hover:underline"
                       >privacy policy</a
@@ -1882,6 +1913,7 @@
                   Send Message
                 </button>
               </form>
+              <div id="form-response" class="mt-2 text-sm"></div>
             </div>
 
             <div>
@@ -2052,7 +2084,9 @@
                           class="custom-checkbox"
                           checked
                         />
-                        <label for="video-call" class="ml-2 text-gray-700 dark:text-gray-300"
+                        <label
+                          for="video-call"
+                          class="ml-2 text-gray-700 dark:text-gray-300"
                           >Video Call</label
                         >
                       </div>
@@ -2064,7 +2098,9 @@
                           value="phone-call"
                           class="custom-checkbox"
                         />
-                        <label for="phone-call" class="ml-2 text-gray-700 dark:text-gray-300"
+                        <label
+                          for="phone-call"
+                          class="ml-2 text-gray-700 dark:text-gray-300"
                           >Phone Call</label
                         >
                       </div>
@@ -2376,11 +2412,17 @@
           button.addEventListener("click", function () {
             filterButtons.forEach((btn) => {
               btn.classList.remove("active", "bg-primary", "text-white");
-              btn.classList.add("text-gray-700 dark:text-gray-300", "hover:bg-gray-200");
+              btn.classList.add(
+                "text-gray-700 dark:text-gray-300",
+                "hover:bg-gray-200"
+              );
             });
 
             this.classList.add("active", "bg-primary", "text-white");
-            this.classList.remove("text-gray-700 dark:text-gray-300", "hover:bg-gray-200");
+            this.classList.remove(
+              "text-gray-700 dark:text-gray-300",
+              "hover:bg-gray-200"
+            );
 
             const filter = this.getAttribute("data-filter");
 
@@ -2513,6 +2555,28 @@
           });
         });
       });
+    </script>
+
+    <script>
+      document.getElementById("contact-form").addEventListener("submit", function (e) {e.preventDefault();
+
+          const form = e.target;
+          const formData = new FormData(form);
+          const responseBox = document.getElementById("form-response");
+
+          fetch("contact.php", {
+            method: "POST",
+            body: formData,
+          })
+            .then((res) => res.text())
+            .then((data) => {
+              responseBox.textContent = data;
+              form.reset();
+            })
+            .catch((err) => {
+              responseBox.textContent = "Failed to send. Try again later.";
+            });
+        });
     </script>
   </body>
 
