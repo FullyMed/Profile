@@ -25,6 +25,7 @@
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class', 
         theme: {
           extend: {
             colors: {
@@ -215,7 +216,7 @@
     </style>
   </head>
 
-  <body class="font-sans bg-gray-50 text-gray-800">
+  <body class="font-sans bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
     <div id="cursor" class="cursor-effect hidden md:block"></div>
     <div id="cursor-dot" class="cursor-dot hidden md:block"></div>
 
@@ -232,32 +233,32 @@
         <nav class="hidden md:flex items-center space-x-8">
           <a
             href="#home"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Home</a
           >
           <a
             href="#projects"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Projects</a
           >
           <a
             href="#skills"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Skills</a
           >
           <a
             href="#experience"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Experience</a
           >
           <a
             href="#about"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >About</a
           >
           <a
             href="#contact"
-            class="text-gray-700 hover:text-primary font-medium transition-colors"
+            class="text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Contact</a
           >
         </nav>
@@ -267,21 +268,21 @@
             <a
               href="https://github.com/FullyMed/Profile"
               target="_blank"
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               <i class="ri-github-line ri-lg"></i>
             </a>
             <a
               href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/"
               target="_blank"
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               <i class="ri-linkedin-line ri-lg"></i>
             </a>
             <a
               href="https://twitter.com/max"
               target="_blank"
-              class="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
+              class="w-9 h-9 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors"
             >
               <i class="ri-twitter-x-line ri-lg"></i>
             </a>
@@ -294,7 +295,7 @@
 
           <button
             id="mobile-menu-button"
-            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary transition-colors !rounded-button"
+            class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary transition-colors !rounded-button"
           >
             <i class="ri-menu-line ri-lg"></i>
           </button>
@@ -308,32 +309,32 @@
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
             href="#home"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Home</a
           >
           <a
             href="#projects"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Projects</a
           >
           <a
             href="#skills"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Skills</a
           >
           <a
             href="#experience"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Experience</a
           >
           <a
             href="#about"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >About</a
           >
           <a
             href="#contact"
-            class="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            class="py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium transition-colors"
             >Contact</a
           >
         </div>
@@ -402,7 +403,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
               Featured Projects
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Showcasing my best work across Web Development, Mobile
               Applications, and Data Science
             </p>
@@ -417,19 +418,19 @@
                 All Projects
               </button>
               <button
-                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap !rounded-button"
+                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 whitespace-nowrap !rounded-button"
                 data-filter="web"
               >
                 Web Development
               </button>
               <button
-                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap !rounded-button"
+                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 whitespace-nowrap !rounded-button"
                 data-filter="mobile"
               >
                 Android/iOS App Development
               </button>
               <button
-                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 hover:bg-gray-200 whitespace-nowrap !rounded-button"
+                class="project-filter-btn px-4 py-2 text-sm font-medium rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 whitespace-nowrap !rounded-button"
                 data-filter="data"
               >
                 Data Science
@@ -439,7 +440,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
-              class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100"
+              class="project-card bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-gray-700"
               data-category="web"
             >
               <div class="h-56 overflow-hidden">
@@ -451,7 +452,7 @@
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
-                <p class="text-gray-600 mb-4">
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
                   A complete e-commerce solution with inventory management,
                   payment processing, and analytics dashboard.
                 </p>
