@@ -96,6 +96,32 @@
         .empty-slot {
             background-color: #f0f0f0;
         }
+
+        /* ---- ADD THIS CODE FOR BETTER PRINTING ---- */
+        @media print {
+            body {
+                background-color: #ffffff; /* White background for printing */
+                color: #000000; /* Black text */
+            }
+
+            thead th {
+                background-color: #f2f2f2 !important; /* Light gray header */
+                color: #000000 !important; /* Black header text */
+            }
+
+            .lunch-break {
+                background-color: #dddddd !important; /* Gray lunch break */
+                color: #000000 !important;
+            }
+
+            .schedule-container {
+                box-shadow: none; /* Remove shadows for print */
+            }
+
+            tbody tr:hover {
+                background-color: initial !important; /* Disable hover effect */
+            }
+        }
     </style>
 </head>
 <body>
