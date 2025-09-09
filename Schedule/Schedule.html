@@ -3,77 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Schedule</title>
-    <link rel="stylesheet" href="../styles.css">
-    
-    <body>
-    <header>
-        <h1>School Schedule</h1>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../About/About.html">About</a>
-            <a href="../Contact/Contact.html">Contact</a>
-            <a href="../Projects/Projects.html">Projects</a>
-            <a href="../Blog/Blog.html">Blog</a>
-            <a href="Schedule.html">Schedule</a>
-        </nav>
-    </header>
-    <main>
-        <section>
+    <title>My Weekly Schedule</title>
+    <style>
+        /* A nice, modern font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        /* General body styling */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f7f6; /* A light, soft gray */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Styling for the main container/wrapper */
+        .schedule-container {
+            max-width: 1000px;
+            margin: 20px auto; /* Centers the container */
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header styles */
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-weight: 400;
+            color: #7f8c8d;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Makes borders clean and crisp */
+            margin-top: 20px;
+        }
+
+        /* Table cell (th, td) styling */
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        /* Table header (th) specific styling */
+        thead th {
+            background-color: #3498db; /* A vibrant blue */
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Styling for the first column (Time) */
+        tbody td:first-child {
+            font-weight: 700;
+            color: #34495e;
+            background-color: #ecf0f1;
+        }
+
+        /* Zebra-striping for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Hover effect for rows */
+        tbody tr:hover {
+            background-color: #e8f4fd;
+            cursor: pointer;
+        }
+
+        /* Special styling for the Lunch Break cell */
+        .lunch-break {
+            background-color: #2ecc71;
+            color: white;
+            font-weight: 700;
+            font-style: italic;
+        }
+        
+        /* A subtle style for empty slots */
+        .empty-slot {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule-container">
+        <header>
+            <h1>Schedule</h1>
             <h2>Weekly Schedule</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>9:00 AM - 10:00 AM</td>
-                        <td>Math Class</td>
-                        <td>Science Class</td>
-                        <td>Math Class</td>
-                        <td>Science Class</td>
-                        <td>Physical Education</td>
-                    </tr>
-                    <tr>
-                        <td>10:00 AM - 11:00 AM</td>
-                        <td>English Class</td>
-                        <td>History Class</td>
-                        <td>English Class</td>
-                        <td>History Class</td>
-                        <td>Art Class</td>
-                    </tr>
-                    <tr>
-                        <td>11:00 AM - 12:00 PM</td>
-                        <td>Chemistry Lab</td>
-                        <td>Biology Lab</td>
-                        <td>Chemistry Lab</td>
-                        <td>Biology Lab</td>
-                        <td>Computer Science</td>
-                    </tr>
-                    <tr>
-                        <td>12:00 PM - 1:00 PM</td>
-                        <td colspan="5">Lunch Break</td>
-                    </tr>
-                    <tr>
-                        <td>1:00 PM - 2:00 PM</td>
-                        <td>History Class</td>
-                        <td>Math Class</td>
-                        <td>History Class</td>
-                        <td>Computer Science</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 School Schedule. All rights reserved.</p>
-    </footer>
+        </header>
+        <main>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08:10 - 09:00</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                            <td>Chinese Appreciation and Critical Thinking</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>09:10 - 10:00</td>
+                            <td>Deep Learning</td>
+                            <td>Introduction to Operating Systems</td>
+                            <td>Introduction to Database Systems</td>
+                            <td>Chinese Appreciation and Critical Thinking</td>
+                            <td>Digital Image Processing</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>10:10 - 11:00</td>
+                            <td>Deep Learning</td>
+                            <td>Introduction to Operating Systems</td>
+                            <td>Introduction to Database Systems</td>
+                            <td>Introduction to Western Literature</td>
+                            <td>Digital Image Processing</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>11:10 - 12:00</td>
+                            <td>Deep Learning</td>
+                            <td>Introduction to Operating Systems</td>
+                            <td>Introduction to Database Systems</td>
+                            <td>Introduction to Western Literature</td>
+                            <td>Digital Image Processing</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 13:00</td>
+                            <td colspan="7" class="lunch-break">Lunch Break</td>
+                        </tr>
+                        <tr>
+                            <td>13:10 - 14:00</td>
+                            <td class="empty-slot"></td>
+                            <td>英文老師</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>14:10 - 15:00</td>
+                            <td class="empty-slot"></td>
+                            <td>英文老師</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>15:10 - 16:00</td>
+                            <td>Physical Education</td>
+                            <td>英文老師</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td>國際學院</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>16:10 - 17:00</td>
+                            <td>Physical Education</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                            <td>國際學院</td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                            <td class="empty-slot"></td>
+                        </tr>
+                        <tr>
+                            <td>18:00 - 22:00</td>
+                            <td class="empty-slot"></td>
+                            <td>全聯</td>
+                            <td>全聯</td>
+                            <td class="empty-slot"></td>
+                            <td>全聯</td>
+                            <td>全聯</td>
+                            <td>全聯</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <footer>
+            <hr>
+            <p>Note</p>
+            <p>*英文老師 = 13:20 - 15:30</p>
+        </footer>
+    </div>
 </body>
 </html>
