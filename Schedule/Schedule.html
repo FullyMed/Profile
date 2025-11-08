@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weekly Schedule</title>
     <style>
-        /* A nice, modern font from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
         /* General body styling */
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #f4f7f6; /* A light, soft gray */
+            background-color: #f4f7f6;
             color: #333;
             margin: 0;
             padding: 20px;
@@ -20,7 +19,7 @@
         /* Styling for the main container/wrapper */
         .schedule-container {
             max-width: 1000px;
-            margin: 20px auto; /* Centers the container */
+            margin: 20px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 10px;
@@ -46,7 +45,7 @@
         /* Table styling */
         table {
             width: 100%;
-            border-collapse: collapse; /* Makes borders clean and crisp */
+            border-collapse: collapse;
             margin-top: 20px;
         }
 
@@ -59,7 +58,7 @@
 
         /* Table header (th) specific styling */
         thead th {
-            background-color: #3498db; /* A vibrant blue */
+            background-color: #3498db;
             color: #ffffff;
             font-weight: 700;
             text-transform: uppercase;
@@ -100,26 +99,26 @@
         /* ---- ADD THIS CODE FOR BETTER PRINTING ---- */
         @media print {
             body {
-                background-color: #ffffff; /* White background for printing */
-                color: #000000; /* Black text */
+                background-color: #ffffff;
+                color: #000000;
             }
 
             thead th {
-                background-color: #f2f2f2 !important; /* Light gray header */
-                color: #000000 !important; /* Black header text */
+                background-color: #f2f2f2 !important;
+                color: #000000 !important;
             }
 
             .lunch-break {
-                background-color: #dddddd !important; /* Gray lunch break */
+                background-color: #dddddd !important;
                 color: #000000 !important;
             }
 
             .schedule-container {
-                box-shadow: none; /* Remove shadows for print */
+                box-shadow: none;
             }
 
             tbody tr:hover {
-                background-color: initial !important; /* Disable hover effect */
+                background-color: initial !important;
             }
         }
     </style>
