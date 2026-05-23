@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Availability Schedule</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f6f8;
+      padding: 30px;
+      color: #111827;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 5px;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 25px 0;
+      font-weight: bold;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      border: 1px solid #e5e7eb;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .summary-table th {
+      background: #0f172a;
+      color: white;
+    }
+
+    .available-text {
+      color: #16a34a;
+      font-weight: bold;
+    }
+
+    .unavailable-text {
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    .wfh-text {
+      color: #9333ea;
+      font-weight: bold;
+    }
+
+    .not-sure-text {
+      color: #6b7280;
+      font-weight: bold;
+    }
+
+    .calendar-section h2 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .calendar-section p {
+      color: #6b7280;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .months-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .month-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .month-card h3 {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-weight: bold;
+      color: #6b7280;
+      padding-bottom: 6px;
+    }
+
+    .day-cell {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      font-weight: bold;
+    }
+
+    .empty-cell {
+      background: transparent;
+      border: none;
+    }
+
+    .note {
+      margin-top: 35px;
+      padding: 18px;
+      border-left: 5px solid #111827;
+      background: #f9fafb;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .print-button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #111827;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .print-button:hover {
+      background: #374151;
+    }
+
+    @media (max-width: 900px) {
+      .months-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      .print-button {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .container {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Availability Schedule</h1>
+    <p>June - September</p>
+    <p>Work Hours: 09:00 - 17:00</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">🟢 Available (On-site)</div>
+    <div class="legend-item">🟣 Work From Home</div>
+    <div class="legend-item">🔴 Unavailable</div>
+    <div class="legend-item">⚪ Not Sure</div>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Status</th>
+        <th>Available Time</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Monday</td>
+        <td class="wfh-text">🟣 Work From Home</td>
+        <td>13:00 - 20:00</td>
+      </tr>
+
+      <tr>
+        <td>Tuesday</td>
+        <td class="wfh-text">🟣 Work From Home</td>
+        <td>13:00 - 20:00</td>
+      </tr>
+
+      <tr>
+        <td>Wednesday</td>
+        <td class="available-text">🟢 Available</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+
+      <tr>
+        <td>Thursday</td>
+        <td class="available-text">🟢 Available</td>
+        <td>09:00 - 17:00</td>
+      </tr>
+
+      <tr>
+        <td>Friday</td>
+        <td class="available-text">🟢 Available</td>
+        <td>09:00 - 16:00</td>
+      </tr>
+
+      <tr>
+        <td>Saturday</td>
+        <td class="unavailable-text">🔴 Unavailable</td>
+        <td>All Day</td>
+      </tr>
+
+      <tr>
+        <td>Sunday</td>
+        <td class="unavailable-text">🔴 Unavailable</td>
+        <td>All Day</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="calendar-section">
+    <h2>Monthly Availability</h2>
+
+    <p>
+      Green = Available, Purple = Work From Home, Red = Unavailable,
+      Gray = Not Sure.
+    </p>
+
+    <div class="months-wrapper" id="monthsWrapper"></div>
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> This schedule applies from June to September.
+    Some dates may change depending on classes, travel, or personal events.
+  </div>
+
+  <button class="print-button" onclick="window.print()">
+    Print / Save as PDF
+  </button>
+
+</div>
+
+<script>
+
+const year = 2026;
+
+const months = [
+  { name: "June", monthIndex: 5 },
+  { name: "July", monthIndex: 6 },
+  { name: "August", monthIndex: 7 },
+  { name: "September", monthIndex: 8 }
+];
+
+const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const weeklyAvailability = {
+  0: "🔴",
+  1: "🟣",
+  2: "🟣",
+  3: "🟢",
+  4: "🟢",
+  5: "🟢",
+  6: "🔴"
+};
+
+const specialDates = {
+
+  // JULY OFF DAYS
+  "2026-07-01": "🔴",
+  "2026-07-02": "🔴",
+  "2026-07-03": "🔴",
+
+  "2026-07-13": "🔴",
+  "2026-07-14": "🔴",
+
+  "2026-07-15": "🔴",
+  "2026-07-16": "🔴",
+  "2026-07-17": "🔴",
+  "2026-07-18": "🔴",
+  "2026-07-19": "🔴",
+  "2026-07-20": "🔴",
+  "2026-07-21": "🔴",
+  "2026-07-22": "🔴",
+  "2026-07-23": "🔴",
+  "2026-07-24": "🔴",
+  "2026-07-25": "🔴",
+  "2026-07-26": "🔴",
+  "2026-07-27": "🔴",
+  "2026-07-28": "🔴",
+  "2026-07-29": "🔴",
+  "2026-07-30": "🔴",
+  "2026-07-31": "🔴",
+
+  // SEPTEMBER = NOT SURE
+  "2026-09-01": "⚪",
+  "2026-09-02": "⚪",
+  "2026-09-03": "⚪",
+  "2026-09-04": "⚪",
+  "2026-09-05": "⚪",
+  "2026-09-06": "⚪",
+  "2026-09-07": "⚪",
+  "2026-09-08": "⚪",
+  "2026-09-09": "⚪",
+  "2026-09-10": "⚪",
+  "2026-09-11": "⚪",
+  "2026-09-12": "⚪",
+  "2026-09-13": "⚪",
+  "2026-09-14": "⚪",
+  "2026-09-15": "⚪",
+  "2026-09-16": "⚪",
+  "2026-09-17": "⚪",
+  "2026-09-18": "⚪",
+  "2026-09-19": "⚪",
+  "2026-09-20": "⚪",
+  "2026-09-21": "⚪",
+  "2026-09-22": "⚪",
+  "2026-09-23": "⚪",
+  "2026-09-24": "⚪",
+  "2026-09-25": "⚪",
+  "2026-09-26": "⚪",
+  "2026-09-27": "⚪",
+  "2026-09-28": "⚪",
+  "2026-09-29": "⚪",
+  "2026-09-30": "⚪"
+
+};
+
+function formatDateKey(year, monthIndex, day) {
+  const month = String(monthIndex + 1).padStart(2, "0");
+  const date = String(day).padStart(2, "0");
+  return `${year}-${month}-${date}`;
+}
+
+function createCalendar(month) {
+
+  const firstDay = new Date(year, month.monthIndex, 1).getDay();
+  const daysInMonth = new Date(year, month.monthIndex + 1, 0).getDate();
+
+  const monthCard = document.createElement("div");
+  monthCard.className = "month-card";
+
+  const title = document.createElement("h3");
+  title.textContent = `${month.name} ${year}`;
+
+  monthCard.appendChild(title);
+
+  const grid = document.createElement("div");
+  grid.className = "calendar-grid";
+
+  weekdays.forEach(day => {
+    const weekday = document.createElement("div");
+    weekday.className = "weekday";
+    weekday.textContent = day;
+    grid.appendChild(weekday);
+  });
+
+  for (let i = 0; i < firstDay; i++) {
+    const emptyCell = document.createElement("div");
+    emptyCell.className = "day-cell empty-cell";
+    grid.appendChild(emptyCell);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+
+    const date = new Date(year, month.monthIndex, day);
+    const dayOfWeek = date.getDay();
+
+    const dateKey = formatDateKey(year, month.monthIndex, day);
+
+    const emoji =
+      specialDates[dateKey] || weeklyAvailability[dayOfWeek];
+
+    const dayCell = document.createElement("div");
+    dayCell.className = "day-cell";
+
+    dayCell.innerHTML = `
+      <div>${day}</div>
+      <div style="font-size: 18px">${emoji}</div>
+    `;
+
+    grid.appendChild(dayCell);
+  }
+
+  monthCard.appendChild(grid);
+
+  return monthCard;
+}
+
+const monthsWrapper = document.getElementById("monthsWrapper");
+
+months.forEach(month => {
+  monthsWrapper.appendChild(createCalendar(month));
+});
+
+</script>
+
+</body>
+</html>
