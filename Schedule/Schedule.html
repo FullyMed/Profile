@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekly Schedule</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -14,51 +14,86 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #eef1f5;
-            color: #1e2a3a;
+            background: linear-gradient(160deg, #1c2333 0%, #252e42 55%, #1c2333 100%);
+            color: #334155;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 52px 20px;
         }
 
         .page-wrapper {
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
         }
 
         /* ── Header ── */
         .header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 44px;
+        }
+
+        .header-eyebrow {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #7da9d8;
+            margin-bottom: 14px;
+            opacity: 0.85;
         }
 
         .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: #1a2744;
-            letter-spacing: 0.5px;
+            font-size: 2.8rem;
+            color: #e8edf5;
+            letter-spacing: -0.3px;
+            line-height: 1.15;
+            font-weight: 700;
         }
 
-        .header p {
-            margin-top: 6px;
+        .header-sub {
+            margin-top: 10px;
             font-size: 0.875rem;
             font-weight: 400;
-            color: #6b7a90;
-            letter-spacing: 0.3px;
+            color: #7b90aa;
+            letter-spacing: 0.4px;
         }
 
         .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #2d6cdf, #6ea8fe);
-            border-radius: 2px;
-            margin: 12px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px auto 0;
+        }
+
+        .divider-line {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #5b8fc4);
+        }
+
+        .divider-line.right {
+            background: linear-gradient(90deg, #5b8fc4, transparent);
+        }
+
+        .divider-diamond {
+            width: 7px;
+            height: 7px;
+            background: #5b8fc4;
+            transform: rotate(45deg);
+            border-radius: 1px;
+            opacity: 0.8;
         }
 
         /* ── Card ── */
         .card {
-            background: #ffffff;
-            border-radius: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.07);
+            background: #f7f8fb;
+            border-radius: 18px;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.06),
+                0 8px 32px rgba(0,0,0,0.22),
+                0 32px 72px rgba(0,0,0,0.28);
             overflow: hidden;
         }
 
@@ -66,26 +101,31 @@
         .legend {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            padding: 18px 24px;
-            background: #f8fafd;
-            border-bottom: 1px solid #e4e9f0;
+            gap: 8px;
+            padding: 20px 28px;
+            background: #21293b;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 7px;
-            font-size: 0.75rem;
+            gap: 8px;
+            font-size: 0.72rem;
             font-weight: 500;
-            color: #4a5568;
+            color: #adbdcf;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 5px 13px;
+            letter-spacing: 0.2px;
         }
 
         .legend-dot {
-            width: 11px;
-            height: 11px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             flex-shrink: 0;
+            opacity: 0.85;
         }
 
         /* ── Table ── */
@@ -96,167 +136,134 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 780px;
+            min-width: 800px;
+            background: #f7f8fb;
         }
 
         thead th {
-            padding: 14px 10px;
-            font-size: 0.72rem;
+            padding: 15px 12px;
+            font-size: 0.67rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #ffffff;
-            background-color: #1a2744;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            letter-spacing: 1.6px;
+            color: #b0bfcf;
+            background: #2a3447;
+            border-right: 1px solid rgba(255,255,255,0.05);
         }
 
         thead th:first-child {
-            background-color: #111c33;
-            min-width: 110px;
+            background: #1e2838;
+            color: #5a6e84;
+            min-width: 120px;
         }
 
         tbody td {
-            padding: 11px 10px;
-            font-size: 0.78rem;
+            padding: 13px 11px;
+            font-size: 0.76rem;
             font-weight: 400;
             text-align: center;
-            border: 1px solid #e8ecf2;
+            border: 1px solid #eaecf2;
             vertical-align: middle;
-            line-height: 1.4;
+            line-height: 1.5;
             transition: filter 0.15s ease;
         }
 
-        tbody tr:hover td:not(.time-col):not(.lunch-break) {
-            filter: brightness(0.96);
+        tbody tr:hover td:not(.time-col):not(.lunch-break):not(.empty-slot) {
+            filter: brightness(0.97) saturate(1.05);
         }
 
         /* Time column */
         .time-col {
-            font-size: 0.72rem;
+            font-size: 0.67rem;
             font-weight: 600;
-            color: #6b7a90;
-            background-color: #f4f6fb !important;
-            letter-spacing: 0.2px;
+            color: #8fa3b8;
+            background: #f0f3f8 !important;
+            letter-spacing: 0.3px;
             white-space: nowrap;
+            border-right: 2px solid #dde3ed !important;
         }
 
         /* Empty slot */
         .empty-slot {
-            background-color: #fafbfc;
+            background-color: #f7f8fb;
         }
 
         /* Lunch break */
         .lunch-break {
-            background: linear-gradient(90deg, #1a2744, #2d4a8a);
-            color: #ffffff;
+            background: linear-gradient(90deg, #1e2838, #2a3d5c, #1e2838);
+            color: #7da9d8;
             font-weight: 600;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            padding: 12px;
+            padding: 13px;
+            opacity: 0.95;
         }
 
-        /* ── Activity colour classes ── */
-        /* Classes / Academic */
+        /* ── Activity colour classes — softer, muted tones ── */
         .cat-class {
-            background-color: #dbeafe;
-            color: #1e40af;
+            background-color: #f0f5ff;
+            color: #3460a8;
             font-weight: 500;
+            border-left: 3px solid #7aa6e0 !important;
         }
 
-        /* International College */
         .cat-intl {
-            background-color: #e0e7ff;
-            color: #3730a3;
+            background-color: #f2f0ff;
+            color: #5148a0;
             font-weight: 500;
+            border-left: 3px solid #9b94e0 !important;
         }
 
-        /* Work – 全聯 */
         .cat-work {
-            background-color: #fef3c7;
-            color: #92400e;
+            background-color: #fdf8ee;
+            color: #9a6d28;
             font-weight: 500;
+            border-left: 3px solid #d4a84b !important;
         }
 
-        /* Teaching */
         .cat-teach {
-            background-color: #ede9fe;
-            color: #5b21b6;
+            background-color: #f6f2ff;
+            color: #6840b0;
             font-weight: 500;
+            border-left: 3px solid #a87dd4 !important;
         }
 
-        /* Leisure / Sport */
         .cat-sport {
-            background-color: #dcfce7;
-            color: #14532d;
+            background-color: #f1faf3;
+            color: #2d7a4f;
             font-weight: 500;
+            border-left: 3px solid #6ac48a !important;
         }
 
         /* ── Footer ── */
         .footer {
-            padding: 20px 28px;
-            background: #f8fafd;
-            border-top: 1px solid #e4e9f0;
+            padding: 22px 28px;
+            background: #21293b;
         }
 
-        .footer p {
-            font-size: 0.775rem;
-            color: #6b7a90;
-            line-height: 1.8;
-        }
-
-        .footer p:first-child {
-            font-weight: 600;
-            color: #3a4a5c;
-            margin-bottom: 4px;
-            font-size: 0.8rem;
+        .footer-title {
+            font-size: 0.63rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 2px;
+            color: #445568;
+            margin-bottom: 10px;
         }
 
-        /* ── Print button ── */
-        .print-btn {
-            display: inline-flex;
-            align-items: center;
+        .footer-notes {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
-            margin-top: 20px;
-            padding: 10px 22px;
-            background: linear-gradient(135deg, #1a2744, #2d6cdf);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(45,108,223,0.3);
-            transition: opacity 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .print-btn:hover {
-            opacity: 0.9;
-            box-shadow: 0 4px 14px rgba(45,108,223,0.4);
-        }
-
-        .print-btn svg {
-            width: 15px;
-            height: 15px;
-            fill: #fff;
-        }
-
-        /* ── Print ── */
-        @media print {
-            body { background: #fff; padding: 0; }
-            .card { box-shadow: none; border: 1px solid #ccc; }
-            thead th { background-color: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .lunch-break { background: #555 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .cat-class, .cat-intl, .cat-work, .cat-teach, .cat-sport {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            tbody tr:hover td { filter: none; }
-            .print-btn { display: none; }
+        .footer-note {
+            font-size: 0.72rem;
+            color: #617384;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 6px;
+            padding: 5px 13px;
         }
     </style>
 </head>
@@ -264,34 +271,33 @@
     <div class="page-wrapper">
 
         <header class="header">
+            <span class="header-eyebrow">Academic Year 2025–2026</span>
             <h1>Weekly Schedule</h1>
-            <p>Academic &amp; Activity Timetable</p>
-            <div class="divider"></div>
-            <button class="print-btn" onclick="window.print()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
-                </svg>
-                Print / Save as PDF
-            </button>
+            <p class="header-sub">Academic &amp; Activity Timetable</p>
+            <div class="divider">
+                <div class="divider-line"></div>
+                <div class="divider-diamond"></div>
+                <div class="divider-line right"></div>
+            </div>
         </header>
 
         <div class="card">
 
             <div class="legend">
                 <div class="legend-item">
-                    <div class="legend-dot" style="background:#3b82f6;"></div> Academic Classes
+                    <div class="legend-dot" style="background:#7aa6e0;"></div> Academic Classes
                 </div>
                 <div class="legend-item">
-                    <div class="legend-dot" style="background:#6366f1;"></div> 國際學院
+                    <div class="legend-dot" style="background:#9b94e0;"></div> 國際學院
                 </div>
                 <div class="legend-item">
-                    <div class="legend-dot" style="background:#8b5cf6;"></div> Teaching
+                    <div class="legend-dot" style="background:#a87dd4;"></div> Teaching
                 </div>
                 <div class="legend-item">
-                    <div class="legend-dot" style="background:#f59e0b;"></div> Work - 全聯
+                    <div class="legend-dot" style="background:#d4a84b;"></div> Work — 全聯
                 </div>
                 <div class="legend-item">
-                    <div class="legend-dot" style="background:#22c55e;"></div> Leisure &amp; Sport
+                    <div class="legend-dot" style="background:#6ac48a;"></div> Leisure &amp; Sport
                 </div>
             </div>
 
@@ -419,10 +425,12 @@
             </div>
 
             <footer class="footer">
-                <p>Notes</p>
-                <p>* 健身 🏋🏻‍♀️ — Friday 18:00 – 18:30</p>
-                <p>* 英文老師 🧑‍🏫 — Tuesday 13:20 – 15:30</p>
-                <p>* 全聯 🏪 (Sunday) — 08:30 – 17:30 or 13:00 – 22:00</p>
+                <p class="footer-title">Notes</p>
+                <div class="footer-notes">
+                    <span class="footer-note">* 健身 🏋🏻‍♀️ — Friday 18:00 – 18:30</span>
+                    <span class="footer-note">* 英文老師 🧑‍🏫 — Tuesday 13:20 – 15:30</span>
+                    <span class="footer-note">* 全聯 🏪 (Sunday) — 08:30 – 17:30 or 13:00 – 22:00</span>
+                </div>
             </footer>
 
         </div>
