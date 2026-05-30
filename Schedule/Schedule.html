@@ -3,133 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Weekly Schedule</title>
+    <title>Weekly Schedule</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-
-        /* General body styling */
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
 
-        /* Styling for the main container/wrapper */
-        .schedule-container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #eef1f5;
+            color: #1e2a3a;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
-        /* Header styles */
-        h1, h2 {
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ── Header ── */
+        .header {
             text-align: center;
-            color: #2c3e50;
+            margin-bottom: 32px;
         }
 
-        h1 {
-            margin-bottom: 5px;
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #1a2744;
+            letter-spacing: 0.5px;
         }
 
-        h2 {
-            margin-top: 0;
+        .header p {
+            margin-top: 6px;
+            font-size: 0.875rem;
             font-weight: 400;
-            color: #7f8c8d;
+            color: #6b7a90;
+            letter-spacing: 0.3px;
         }
 
-        /* Table styling */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2d6cdf, #6ea8fe);
+            border-radius: 2px;
+            margin: 12px auto 0;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.07);
+            overflow: hidden;
+        }
+
+        /* ── Legend ── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 18px 24px;
+            background: #f8fafd;
+            border-bottom: 1px solid #e4e9f0;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .legend-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── Table ── */
+        .table-scroll {
+            overflow-x: auto;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            min-width: 780px;
         }
 
-        /* Table cell (th, td) styling */
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        /* Table header (th) specific styling */
         thead th {
-            background-color: #3498db;
-            color: #ffffff;
+            padding: 14px 10px;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            color: #ffffff;
+            background-color: #1a2744;
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Styling for the first column (Time) */
-        tbody td:first-child {
-            font-weight: 700;
-            color: #34495e;
-            background-color: #ecf0f1;
+        thead th:first-child {
+            background-color: #111c33;
+            min-width: 110px;
         }
 
-        /* Zebra-striping for better readability */
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tbody td {
+            padding: 11px 10px;
+            font-size: 0.78rem;
+            font-weight: 400;
+            text-align: center;
+            border: 1px solid #e8ecf2;
+            vertical-align: middle;
+            line-height: 1.4;
+            transition: filter 0.15s ease;
         }
 
-        /* Hover effect for rows */
-        tbody tr:hover {
-            background-color: #e8f4fd;
-            cursor: pointer;
+        tbody tr:hover td:not(.time-col):not(.lunch-break) {
+            filter: brightness(0.96);
         }
 
-        /* Special styling for the Lunch Break cell */
-        .lunch-break {
-            background-color: #2ecc71;
-            color: white;
-            font-weight: 700;
-            font-style: italic;
+        /* Time column */
+        .time-col {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #6b7a90;
+            background-color: #f4f6fb !important;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
         }
-        
-        /* A subtle style for empty slots */
+
+        /* Empty slot */
         .empty-slot {
-            background-color: #f0f0f0;
+            background-color: #fafbfc;
         }
 
-        /* ---- ADD THIS CODE FOR BETTER PRINTING ---- */
+        /* Lunch break */
+        .lunch-break {
+            background: linear-gradient(90deg, #1a2744, #2d4a8a);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px;
+        }
+
+        /* ── Activity colour classes ── */
+        /* Classes / Academic */
+        .cat-class {
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-weight: 500;
+        }
+
+        /* International College */
+        .cat-intl {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            font-weight: 500;
+        }
+
+        /* Work – 全聯 */
+        .cat-work {
+            background-color: #fef3c7;
+            color: #92400e;
+            font-weight: 500;
+        }
+
+        /* Teaching */
+        .cat-teach {
+            background-color: #ede9fe;
+            color: #5b21b6;
+            font-weight: 500;
+        }
+
+        /* Leisure / Sport */
+        .cat-sport {
+            background-color: #dcfce7;
+            color: #14532d;
+            font-weight: 500;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            padding: 20px 28px;
+            background: #f8fafd;
+            border-top: 1px solid #e4e9f0;
+        }
+
+        .footer p {
+            font-size: 0.775rem;
+            color: #6b7a90;
+            line-height: 1.8;
+        }
+
+        .footer p:first-child {
+            font-weight: 600;
+            color: #3a4a5c;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        /* ── Print button ── */
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #1a2744, #2d6cdf);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(45,108,223,0.3);
+            transition: opacity 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .print-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 4px 14px rgba(45,108,223,0.4);
+        }
+
+        .print-btn svg {
+            width: 15px;
+            height: 15px;
+            fill: #fff;
+        }
+
+        /* ── Print ── */
         @media print {
-            body {
-                background-color: #ffffff;
-                color: #000000;
+            body { background: #fff; padding: 0; }
+            .card { box-shadow: none; border: 1px solid #ccc; }
+            thead th { background-color: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .lunch-break { background: #555 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cat-class, .cat-intl, .cat-work, .cat-teach, .cat-sport {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
-
-            thead th {
-                background-color: #f2f2f2 !important;
-                color: #000000 !important;
-            }
-
-            .lunch-break {
-                background-color: #dddddd !important;
-                color: #000000 !important;
-            }
-
-            .schedule-container {
-                box-shadow: none;
-            }
-
-            tbody tr:hover {
-                background-color: initial !important;
-            }
+            tbody tr:hover td { filter: none; }
+            .print-btn { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="schedule-container">
-        <header>
+    <div class="page-wrapper">
+
+        <header class="header">
             <h1>Weekly Schedule</h1>
+            <p>Academic &amp; Activity Timetable</p>
+            <div class="divider"></div>
+            <button class="print-btn" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                </svg>
+                Print / Save as PDF
+            </button>
         </header>
-        <main>
-            <section>
+
+        <div class="card">
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#3b82f6;"></div> Academic Classes
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#6366f1;"></div> 國際學院
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#8b5cf6;"></div> Teaching
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#f59e0b;"></div> Work - 全聯
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#22c55e;"></div> Leisure &amp; Sport
+                </div>
+            </div>
+
+            <div class="table-scroll">
                 <table>
                     <thead>
                         <tr>
@@ -145,121 +311,121 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>08:10 - 09:00</td>
-                            <td>Special Project</td>
+                            <td class="time-col">08:10 – 09:00</td>
+                            <td class="cat-class">Special Project</td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
-                            <td>Chinese Expression and Application</td>
+                            <td class="cat-class">Chinese Expression and Application</td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>09:10 - 10:00</td>
+                            <td class="time-col">09:10 – 10:00</td>
                             <td class="empty-slot"></td>
-                            <td>Microprocessor and Embedded Systems</td>
-                            <td>Big Data Information Processing</td>
-                            <td>Chinese Expression and Application</td>
+                            <td class="cat-class">Microprocessor and Embedded Systems</td>
+                            <td class="cat-class">Big Data Information Processing</td>
+                            <td class="cat-class">Chinese Expression and Application</td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>10:10 - 11:00</td>
+                            <td class="time-col">10:10 – 11:00</td>
                             <td class="empty-slot"></td>
-                            <td>Microprocessor and Embedded Systems</td>
-                            <td>Big Data Information Processing</td>
-                            <td>國際學院 ✨</td>
-                            <td>國際學院 ✨</td>
+                            <td class="cat-class">Microprocessor and Embedded Systems</td>
+                            <td class="cat-class">Big Data Information Processing</td>
+                            <td class="cat-intl">國際學院 ✨</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>11:10 - 12:00</td>
+                            <td class="time-col">11:10 – 12:00</td>
                             <td class="empty-slot"></td>
-                            <td>Microprocessor and Embedded Systems</td>
-                            <td>Big Data Information Processing</td>
-                            <td>國際學院 ✨</td>
-                            <td>國際學院 ✨</td>
+                            <td class="cat-class">Microprocessor and Embedded Systems</td>
+                            <td class="cat-class">Big Data Information Processing</td>
+                            <td class="cat-intl">國際學院 ✨</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>12:00 - 13:00</td>
+                            <td class="time-col">12:00 – 13:00</td>
                             <td colspan="7" class="lunch-break">Lunch Break</td>
                         </tr>
                         <tr>
-                            <td>13:10 - 14:00</td>
-                            <td>Introduction & Analysis of History and Culture</td>
-                            <td>英文老師 🧑‍🏫</td>
-                            <td>Business Planning</td>
-                            <td>Cloud Computing Practice</td>
-                            <td>國際學院 ✨</td>
+                            <td class="time-col">13:10 – 14:00</td>
+                            <td class="cat-class">Introduction &amp; Analysis of History and Culture</td>
+                            <td class="cat-teach">英文老師 🧑‍🏫</td>
+                            <td class="cat-class">Business Planning</td>
+                            <td class="cat-class">Cloud Computing Practice</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>14:10 - 15:00</td>
-                            <td>Introduction & Analysis of History and Culture</td>
-                            <td>英文老師 🧑‍🏫</td>
-                            <td>Business Planning</td>
-                            <td>Cloud Computing Practice</td>
-                            <td>國際學院 ✨</td>
+                            <td class="time-col">14:10 – 15:00</td>
+                            <td class="cat-class">Introduction &amp; Analysis of History and Culture</td>
+                            <td class="cat-teach">英文老師 🧑‍🏫</td>
+                            <td class="cat-class">Business Planning</td>
+                            <td class="cat-class">Cloud Computing Practice</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>15:10 - 16:00</td>
-                            <td>國際學院 ✨</td>
-                            <td>英文老師 🧑‍🏫</td>
-                            <td>Student Guidance and Advising Hours</td>
-                            <td>Cloud Computing Practice</td>
-                            <td>國際學院 ✨</td>
+                            <td class="time-col">15:10 – 16:00</td>
+                            <td class="cat-intl">國際學院 ✨</td>
+                            <td class="cat-teach">英文老師 🧑‍🏫</td>
+                            <td class="cat-class">Student Guidance and Advising Hours</td>
+                            <td class="cat-class">Cloud Computing Practice</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>16:10 - 17:00</td>
-                            <td>國際學院 ✨</td>
+                            <td class="time-col">16:10 – 17:00</td>
+                            <td class="cat-intl">國際學院 ✨</td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
-                            <td>國際學院 ✨</td>
-                            <td>Online Teaching (Khansa) 🧑‍🏫</td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-intl">國際學院 ✨</td>
+                            <td class="cat-teach">Online Teaching (Khansa) 🧑‍🏫</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>17:10 - 18:00</td>
+                            <td class="time-col">17:10 – 18:00</td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
                             <td class="empty-slot"></td>
-                            <td>打籃球 🏀</td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-sport">打籃球 🏀</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                         <tr>
-                            <td>18:00 - 22:00</td>
+                            <td class="time-col">18:00 – 22:00</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
-                            <td>全聯 🏪</td>
-                            <td>全聯 🏪</td>
-                            <td>健身 🏋🏻‍♀️</td>
+                            <td class="cat-work">全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
+                            <td class="cat-sport">健身 🏋🏻‍♀️</td>
                             <td class="empty-slot"></td>
-                            <td>全聯 🏪</td>
+                            <td class="cat-work">全聯 🏪</td>
                         </tr>
                     </tbody>
                 </table>
-            </section>
-        </main>
+            </div>
 
-        <footer>
-            <hr>
-            <p>Note</p>
-            <p>*健身 🏋🏻‍♀️ = 18:00 - 18:30</p>
-            <p>*英文老師 🧑‍🏫 = 13:20 - 15:30</p>
-            <p>*全聯 🏪 (Sunday)= 08:30 - 17:30 / 13:00 - 22:00</p>
-        </footer>
+            <footer class="footer">
+                <p>Notes</p>
+                <p>* 健身 🏋🏻‍♀️ — Friday 18:00 – 18:30</p>
+                <p>* 英文老師 🧑‍🏫 — Tuesday 13:20 – 15:30</p>
+                <p>* 全聯 🏪 (Sunday) — 08:30 – 17:30 or 13:00 – 22:00</p>
+            </footer>
+
+        </div>
     </div>
 </body>
 </html>
