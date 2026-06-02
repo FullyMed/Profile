@@ -529,13 +529,13 @@
         <tbody>
           <tr>
             <td>Monday</td>
-            <td><span class="status-badge badge-wfh"><span class="dot"></span>Work From Home</span></td>
-            <td>13:00 – 20:00</td>
+            <td><span class="status-badge badge-unavailable"><span class="dot"></span>Unavailable</span></td>
+            <td>—</td>
           </tr>
           <tr>
             <td>Tuesday</td>
             <td><span class="status-badge badge-wfh"><span class="dot"></span>Work From Home</span></td>
-            <td>13:00 – 20:00</td>
+            <td>13:00 – 21:00</td>
           </tr>
           <tr>
             <td>Wednesday</td>
@@ -601,7 +601,7 @@ const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const weeklyAvailability = {
   0: "unavailable",
-  1: "wfh",
+  1: "unavailable",
   2: "wfh",
   3: "available",
   4: "available",
@@ -627,7 +627,7 @@ const specialDates = {
   "2026-06-10": "unavailable",
   "2026-06-11": "unavailable",
   "2026-06-12": "unavailable",
-  "2026-06-29": "wfh",
+
   "2026-07-01": "unavailable",
   "2026-07-02": "unavailable",
   "2026-07-03": "unavailable",
@@ -656,7 +656,7 @@ const specialDates = {
   "2026-09-04": "available",
   "2026-09-05": "unavailable",
   "2026-09-06": "unavailable",
-  "2026-09-07": "not-sure",
+  "2026-09-07": "unavailable",
   "2026-09-08": "not-sure",
   "2026-09-09": "not-sure",
   "2026-09-10": "not-sure",
