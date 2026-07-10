@@ -1,4 +1,21 @@
 <?php
+$lang = ($_POST["lang"] ?? "en") === "zh" ? "zh" : "en";
+$messages = [
+    "en" => [
+        "missing" => "Please fill in all fields with a valid email address.",
+        "success" => "Thank you! Your message has been sent.",
+        "error"   => "Something went wrong. Please try again later.",
+        "denied"  => "Access denied.",
+    ],
+    "zh" => [
+        "missing" => "請完整填寫所有欄位，並提供有效的電子郵件地址。",
+        "success" => "謝謝你！訊息已成功送出。",
+        "error"   => "發生錯誤，請稍後再試一次。",
+        "denied"  => "存取被拒。",
+    ],
+];
+$t = $messages[$lang];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Strip CR/LF from header-bound fields to prevent email header injection
     $name = trim(str_replace(["\r", "\n"], "", $_POST["name"] ?? ""));
@@ -8,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($name) || !$email || empty($subject) || empty($message)) {
         http_response_code(400);
-        echo "Please fill in all fields with a valid email address.";
+        echo $t["missing"];
         exit;
     }
 
@@ -20,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Send email
     if (mail($to, $mailSubject, $body, $headers)) {
         http_response_code(200);
-        echo "Thank you! Your message has been sent.";
+        echo $t["success"];
     } else {
         http_response_code(500);
-        echo "Something went wrong. Please try again later.";
+        echo $t["error"];
     }
 } else {
     http_response_code(403);
-    echo "Access denied.";
+    echo $t["denied"];
 }
 ?>
