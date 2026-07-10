@@ -1,22 +1,24 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars(trim($_POST["name"]));
-    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $message = htmlspecialchars(trim($_POST["message"]));
+    // Strip CR/LF from header-bound fields to prevent email header injection
+    $name = trim(str_replace(["\r", "\n"], "", $_POST["name"] ?? ""));
+    $email = filter_var(trim($_POST["email"] ?? ""), FILTER_VALIDATE_EMAIL);
+    $subject = trim(str_replace(["\r", "\n"], "", $_POST["subject"] ?? ""));
+    $message = trim($_POST["message"] ?? "");
 
-    if (empty($name) || empty($email) || empty($message)) {
+    if (empty($name) || !$email || empty($subject) || empty($message)) {
         http_response_code(400);
-        echo "Please fill in all fields.";
+        echo "Please fill in all fields with a valid email address.";
         exit;
     }
 
     $to = "maxfelix05@gmail.com";
-    $subject = "New message from $name";
+    $mailSubject = "Portfolio contact: $subject";
     $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-    $headers = "From: $name <$email>";
+    $headers = "From: $to\r\nReply-To: $name <$email>";
 
     // Send email
-    if (mail($to, $subject, $body, $headers)) {
+    if (mail($to, $mailSubject, $body, $headers)) {
         http_response_code(200);
         echo "Thank you! Your message has been sent.";
     } else {
