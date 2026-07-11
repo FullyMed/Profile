@@ -263,13 +263,13 @@
         border: 2px solid #3b82f6; border-radius: 50%;
         transform: translate(-50%,-50%); pointer-events: none;
         z-index: 9999; transition: width 0.22s, height 0.22s;
-        mix-blend-mode: difference;
+        mix-blend-mode: difference; opacity: 0;
       }
       .cursor-dot {
         position: fixed; width: 6px; height: 6px;
         background: #3b82f6; border-radius: 50%;
         transform: translate(-50%,-50%); pointer-events: none;
-        z-index: 9999;
+        z-index: 9999; opacity: 0;
       }
       /* Only show the custom cursor on devices with an actual mouse pointer */
       .cursor-effect, .cursor-dot { display: none; }
@@ -280,7 +280,7 @@
       /* ── Filter buttons ───────────────────────── */
       .filter-btn {
         padding: 0.45rem 1rem; font-size: 0.8rem; font-weight: 500;
-        border-radius: 8px; cursor: pointer;
+        border-radius: 8px; cursor: pointer; white-space: nowrap;
         color: #6b7280; background: transparent;
         border: none; transition: all 0.2s;
       }
@@ -470,7 +470,7 @@
           </div>
 
           <div class="flex justify-center mb-10 reveal reveal-d1">
-            <div class="inline-flex p-1 bg-gray-100 dark:bg-gray-800 rounded-xl gap-0.5">
+            <div class="inline-flex flex-wrap justify-center p-1 bg-gray-100 dark:bg-gray-800 rounded-xl gap-0.5">
               <button class="filter-btn active" data-filter="all">전체</button>
               <button class="filter-btn" data-filter="web">웹 개발</button>
               <button class="filter-btn" data-filter="mobile">앱 개발</button>
@@ -1429,8 +1429,10 @@
         document.addEventListener("mousemove", function (e) {
           cursor.style.left = e.clientX + "px";
           cursor.style.top  = e.clientY + "px";
+          cursor.style.opacity = "1";
           dot.style.left    = e.clientX + "px";
           dot.style.top     = e.clientY + "px";
+          dot.style.opacity = "1";
         });
         document.querySelectorAll("a,button,input,textarea,select,.project-card").forEach(function (el) {
           el.addEventListener("mouseenter", function () { cursor.style.width = "54px"; cursor.style.height = "54px"; dot.style.width = "0"; dot.style.height = "0"; });
