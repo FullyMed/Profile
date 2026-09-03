@@ -1157,7 +1157,7 @@
             <!-- Form -->
             <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 shadow-sm reveal">
               <h3 class="text-xl font-bold mb-6">Send Me a Message</h3>
-              <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
+              <form id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" class="space-y-5">
                 <input type="hidden" name="form-name" value="contact" />
                 <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -1185,6 +1185,7 @@
                     I agree to the <a href="#" class="text-primary hover:underline">privacy policy</a>
                   </label>
                 </div>
+                <div data-netlify-recaptcha></div>
                 <button type="submit" class="w-full py-3 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-blue-600 transition-colors" style="box-shadow:0 4px 14px rgba(59,130,246,0.3);">
                   Send Message
                 </button>
@@ -1557,8 +1558,8 @@
         const mapEl = document.getElementById("site-map");
         if (!mapEl || typeof L === "undefined") return;
 
-        const coords = [-7.3085, 112.7028];
-        const map = L.map(mapEl, { scrollWheelZoom: false }).setView(coords, 16);
+        const coords = [-7.2756, 112.7521];
+        const map = L.map(mapEl, { scrollWheelZoom: false }).setView(coords, 12);
 
         const tileOptions = {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>',
@@ -1569,7 +1570,7 @@
         const darkTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", tileOptions);
 
         (document.documentElement.classList.contains("dark") ? darkTiles : lightTiles).addTo(map);
-        L.marker(coords).addTo(map).bindPopup("Apartemen Puncak CBD, Wiyung, Surabaya").openPopup();
+        L.circle(coords, { radius: 7000, color: "#3b82f6", weight: 1.5, fillColor: "#3b82f6", fillOpacity: 0.12 }).addTo(map).bindPopup("Surabaya, East Java, Indonesia").openPopup();
 
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {

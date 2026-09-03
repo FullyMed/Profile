@@ -10,12 +10,13 @@
   [headers.values]
     # Lock down where the page may load resources from. Hosts listed
     # match exactly what the site uses today: Google Fonts, the Remix
-    # Icon CSS + font on cdnjs, the Tailwind Play CDN, and the CARTO
-    # basemap tiles for the contact-section map. Everything else is
+    # Icon CSS + font on cdnjs, the Tailwind Play CDN, the CARTO basemap
+    # tiles for the contact-section map, and Google reCAPTCHA (script +
+    # challenge iframe) for the contact form. Everything else is
     # same-origin. 'unsafe-inline' / 'unsafe-eval' are required by the
     # Tailwind Play CDN and the inline <script>/<style> blocks; they
     # can be dropped later if Tailwind is precompiled to a static file.
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://*.basemaps.cartocdn.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; connect-src 'self'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://*.basemaps.cartocdn.com https://www.gstatic.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://www.google.com https://www.gstatic.com https://www.recaptcha.net; frame-src https://www.google.com https://recaptcha.net https://www.recaptcha.net; connect-src 'self' https://www.google.com; upgrade-insecure-requests"
 
     # Clickjacking protection for older browsers that ignore CSP frame-ancestors
     X-Frame-Options = "DENY"
