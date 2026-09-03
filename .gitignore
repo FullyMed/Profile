@@ -1,0 +1,21 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Secrets / local env — never commit these
+.env
+.env.*
+*.local
+secrets*.json
+*.pem
+*.key
+
+# Logs / temp
+*.log
+npm-debug.log*
