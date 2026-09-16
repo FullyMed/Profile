@@ -37,6 +37,7 @@ index-zh.html          中文
 index-id.html          Indonesia
 index-ja.html          日本語
 index-ko.html          한국어
+404.html                Custom not-found page (auto-served by Netlify)
 netlify.toml           Deploy config + security headers (CSP, HSTS, etc.)
 vendor/leaflet/         Self-hosted Leaflet.js, CSS, and marker assets
 Images/                 Site images (profile photo)

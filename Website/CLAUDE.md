@@ -19,6 +19,10 @@ self-contained HTML file styled with the Tailwind Play CDN.
   Japanese, Korean translations. These are **structural duplicates** of `index.html`: identical
   line count, identical element `id`s, identical CSS and `<script>` blocks — only visible text
   differs.
+- `404.html` — custom not-found page. Netlify auto-serves any file named `404.html` at the
+  publish root for unmatched routes (no config needed in `netlify.toml`). Self-contained and
+  intentionally single-language (English) with links home in each of the 5 languages — it isn't
+  part of the "5 files move together" rule below and doesn't need a translated duplicate.
 - `netlify.toml` — deploy config (`publish = "."`, no build command) and security headers
   (CSP, X-Frame-Options, HSTS, Permissions-Policy, etc.) scoped to the exact external hosts the
   site uses.
