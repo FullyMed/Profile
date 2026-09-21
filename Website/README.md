@@ -18,6 +18,8 @@ languages, built as static HTML/CSS/JS with no build step or framework.
 - **Sections:** hero, filterable project showcase, skills & tech stack, experience timeline
   (with a bilingual résumé download), about, and a contact form + interactive map.
 - **SEO:** each language page has its own native-language `<title>` and meta description.
+- **Loading states:** a full-screen spinner overlay while the page loads, and a spinner +
+  disabled state on the contact form's submit button while the message is sending.
 
 ## Tech stack
 

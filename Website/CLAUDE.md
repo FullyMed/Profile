@@ -66,13 +66,30 @@ revisit its title/description too so they stay accurate.
   `tailwind.config` in `<head>` (dark mode via `class`, custom `primary`/`secondary` colors,
   `Inter` font). There is no compiled Tailwind build — don't introduce one without being asked.
   All custom (non-utility) CSS lives in a single `<style>` block in `<head>`.
-  All behavior lives in a handful of `<script>` blocks at the end of `<body>`: dark-mode
-  toggle (persisted to `localStorage`), scroll-reveal (`IntersectionObserver`-free, scroll-based),
-  mobile menu, project filter buttons, custom cursor (desktop-only, `@media (hover:hover)`),
-  the Netlify Forms contact submit handler, the résumé language toggle, the footer year, and the
-  Leaflet map (light/dark tile swap tied to the theme toggle).
+  All behavior lives in a handful of `<script>` blocks at the end of `<body>`: the page loader,
+  dark-mode toggle (persisted to `localStorage`), scroll-reveal (`IntersectionObserver`-free,
+  scroll-based), mobile menu, project filter buttons, custom cursor (desktop-only,
+  `@media (hover:hover)`), the Netlify Forms contact submit handler, the résumé language toggle,
+  the footer year, and the Leaflet map (light/dark tile swap tied to the theme toggle).
 - No `id` collisions or globals beyond what's already there — keep new script blocks
   self-scoped (IIFE) like the existing ones.
+
+## Loading states
+
+- **Initial page load:** `#page-loader` is a full-screen overlay (first element in `<body>`,
+  matching the hero's dark background) showing a Tailwind `animate-spin` ring. A script right
+  after the Leaflet `<script src>` tag hides it — via the same `opacity-0`/`invisible` Tailwind
+  toggle pattern `#back-to-top` uses — on `window.load`, with a 4s `setTimeout` fallback in case
+  a resource stalls. Structural, identical across all 5 language pages; not used on `404.html`
+  (nothing to wait for there).
+- **Contact form submit:** the submit button (`#contact-submit`) holds a hidden
+  `ri-loader-4-line` spinner (`#contact-submit-spinner`, Tailwind `animate-spin`) and a label
+  span (`#contact-submit-label`). The submit handler disables the button, reveals the spinner,
+  and swaps the label to a "Sending…" string while the `fetch` is in flight, then restores
+  everything in `.finally()` regardless of success/failure. The "Sending…" text is localized
+  per language, same as the existing success/error `box.textContent` strings in that handler —
+  keep that pattern (structure identical across the 5 files, only the string literals differ)
+  for any future translated/user-facing script text.
 
 ## Content Security Policy
 
