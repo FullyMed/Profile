@@ -17,6 +17,7 @@ languages, built as static HTML/CSS/JS with no build step or framework.
   日本語 (`index-ja.html`), 한국어 (`index-ko.html`) — selectable from the header language dropdown.
 - **Sections:** hero, filterable project showcase, skills & tech stack, experience timeline
   (with a bilingual résumé download), about, and a contact form + interactive map.
+- **SEO:** each language page has its own native-language `<title>` and meta description.
 
 ## Tech stack
 

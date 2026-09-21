@@ -48,6 +48,18 @@ permanent — the user has confirmed the 4 translated pages are meant to stay ha
 identical-content duplicates long-term. Don't introduce a build step, templating system, or
 i18n framework to "fix" this unless explicitly asked.
 
+One deliberate exception to "only text content differs": `<title>` and `<meta name="description">`
+in `<head>` are **per-page SEO content**, each written natively in that page's language rather
+than translated line-for-line from the English copy — keep them that way when editing.
+
+## SEO metadata
+
+Each of the 5 language pages has its own `<title>` and `<meta name="description">` in `<head>`,
+written natively in that page's language (not a translation of the English tag word-for-word).
+`404.html` keeps a generic English title and `<meta name="robots" content="noindex">` instead —
+it shouldn't be indexed. When editing on-page copy that changes what a page is actually about,
+revisit its title/description too so they stay accurate.
+
 ## Styling & scripts
 
 - Tailwind is loaded via `<script src="https://cdn.tailwindcss.com/3.4.16">` with an inline
