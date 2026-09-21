@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Privacy Policy | Maximilliano Felix</title>
+    <meta name="description" content="Privacy Policy for Maximilliano Felix's portfolio site — what information is collected through the contact form and third-party services, and how it's used." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#10b981" },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body { -webkit-font-smoothing: antialiased; }
+      .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider {
+        position: absolute; cursor: pointer;
+        inset: 0; background: #d1d5db;
+        transition: 0.3s; border-radius: 24px;
+      }
+      .slider:before {
+        content: ""; position: absolute;
+        width: 18px; height: 18px;
+        left: 3px; bottom: 3px;
+        background: #fff; border-radius: 50%;
+        transition: 0.3s;
+      }
+      input:checked + .slider { background: #3b82f6; }
+      input:checked + .slider:before { transform: translateX(22px); }
+      .legal h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+      .legal h2:first-child { margin-top: 0; }
+      .legal p, .legal li { line-height: 1.75; }
+      .legal p { margin-bottom: 1rem; }
+      .legal ul { list-style: disc; padding-left: 1.375rem; margin-bottom: 1rem; }
+      .legal li { margin-bottom: 0.4rem; }
+      .legal a { color: #3b82f6; text-decoration: underline; text-underline-offset: 2px; }
+    </style>
+  </head>
+
+  <body class="font-sans bg-slate-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 min-h-screen flex flex-col">
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="border-b border-gray-100 dark:border-gray-800">
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16">
+        <a href="index.html" class="text-[1.05rem] font-bold text-gray-900 dark:text-white tracking-tight">
+          Maximilliano Felix
+        </a>
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+            <i class="ri-arrow-left-line mr-1"></i>Back to Home
+          </a>
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════ CONTENT ═══════════ -->
+    <main class="flex-1">
+      <div class="container mx-auto px-4 md:px-6 max-w-2xl py-14 md:py-20">
+        <span class="section-label text-[0.7rem] font-bold tracking-[0.14em] uppercase text-primary">Legal</span>
+        <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-2">Privacy Policy</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: September 21, 2026</p>
+
+        <div class="legal text-gray-600 dark:text-gray-400">
+          <h2 class="text-gray-900 dark:text-white">Overview</h2>
+          <p>
+            This is the personal portfolio site of Maximilliano Felix (傅忠明). This policy explains
+            what information is collected when you visit or use this site, and how it's handled.
+            This site doesn't run any advertising, analytics tracking, or user accounts — it exists
+            to showcase projects, skills, and experience, and to let visitors get in touch.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Information We Collect</h2>
+          <p><strong class="text-gray-900 dark:text-white">Information you provide.</strong> If you use the
+            contact form, we collect the name, email address, subject, and message you enter. This is
+            submitted voluntarily and used only to respond to you.</p>
+          <p><strong class="text-gray-900 dark:text-white">Information from third-party services.</strong>
+            Some resources this site loads (see "Third-Party Services" below) may automatically receive
+            standard technical data from your browser — such as your IP address and user agent — as part
+            of how the web works. That data is handled by those providers under their own privacy
+            policies, not by us.</p>
+          <p><strong class="text-gray-900 dark:text-white">Local storage.</strong> Your light/dark theme
+            preference is saved in your browser's local storage. It stays on your device and is never
+            transmitted anywhere.</p>
+
+          <h2 class="text-gray-900 dark:text-white">How We Use Your Information</h2>
+          <p>
+            Contact form submissions are used solely to read and reply to your message. We don't use
+            your information for marketing, and we don't sell, rent, or trade it to anyone.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Third-Party Services</h2>
+          <p>This site relies on the following third-party services to function:</p>
+          <ul>
+            <li><strong class="text-gray-900 dark:text-white">Netlify</strong> — hosting and processing of contact form submissions. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a>.</li>
+            <li><strong class="text-gray-900 dark:text-white">Google reCAPTCHA</strong> — spam protection on the contact form. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
+            <li><strong class="text-gray-900 dark:text-white">Google Fonts</strong> — the Inter typeface, loaded from Google's servers.</li>
+            <li><strong class="text-gray-900 dark:text-white">cdnjs (Cloudflare)</strong> — the Remix Icon font used for icons.</li>
+            <li><strong class="text-gray-900 dark:text-white">CARTO / OpenStreetMap</strong> — map tiles shown in the Contact section.</li>
+          </ul>
+
+          <h2 class="text-gray-900 dark:text-white">Cookies</h2>
+          <p>
+            This site does not set its own tracking or advertising cookies. Google reCAPTCHA may set
+            cookies in your browser as part of its spam-detection process, governed by Google's own
+            policies linked above.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Data Retention</h2>
+          <p>
+            Contact form submissions are retained in Netlify Forms per Netlify's own retention
+            practices. You can ask us to delete any information you've submitted at any time — see
+            "Contact" below.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Your Rights</h2>
+          <p>
+            You can request access to, or deletion of, any information you've submitted through this
+            site by emailing us at the address below.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Children's Privacy</h2>
+          <p>
+            This site is not directed at children under 13, and we do not knowingly collect
+            information from children.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Changes to This Policy</h2>
+          <p>
+            This policy may be updated occasionally. The "Last updated" date at the top reflects the
+            most recent revision.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Contact</h2>
+          <p>
+            Questions about this policy? Email <a href="mailto:maxfelix05@gmail.com">maxfelix05@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="border-t border-gray-100 dark:border-gray-800 py-8">
+      <div class="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-500 dark:text-gray-400">&copy; <span id="current-year"></span> Maximilliano Felix. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-5 text-sm">
+          <a href="index.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Home</a>
+          <a href="privacy.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Terms of Use</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Theme (persisted from the main site) ── */
+      (function () {
+        const toggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        if (localStorage.getItem("theme") === "dark") {
+          html.classList.add("dark");
+          toggle.checked = true;
+        }
+        toggle.addEventListener("change", function () {
+          html.classList.toggle("dark", this.checked);
+          localStorage.setItem("theme", this.checked ? "dark" : "light");
+        });
+      })();
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

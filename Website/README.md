@@ -20,6 +20,8 @@ languages, built as static HTML/CSS/JS with no build step or framework.
 - **SEO:** each language page has its own native-language `<title>` and meta description.
 - **Loading states:** a full-screen spinner overlay while the page loads, and a spinner +
   disabled state on the contact form's submit button while the message is sending.
+- **Legal:** [Privacy Policy](privacy.html) and [Terms of Use](terms.html), linked from the
+  footer and the contact form on every language page.
 
 ## Tech stack
 
@@ -41,6 +43,8 @@ index-id.html          Indonesia
 index-ja.html          日本語
 index-ko.html          한국어
 404.html                Custom not-found page (auto-served by Netlify)
+privacy.html            Privacy Policy (English-only utility page)
+terms.html              Terms of Use (English-only utility page)
 netlify.toml           Deploy config + security headers (CSP, HSTS, etc.)
 vendor/leaflet/         Self-hosted Leaflet.js, CSS, and marker assets
 Images/                 Site images (profile photo)

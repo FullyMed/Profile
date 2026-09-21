@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Terms of Use | Maximilliano Felix</title>
+    <meta name="description" content="Terms of Use for Maximilliano Felix's portfolio site — acceptable use, intellectual property, third-party links, and liability disclaimer." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#10b981" },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body { -webkit-font-smoothing: antialiased; }
+      .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider {
+        position: absolute; cursor: pointer;
+        inset: 0; background: #d1d5db;
+        transition: 0.3s; border-radius: 24px;
+      }
+      .slider:before {
+        content: ""; position: absolute;
+        width: 18px; height: 18px;
+        left: 3px; bottom: 3px;
+        background: #fff; border-radius: 50%;
+        transition: 0.3s;
+      }
+      input:checked + .slider { background: #3b82f6; }
+      input:checked + .slider:before { transform: translateX(22px); }
+      .legal h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+      .legal h2:first-child { margin-top: 0; }
+      .legal p, .legal li { line-height: 1.75; }
+      .legal p { margin-bottom: 1rem; }
+      .legal ul { list-style: disc; padding-left: 1.375rem; margin-bottom: 1rem; }
+      .legal li { margin-bottom: 0.4rem; }
+      .legal a { color: #3b82f6; text-decoration: underline; text-underline-offset: 2px; }
+    </style>
+  </head>
+
+  <body class="font-sans bg-slate-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 min-h-screen flex flex-col">
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="border-b border-gray-100 dark:border-gray-800">
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16">
+        <a href="index.html" class="text-[1.05rem] font-bold text-gray-900 dark:text-white tracking-tight">
+          Maximilliano Felix
+        </a>
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors">
+            <i class="ri-arrow-left-line mr-1"></i>Back to Home
+          </a>
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══════════ CONTENT ═══════════ -->
+    <main class="flex-1">
+      <div class="container mx-auto px-4 md:px-6 max-w-2xl py-14 md:py-20">
+        <span class="section-label text-[0.7rem] font-bold tracking-[0.14em] uppercase text-primary">Legal</span>
+        <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-2">Terms of Use</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: September 21, 2026</p>
+
+        <div class="legal text-gray-600 dark:text-gray-400">
+          <h2 class="text-gray-900 dark:text-white">Acceptance of Terms</h2>
+          <p>
+            This site is the personal portfolio of Maximilliano Felix (傅忠明). By browsing or using
+            it, you agree to these Terms of Use. If you don't agree, please don't use the site.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Use of This Site</h2>
+          <p>
+            This site is provided for personal, non-commercial browsing — to learn about my
+            background, projects, and how to get in touch. Please don't misuse it: don't attempt to
+            disrupt, scrape at scale, reverse engineer, or compromise the security of the site or the
+            services it relies on (Netlify, Google reCAPTCHA, and the other third-party services
+            listed in the <a href="privacy.html">Privacy Policy</a>).
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Intellectual Property</h2>
+          <p>
+            The site's design, layout, and original written content are © Maximilliano Felix unless
+            otherwise noted. Project names, screenshots, and descriptions belong to their respective
+            projects. My résumé/CV files are provided for your reference when evaluating my work and
+            aren't for redistribution or reuse without permission.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Third-Party Links</h2>
+          <p>
+            This site links to external sites I don't control — GitHub, LinkedIn, live project demos,
+            and social media, among others. I'm not responsible for the content, availability, or
+            privacy practices of those sites, and linking to them isn't an endorsement of everything
+            they contain.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">No Warranty</h2>
+          <p>
+            This site is provided "as is," without warranties of any kind, express or implied. I don't
+            guarantee it will be available, uninterrupted, secure, or error-free at all times.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Limitation of Liability</h2>
+          <p>
+            To the fullest extent permitted by law, I'm not liable for any damages arising from your
+            use of, or inability to use, this site.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Governing Law</h2>
+          <p>
+            These terms are governed by the laws of Taiwan, where this site is maintained, without
+            regard to conflict-of-law principles.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Changes to These Terms</h2>
+          <p>
+            These terms may be updated occasionally. The "Last updated" date at the top reflects the
+            most recent revision.
+          </p>
+
+          <h2 class="text-gray-900 dark:text-white">Contact</h2>
+          <p>
+            Questions about these terms? Email <a href="mailto:maxfelix05@gmail.com">maxfelix05@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="border-t border-gray-100 dark:border-gray-800 py-8">
+      <div class="container mx-auto px-4 md:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-500 dark:text-gray-400">&copy; <span id="current-year"></span> Maximilliano Felix. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-5 text-sm">
+          <a href="index.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Home</a>
+          <a href="privacy.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-gray-500 hover:text-primary dark:text-gray-400 transition-colors">Terms of Use</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Theme (persisted from the main site) ── */
+      (function () {
+        const toggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+        if (localStorage.getItem("theme") === "dark") {
+          html.classList.add("dark");
+          toggle.checked = true;
+        }
+        toggle.addEventListener("change", function () {
+          html.classList.toggle("dark", this.checked);
+          localStorage.setItem("theme", this.checked ? "dark" : "light");
+        });
+      })();
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

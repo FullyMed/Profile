@@ -23,6 +23,12 @@ self-contained HTML file styled with the Tailwind Play CDN.
   publish root for unmatched routes (no config needed in `netlify.toml`). Self-contained and
   intentionally single-language (English) with links home in each of the 5 languages — it isn't
   part of the "5 files move together" rule below and doesn't need a translated duplicate.
+- `privacy.html`, `terms.html` — Privacy Policy and Terms of Use. Same "utility page" treatment
+  as `404.html`: intentionally English-only, self-contained (their own minimal header/footer,
+  not the full site header/nav/cursor/reveal machinery), but reads the shared `theme` localStorage
+  key on load so dark-mode preference carries over from the main site. Linked from the footer
+  ("Privacy Policy" / "Terms") and the contact form's privacy-policy checkbox on all 5 language
+  pages — those link labels are translated per page, but the two target pages themselves are not.
 - `netlify.toml` — deploy config (`publish = "."`, no build command) and security headers
   (CSP, X-Frame-Options, HSTS, Permissions-Policy, etc.) scoped to the exact external hosts the
   site uses.
@@ -51,6 +57,11 @@ i18n framework to "fix" this unless explicitly asked.
 One deliberate exception to "only text content differs": `<title>` and `<meta name="description">`
 in `<head>` are **per-page SEO content**, each written natively in that page's language rather
 than translated line-for-line from the English copy — keep them that way when editing.
+
+`404.html`, `privacy.html`, and `terms.html` are outside this rule entirely — they're
+intentionally English-only utility/legal pages, not translated duplicates. Don't create
+`privacy-zh.html`-style variants of them unless explicitly asked; the footer/contact-form
+_links_ to them are translated per language, but the pages themselves stay single-language.
 
 ## SEO metadata
 
@@ -90,6 +101,15 @@ revisit its title/description too so they stay accurate.
   per language, same as the existing success/error `box.textContent` strings in that handler —
   keep that pattern (structure identical across the 5 files, only the string literals differ)
   for any future translated/user-facing script text.
+
+## Legal pages
+
+`privacy.html` and `terms.html` cover the contact form (Netlify Forms), Google reCAPTCHA, and
+the other third-party services listed under "Content Security Policy" below. If a future change
+adds a new external service, a tracking/analytics script, or changes what the contact form
+collects, update `privacy.html`'s "Information We Collect" / "Third-Party Services" sections to
+match — these pages describe actual data handling and should stay accurate, not just present.
+This content is not legal advice and hasn't been reviewed by a lawyer.
 
 ## Content Security Policy
 
