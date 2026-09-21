@@ -1,4 +1,4 @@
-# Maximilliano Felix — Portfolio
+# Maximilliano Felix - Portfolio
 
 Personal portfolio website for Maximilliano Felix (傅忠明) — builder, educator, and
 cross-cultural communicator based in Taichung, Taiwan.
