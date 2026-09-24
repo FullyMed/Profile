@@ -22,6 +22,8 @@ languages, built as static HTML/CSS/JS with no build step or framework.
   disabled state on the contact form's submit button while the message is sending.
 - **Legal:** [Privacy Policy](privacy.html) and [Terms of Use](terms.html), linked from the
   footer and the contact form on every language page.
+- **Favicons:** a full favicon/PWA-icon set (SVG, ICO, PNGs, web manifest) built around a blue
+  "MF" monogram matching the site's primary color.
 
 ## Tech stack
 
@@ -48,6 +50,10 @@ terms.html              Terms of Use (English-only utility page)
 netlify.toml           Deploy config + security headers (CSP, HSTS, etc.)
 vendor/leaflet/         Self-hosted Leaflet.js, CSS, and marker assets
 Images/                 Site images (profile photo)
+favicon.svg, favicon.ico, favicon-*.png,
+android-chrome-*.png, apple-touch-icon.png,
+site.webmanifest       Favicon / PWA icon set
+scripts/gen_favicon.py Regenerates the favicon PNG/ICO set (Pillow)
 Maximilliano Felix_CV.pdf / .docx    English résumé
 傅忠明_CV.pdf / .docx                  Chinese résumé
 .claude/launch.json     Local static preview server config

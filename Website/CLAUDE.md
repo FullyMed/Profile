@@ -35,6 +35,14 @@ self-contained HTML file styled with the Tailwind Play CDN.
 - `vendor/leaflet/` — self-hosted Leaflet.js + CSS + marker images (used by the contact-section
   map instead of pulling Leaflet from a CDN not on the CSP allowlist).
 - `Images/Profile_Picture.jpg` — About-section photo.
+- `favicon.svg`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
+  `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png`,
+  `site.webmanifest` — the favicon set (see "Favicons" below). Shared across every page; not
+  part of the "5 files move together" or 404/legal-page rules since there's nothing to
+  translate.
+- `scripts/gen_favicon.py` — regenerates the favicon PNG/ICO set from the "MF" monogram design.
+  Not part of the deployed site (no build step touches it); a standalone Pillow script to rerun
+  by hand if the icon needs to change.
 - `Maximilliano Felix_CV.pdf/.docx` and `傅忠明_CV.pdf/.docx` — English and Chinese résumés,
   switched by the "Download Resume" language toggle in the Experience section.
 - `.claude/launch.json` — local static preview server (`python -m http.server 8734`).
@@ -101,6 +109,21 @@ revisit its title/description too so they stay accurate.
   per language, same as the existing success/error `box.textContent` strings in that handler —
   keep that pattern (structure identical across the 5 files, only the string literals differ)
   for any future translated/user-facing script text.
+
+## Favicons
+
+A blue (`#3b82f6`) rounded-square "MF" monogram, generated with Pillow (`ImageDraw` + system
+Arial Bold) from a 1024px master via `scripts/gen_favicon.py`, plus a hand-authored `favicon.svg`
+in the same design for modern browsers. Rerun that script to regenerate the PNG/ICO set if the
+design or brand color changes. The full set:
+`favicon.svg` (primary, vector), `favicon.ico` (16/32/48px, legacy fallback), `favicon-16x16.png`
+/ `favicon-32x32.png` (explicit PNG fallbacks), `apple-touch-icon.png` (180px, iOS home screen),
+`android-chrome-192x192.png` / `android-chrome-512x512.png` + `site.webmanifest` (Android/PWA).
+All 8 root-level files, referenced by identical `<link>`/`<meta name="theme-color">` tags in
+every page's `<head>` (all 5 language pages, `404.html`, `privacy.html`, `terms.html`) — add the
+same tags to any new page. If the brand mark or primary color ever changes, regenerate all sizes
+from a new master rather than editing individual PNGs by hand, and keep `favicon.svg` in sync
+with the raster version.
 
 ## Legal pages
 
