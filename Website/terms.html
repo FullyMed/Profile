@@ -31,6 +31,10 @@
         },
       };
     </script>
+    <script>
+      /* Apply the saved theme before first paint so dark mode doesn't flash light */
+      try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch (e) {}
+    </script>
 
     <style>
       :where([class^="ri-"])::before { content: "\f3c2"; }
@@ -73,7 +77,7 @@
             <i class="ri-arrow-left-line mr-1"></i>Back to Home
           </a>
           <label class="switch">
-            <input type="checkbox" id="theme-toggle" />
+            <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode" />
             <span class="slider"></span>
           </label>
         </div>
@@ -168,13 +172,10 @@
       (function () {
         const toggle = document.getElementById("theme-toggle");
         const html = document.documentElement;
-        if (localStorage.getItem("theme") === "dark") {
-          html.classList.add("dark");
-          toggle.checked = true;
-        }
+        toggle.checked = html.classList.contains("dark");
         toggle.addEventListener("change", function () {
           html.classList.toggle("dark", this.checked);
-          localStorage.setItem("theme", this.checked ? "dark" : "light");
+          try { localStorage.setItem("theme", this.checked ? "dark" : "light"); } catch (e) {}
         });
       })();
       document.getElementById("current-year").textContent = new Date().getFullYear();

@@ -248,6 +248,19 @@
         transform: rotate(45deg);
       }
 
+      /* Radio variant: round with a centered dot instead of a checkmark */
+      .custom-checkbox[type="radio"] { border-radius: 50%; }
+      .custom-checkbox[type="radio"]:checked::after {
+        left: 4px; top: 4px;
+        width: 6px; height: 6px;
+        border: none; border-radius: 50%;
+        background: #fff; transform: none;
+      }
+
+      /* ── Form response message ────────────────── */
+      .form-response.is-error { color: #dc2626; }
+      .dark .form-response.is-error { color: #f87171; }
+
       /* ── Toggle switch ────────────────────────── */
       .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
       .switch input { opacity: 0; width: 0; height: 0; }
@@ -342,7 +355,7 @@
 
     <!-- ═══════════ HEADER ═══════════ -->
     <header id="site-header" class="fixed top-0 left-0 w-full z-50">
-      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-18" style="height:68px;">
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between h-16" style="height:68px;">
 
         <a href="#home" class="text-[1.05rem] font-bold text-gray-900 dark:text-white tracking-tight shrink-0">
           傅忠明
@@ -359,16 +372,16 @@
 
         <div class="flex items-center gap-2">
           <div class="hidden lg:flex items-center gap-1">
-            <a href="https://github.com/FullyMed" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-github-line ri-lg"></i></a>
-            <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-linkedin-line ri-lg"></i></a>
-            <a href="https://wa.me/886987007213" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-whatsapp-line ri-lg"></i></a>
-            <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-line-line ri-lg"></i></a>
-            <a href="https://www.instagram.com/max_pelik/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-instagram-line ri-lg"></i></a>
+            <a href="https://github.com/FullyMed" target="_blank" aria-label="GitHub" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-github-line ri-lg"></i></a>
+            <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-linkedin-line ri-lg"></i></a>
+            <a href="https://wa.me/886987007213" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-whatsapp-line ri-lg"></i></a>
+            <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" aria-label="LINE" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-line-line ri-lg"></i></a>
+            <a href="https://www.instagram.com/max_pelik/" target="_blank" aria-label="Instagram" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="ri-instagram-line ri-lg"></i></a>
           </div>
           <div class="hidden lg:block w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1"></div>
 
           <div class="relative hidden lg:block" id="lang-dropdown">
-            <button id="lang-dropdown-btn" type="button" class="h-9 px-3 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+            <button id="lang-dropdown-btn" type="button" aria-label="切換語言" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown-menu" class="h-9 px-3 flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
               ZH <i class="ri-arrow-down-s-line"></i>
             </button>
             <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-lg shadow-lg py-1 z-50">
@@ -384,10 +397,10 @@
 
           <div class="hidden lg:block w-px h-5 bg-gray-200 dark:bg-gray-700 mx-1"></div>
           <label class="switch">
-            <input type="checkbox" id="theme-toggle" />
+            <input type="checkbox" id="theme-toggle" aria-label="切換深色模式" />
             <span class="slider"></span>
           </label>
-          <button id="mobile-menu-button" class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <button id="mobile-menu-button" type="button" aria-label="開啟或關閉選單" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-primary rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
             <i class="ri-menu-line ri-lg"></i>
           </button>
         </div>
@@ -897,7 +910,7 @@
           <div class="text-center mb-14 reveal">
             <span class="section-label">職涯歷程</span>
             <h2 class="text-3xl md:text-4xl font-bold mb-4">工作經歷</h2>
-            <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">我的職涯發展歷程，以及在不同領域累積的專業經驗</p>
+            <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">我在教學、行政與顧客服務等領域的職涯歷程</p>
           </div>
 
           <div class="max-w-2xl mx-auto relative pl-10">
@@ -1181,7 +1194,7 @@
                   </div>
                   <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">電子郵件</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" class="form-input" />
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}" class="form-input" />
                   </div>
                 </div>
                 <div>
@@ -1205,7 +1218,7 @@
                   <span id="contact-submit-label">送出訊息</span>
                 </button>
               </form>
-              <div id="form-response" class="mt-3 text-sm text-green-600 dark:text-green-400 font-medium"></div>
+              <div id="form-response" class="form-response mt-3 text-sm text-green-600 dark:text-green-400 font-medium" role="status" aria-live="polite"></div>
             </div>
 
             <!-- Info + Meeting -->
@@ -1231,7 +1244,7 @@
                     <div class="contact-icon bg-amber-50 dark:bg-amber-900/30 text-amber-500"><i class="ri-map-pin-line ri-lg"></i></div>
                     <div>
                       <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-0.5">所在地</p>
-                      <p class="font-medium">印尼．東爪哇．泗水</p>
+                      <p class="font-medium">台灣．台中</p>
                     </div>
                   </div>
                   <div class="flex items-start gap-4">
@@ -1245,26 +1258,39 @@
                 <div class="mt-6 pt-5 border-t border-gray-100 dark:border-gray-700">
                   <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">社群連結</p>
                   <div class="flex gap-2">
-                    <a href="https://github.com/FullyMed" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-github-line"></i></a>
-                    <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-linkedin-line"></i></a>
-                    <a href="https://wa.me/886987007213" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-whatsapp-line"></i></a>
-                    <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-line-line"></i></a>
-                    <a href="https://www.instagram.com/max_pelik/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-instagram-line"></i></a>
+                    <a href="https://github.com/FullyMed" target="_blank" aria-label="GitHub" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-github-line"></i></a>
+                    <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-linkedin-line"></i></a>
+                    <a href="https://wa.me/886987007213" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-whatsapp-line"></i></a>
+                    <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" aria-label="LINE" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-line-line"></i></a>
+                    <a href="https://www.instagram.com/max_pelik/" target="_blank" aria-label="Instagram" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-primary hover:text-white text-gray-600 dark:text-gray-400 transition-all"><i class="ri-instagram-line"></i></a>
                   </div>
                 </div>
               </div>
 
-              <!-- Schedule -->
+              <!-- Schedule (Netlify Forms, form name "meeting") -->
               <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 shadow-sm">
                 <h3 class="text-xl font-bold mb-6">預約會議</h3>
-                <div class="space-y-5">
-                  <div>
-                    <label for="meeting-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">偏好日期</label>
-                    <input type="date" id="meeting-date" class="form-input" />
+                <form id="meeting-form" name="meeting" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
+                  <input type="hidden" name="form-name" value="meeting" />
+                  <p class="hidden"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="meeting-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">姓名</label>
+                      <input type="text" id="meeting-name" name="name" placeholder="你的姓名" required autocomplete="name" class="form-input" />
+                    </div>
+                    <div>
+                      <label for="meeting-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">電子郵件</label>
+                      <input type="email" id="meeting-email" name="email" placeholder="your@email.com" required autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}" class="form-input" />
+                    </div>
                   </div>
-                  <div>
-                    <label for="meeting-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">偏好時段</label>
-                    <select id="meeting-time" class="form-input">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="meeting-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">偏好日期</label>
+                      <input type="date" id="meeting-date" name="date" required class="form-input" />
+                    </div>
+                    <div>
+                      <label for="meeting-time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">偏好時段</label>
+                      <select id="meeting-time" name="time" required class="form-input">
                       <option value="">請選擇時段</option>
                       <option value="9:00">上午 9:00 – 10:00</option>
                       <option value="10:00">上午 10:00 – 11:00</option>
@@ -1274,9 +1300,10 @@
                       <option value="15:00">下午 3:00 – 4:00</option>
                       <option value="16:00">下午 4:00 – 5:00</option>
                     </select>
+                    </div>
                   </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">會議形式</label>
+                  <fieldset>
+                    <legend class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">會議形式</legend>
                     <div class="flex gap-5">
                       <label class="flex items-center gap-2 cursor-pointer">
                         <input type="radio" name="meeting-type" value="video-call" class="custom-checkbox" checked /> <span class="text-sm">視訊通話</span>
@@ -1285,11 +1312,14 @@
                         <input type="radio" name="meeting-type" value="phone-call" class="custom-checkbox" /> <span class="text-sm">電話通話</span>
                       </label>
                     </div>
-                  </div>
-                  <button type="button" class="w-full py-2.5 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition-colors">
-                    送出預約請求
+                  </fieldset>
+                  <input type="hidden" name="lang" value="zh" />
+                  <button type="submit" id="meeting-submit" class="w-full py-2.5 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                    <i class="ri-loader-4-line animate-spin hidden" id="meeting-submit-spinner"></i>
+                    <span id="meeting-submit-label">送出預約請求</span>
                   </button>
-                </div>
+                </form>
+                <div id="meeting-response" class="form-response mt-3 text-sm text-green-600 dark:text-green-400 font-medium" role="status" aria-live="polite"></div>
               </div>
             </div>
           </div>
@@ -1308,18 +1338,18 @@
     <!-- ═══════════ FOOTER ═══════════ -->
     <footer class="bg-gray-950 text-white pt-16 pb-8">
       <div class="container mx-auto px-4 md:px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <a href="#home" class="text-lg font-bold text-white mb-3 block">傅忠明</a>
             <p class="text-gray-500 text-sm leading-relaxed mb-5">
               創作者、教育者與跨文化溝通者--開發應用程式、投入教學，並搭起文化橋樑。
             </p>
             <div class="flex gap-2">
-              <a href="https://github.com/FullyMed" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-github-line text-sm"></i></a>
-              <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-linkedin-line text-sm"></i></a>
-              <a href="https://wa.me/886987007213" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-whatsapp-line text-sm"></i></a>
-              <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-line-line text-sm"></i></a>
-              <a href="https://www.instagram.com/max_pelik/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-instagram-line text-sm"></i></a>
+              <a href="https://github.com/FullyMed" target="_blank" aria-label="GitHub" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-github-line text-sm"></i></a>
+              <a href="https://www.linkedin.com/in/maximilliano-felix-gunawan-polandouw-064541316/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-linkedin-line text-sm"></i></a>
+              <a href="https://wa.me/886987007213" target="_blank" aria-label="WhatsApp" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-whatsapp-line text-sm"></i></a>
+              <a href="https://line.me/ti/p/~zhongm1ng" target="_blank" aria-label="LINE" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-line-line text-sm"></i></a>
+              <a href="https://www.instagram.com/max_pelik/" target="_blank" aria-label="Instagram" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center bg-gray-800 text-gray-400 rounded-lg hover:bg-primary hover:text-white transition-all"><i class="ri-instagram-line text-sm"></i></a>
             </div>
           </div>
 
@@ -1340,18 +1370,8 @@
             <ul class="space-y-2.5">
               <li class="flex items-center gap-2 text-gray-500 text-sm"><i class="ri-mail-line text-primary"></i><a href="mailto:maxfelix05@gmail.com" class="hover:text-white transition-colors">maxfelix05@gmail.com</a></li>
               <li class="flex items-center gap-2 text-gray-500 text-sm"><i class="ri-phone-line text-primary"></i><a href="tel:+886987007213" class="hover:text-white transition-colors">+886 987007213</a></li>
-              <li class="flex items-center gap-2 text-gray-500 text-sm"><i class="ri-map-pin-line text-primary"></i>印尼．泗水</li>
+              <li class="flex items-center gap-2 text-gray-500 text-sm"><i class="ri-map-pin-line text-primary"></i>台灣．台中</li>
             </ul>
-          </div>
-
-          <div>
-            <h3 class="text-sm font-semibold text-white mb-4 uppercase tracking-wider">訂閱電子報</h3>
-            <p class="text-gray-500 text-sm mb-4 leading-relaxed">訂閱以獲得我的最新專案與技術文章更新。</p>
-            <form class="flex gap-2">
-              <input type="email" placeholder="your@email.com" class="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-600 focus:outline-none focus:border-primary" />
-              <button type="submit" class="px-3 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-colors whitespace-nowrap">訂閱</button>
-            </form>
-            <p class="text-gray-600 text-xs mt-2">絕不濫發廣告信，可隨時取消訂閱。</p>
           </div>
         </div>
 
@@ -1360,14 +1380,14 @@
           <div class="flex gap-5">
             <a href="privacy.html" class="text-gray-600 hover:text-white text-sm transition-colors">隱私權政策</a>
             <a href="terms.html" class="text-gray-600 hover:text-white text-sm transition-colors">使用條款</a>
-            <a href="#" class="text-gray-600 hover:text-white text-sm transition-colors">Cookie 政策</a>
+            <a href="privacy.html#cookies" class="text-gray-600 hover:text-white text-sm transition-colors">Cookie 政策</a>
           </div>
         </div>
       </div>
     </footer>
 
     <!-- Back to top -->
-    <a href="#home" id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 flex items-center justify-center bg-primary text-white rounded-full opacity-0 invisible transition-all duration-300 hover:bg-blue-600" style="box-shadow:0 4px 14px rgba(59,130,246,0.4); bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); right: calc(1.5rem + env(safe-area-inset-right, 0px));">
+    <a href="#home" id="back-to-top" aria-label="回到頁首" class="fixed bottom-6 right-6 w-11 h-11 flex items-center justify-center bg-primary text-white rounded-full opacity-0 invisible transition-all duration-300 hover:bg-blue-600" style="box-shadow:0 4px 14px rgba(59,130,246,0.4); bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); right: calc(1.5rem + env(safe-area-inset-right, 0px));">
       <i class="ri-arrow-up-line"></i>
     </a>
 
@@ -1392,13 +1412,16 @@
       (function () {
         const toggle = document.getElementById("theme-toggle");
         const html = document.documentElement;
-        if (localStorage.getItem("theme") === "dark") {
+        // localStorage can throw when storage is blocked (privacy settings); fall back to light mode
+        let saved = null;
+        try { saved = localStorage.getItem("theme"); } catch (e) {}
+        if (saved === "dark") {
           html.classList.add("dark");
           toggle.checked = true;
         }
         toggle.addEventListener("change", function () {
           html.classList.toggle("dark", this.checked);
-          localStorage.setItem("theme", this.checked ? "dark" : "light");
+          try { localStorage.setItem("theme", this.checked ? "dark" : "light"); } catch (e) {}
         });
       })();
     </script>
@@ -1422,11 +1445,13 @@
       mobileBtn.addEventListener("click", function () {
         const hidden = mobileMenu.classList.toggle("hidden");
         mobileBtn.querySelector("i").className = hidden ? "ri-menu-line ri-lg" : "ri-close-line ri-lg";
+        mobileBtn.setAttribute("aria-expanded", String(!hidden));
       });
       mobileMenu.querySelectorAll("a").forEach(function (a) {
         a.addEventListener("click", function () {
           mobileMenu.classList.add("hidden");
           mobileBtn.querySelector("i").className = "ri-menu-line ri-lg";
+          mobileBtn.setAttribute("aria-expanded", "false");
         });
       });
     </script>
@@ -1438,12 +1463,19 @@
         const btn = document.getElementById("lang-dropdown-btn");
         const menu = document.getElementById("lang-dropdown-menu");
         if (!wrap || !btn || !menu) return;
+        function setOpen(open) {
+          menu.classList.toggle("hidden", !open);
+          btn.setAttribute("aria-expanded", String(open));
+        }
         btn.addEventListener("click", function (e) {
           e.stopPropagation();
-          menu.classList.toggle("hidden");
+          setOpen(menu.classList.contains("hidden"));
         });
         document.addEventListener("click", function (e) {
-          if (!wrap.contains(e.target)) menu.classList.add("hidden");
+          if (!wrap.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
         });
       })();
 
@@ -1538,34 +1570,65 @@
     </script>
 
     <script>
-      /* ── Contact form (Netlify Forms) ── */
-      document.getElementById("contact-form").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const form = e.target;
-        const box  = document.getElementById("form-response");
-        const btn  = document.getElementById("contact-submit");
-        const spinner = document.getElementById("contact-submit-spinner");
-        const label = document.getElementById("contact-submit-label");
-        const originalLabel = label.textContent;
+      /* ── Netlify Forms: contact message + meeting request ── */
+      (function () {
+        const SENDING = "傳送中…";
+        const ERROR = "發生錯誤，請稍後再試一次。";
 
-        btn.disabled = true;
-        spinner.classList.remove("hidden");
-        label.textContent = "傳送中…";
-        box.textContent = "";
+        function wireForm(formId, prefix, responseId, successText) {
+          const form = document.getElementById(formId);
+          if (!form) return;
+          const box = document.getElementById(responseId);
+          const btn = document.getElementById(prefix + "-submit");
+          const spinner = document.getElementById(prefix + "-submit-spinner");
+          const label = document.getElementById(prefix + "-submit-label");
+          const originalLabel = label.textContent;
 
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(new FormData(form)).toString(),
-        })
-          .then(function (r) { if (!r.ok) throw new Error("Submission failed"); box.textContent = "謝謝你！訊息已成功送出。"; form.reset(); })
-          .catch(function () { box.textContent = "發生錯誤，請稍後再試一次。"; })
-          .finally(function () {
-            btn.disabled = false;
-            spinner.classList.add("hidden");
-            label.textContent = originalLabel;
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            btn.disabled = true;
+            spinner.classList.remove("hidden");
+            label.textContent = SENDING;
+            box.textContent = "";
+            box.classList.remove("is-error");
+
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams(new FormData(form)).toString(),
+            })
+              .then(function (r) {
+                if (!r.ok) throw new Error("Submission failed");
+                box.textContent = successText;
+                form.reset();
+              })
+              .catch(function () {
+                box.textContent = ERROR;
+                box.classList.add("is-error");
+              })
+              .finally(function () {
+                btn.disabled = false;
+                spinner.classList.add("hidden");
+                label.textContent = originalLabel;
+                // reCAPTCHA tokens are single-use, so issue a fresh challenge for the next submit
+                if (form.hasAttribute("data-netlify-recaptcha") && window.grecaptcha && typeof grecaptcha.reset === "function") {
+                  try { grecaptcha.reset(); } catch (err) {}
+                }
+              });
           });
-      });
+        }
+
+        wireForm("contact-form", "contact", "form-response", "謝謝你！訊息已成功送出。");
+        wireForm("meeting-form", "meeting", "meeting-response", "謝謝你！會議預約請求已送出，我會以電子郵件回覆確認。");
+
+        // No past dates in the meeting date picker (local time, YYYY-MM-DD)
+        const dateInput = document.getElementById("meeting-date");
+        if (dateInput) {
+          const now = new Date();
+          const pad = function (n) { return String(n).padStart(2, "0"); };
+          dateInput.min = now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
+        }
+      })();
     </script>
 
     <script>
@@ -1601,7 +1664,7 @@
         const mapEl = document.getElementById("site-map");
         if (!mapEl || typeof L === "undefined") return;
 
-        const coords = [-7.2756, 112.7521];
+        const coords = [24.1477, 120.6736];
         const map = L.map(mapEl, { scrollWheelZoom: false }).setView(coords, 12);
 
         const tileOptions = {
@@ -1613,7 +1676,7 @@
         const darkTiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", tileOptions);
 
         (document.documentElement.classList.contains("dark") ? darkTiles : lightTiles).addTo(map);
-        L.circle(coords, { radius: 7000, color: "#3b82f6", weight: 1.5, fillColor: "#3b82f6", fillOpacity: 0.12 }).addTo(map).bindPopup("泗水，東爪哇，印尼").openPopup();
+        L.circle(coords, { radius: 7000, color: "#3b82f6", weight: 1.5, fillColor: "#3b82f6", fillOpacity: 0.12 }).addTo(map).bindPopup("台中，台灣").openPopup();
 
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {

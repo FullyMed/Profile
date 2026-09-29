@@ -16,12 +16,14 @@ languages, built as static HTML/CSS/JS with no build step or framework.
 - **Languages:** English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
   日本語 (`index-ja.html`), 한국어 (`index-ko.html`) - selectable from the header language dropdown.
 - **Sections:** hero, filterable project showcase, skills & tech stack, experience timeline
-  (with a bilingual résumé download), about, and a contact form + interactive map.
+  (with a bilingual résumé download), about, and a contact section with a message form, a
+  meeting-request form, and an interactive map.
 - **SEO:** each language page has its own native-language `<title>` and meta description.
 - **Loading states:** a full-screen spinner overlay while the page loads, and a spinner +
-  disabled state on the contact form's submit button while the message is sending.
+  disabled state on each form's submit button while it's sending.
 - **Legal:** [Privacy Policy](privacy.html) and [Terms of Use](terms.html), linked from the
-  footer and the contact form on every language page.
+  footer and the contact form on every language page. The footer's "Cookies" link goes to the
+  Privacy Policy's Cookies section.
 - **Favicons:** a full favicon/PWA-icon set (SVG, ICO, PNGs, web manifest) built around a blue
   "MF" monogram matching the site's primary color.
 
@@ -32,8 +34,8 @@ languages, built as static HTML/CSS/JS with no build step or framework.
 - [Remix Icon](https://remixicon.com/) for icons, Google Fonts (Inter)
 - [Leaflet.js](https://leafletjs.com/) (self-hosted under `vendor/leaflet/`) + CARTO basemap
   tiles for the contact-section map
-- [Netlify Forms](https://docs.netlify.com/manage/forms/setup/) + Google reCAPTCHA for the
-  contact form
+- [Netlify Forms](https://docs.netlify.com/manage/forms/setup/) for the contact and
+  meeting-request forms (plus Google reCAPTCHA on the contact form)
 - Deployed on [Netlify](https://www.netlify.com/)
 
 ## Project structure
@@ -74,7 +76,9 @@ then open `http://localhost:8734`.
 
 ## Deployment
 
-Auto-deployed by Netlify from the `main` branch (`publish = "."`, no build command). Security
+Auto-deployed by Netlify from the `main` branch. The site lives in the `Website/` folder of the
+[FullyMed/Profile](https://github.com/FullyMed/Profile) repo, so Netlify's base directory is
+`Website` (`publish = "."`, no build command). Security
 headers, including a strict Content-Security-Policy scoped to the exact external hosts the site
 uses, are defined in [netlify.toml](netlify.toml).
 

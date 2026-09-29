@@ -31,6 +31,10 @@
         },
       };
     </script>
+    <script>
+      /* Apply the saved theme before first paint so dark mode doesn't flash light */
+      try { if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark"); } catch (e) {}
+    </script>
 
     <style>
       :where([class^="ri-"])::before { content: "\f3c2"; }
@@ -73,7 +77,7 @@
             <i class="ri-arrow-left-line mr-1"></i>Back to Home
           </a>
           <label class="switch">
-            <input type="checkbox" id="theme-toggle" />
+            <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode" />
             <span class="slider"></span>
           </label>
         </div>
@@ -85,7 +89,7 @@
       <div class="container mx-auto px-4 md:px-6 max-w-2xl py-14 md:py-20">
         <span class="section-label text-[0.7rem] font-bold tracking-[0.14em] uppercase text-primary">Legal</span>
         <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-2">Privacy Policy</h1>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: September 21, 2026</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-10">Last updated: September 29, 2026</p>
 
         <div class="legal text-gray-600 dark:text-gray-400">
           <h2 class="text-gray-900 dark:text-white">Overview</h2>
@@ -98,8 +102,10 @@
 
           <h2 class="text-gray-900 dark:text-white">Information We Collect</h2>
           <p><strong class="text-gray-900 dark:text-white">Information you provide.</strong> If you use the
-            contact form, we collect the name, email address, subject, and message you enter. This is
-            submitted voluntarily and used only to respond to you.</p>
+            contact form, we collect the name, email address, subject, and message you enter. If you use
+            the "Schedule a Meeting" form, we collect your name, email address, preferred date and time,
+            and whether you'd like a video or phone call. This is submitted voluntarily and used only to
+            respond to you.</p>
           <p><strong class="text-gray-900 dark:text-white">Information from third-party services.</strong>
             Some resources this site loads (see "Third-Party Services" below) may automatically receive
             standard technical data from your browser - such as your IP address and user agent - as part
@@ -111,21 +117,22 @@
 
           <h2 class="text-gray-900 dark:text-white">How We Use Your Information</h2>
           <p>
-            Contact form submissions are used solely to read and reply to your message. We don't use
+            Contact form and meeting request submissions are used solely to read and reply to your
+            message or arrange the meeting you asked for. We don't use
             your information for marketing, and we don't sell, rent, or trade it to anyone.
           </p>
 
           <h2 class="text-gray-900 dark:text-white">Third-Party Services</h2>
           <p>This site relies on the following third-party services to function:</p>
           <ul>
-            <li><strong class="text-gray-900 dark:text-white">Netlify</strong> - hosting and processing of contact form submissions. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a>.</li>
+            <li><strong class="text-gray-900 dark:text-white">Netlify</strong> - hosting and processing of contact form and meeting request submissions. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify's Privacy Policy</a>.</li>
             <li><strong class="text-gray-900 dark:text-white">Google reCAPTCHA</strong> - spam protection on the contact form. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
             <li><strong class="text-gray-900 dark:text-white">Google Fonts</strong> - the Inter typeface, loaded from Google's servers.</li>
             <li><strong class="text-gray-900 dark:text-white">cdnjs (Cloudflare)</strong> - the Remix Icon font used for icons.</li>
             <li><strong class="text-gray-900 dark:text-white">CARTO / OpenStreetMap</strong> - map tiles shown in the Contact section.</li>
           </ul>
 
-          <h2 class="text-gray-900 dark:text-white">Cookies</h2>
+          <h2 id="cookies" class="text-gray-900 dark:text-white">Cookies</h2>
           <p>
             This site does not set its own tracking or advertising cookies. Google reCAPTCHA may set
             cookies in your browser as part of its spam-detection process, governed by Google's own
@@ -134,7 +141,7 @@
 
           <h2 class="text-gray-900 dark:text-white">Data Retention</h2>
           <p>
-            Contact form submissions are retained in Netlify Forms per Netlify's own retention
+            Contact form and meeting request submissions are retained in Netlify Forms per Netlify's own retention
             practices. You can ask us to delete any information you've submitted at any time - see
             "Contact" below.
           </p>
@@ -182,13 +189,10 @@
       (function () {
         const toggle = document.getElementById("theme-toggle");
         const html = document.documentElement;
-        if (localStorage.getItem("theme") === "dark") {
-          html.classList.add("dark");
-          toggle.checked = true;
-        }
+        toggle.checked = html.classList.contains("dark");
         toggle.addEventListener("change", function () {
           html.classList.toggle("dark", this.checked);
-          localStorage.setItem("theme", this.checked ? "dark" : "light");
+          try { localStorage.setItem("theme", this.checked ? "dark" : "light"); } catch (e) {}
         });
       })();
       document.getElementById("current-year").textContent = new Date().getFullYear();
