@@ -19,6 +19,13 @@ No em dashes (Unicode U+2014) anywhere in this project - not in page copy, not i
 user had every em dash in the project removed on 2026-09-29; don't reintroduce them in new
 content or edits.
 
+## Git workflow
+
+**The user commits and pushes themselves.** Never run `git commit` or `git push`, open PRs, or
+offer to commit ("want me to commit this?") unless the user explicitly asks in that turn. Leave
+finished changes in the working tree and summarize what changed so they can review and commit.
+Pushing to `main` auto-deploys to Netlify (see "Deployment"), so deploys are the user's call too.
+
 ## Content decisions (confirmed with the user, 2026-09-29)
 
 - **Location is Taichung, Taiwan everywhere** - About copy, contact info, footer, and the map

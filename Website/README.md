@@ -76,7 +76,8 @@ then open `http://localhost:8734`.
 
 ## Deployment
 
-Auto-deployed by Netlify from the `main` branch. The site lives in the `Website/` folder of the
+Auto-deployed by Netlify from the `main` branch, so a change goes live when it's pushed to `main`
+(commits and pushes are done manually by the site owner). The site lives in the `Website/` folder of the
 [FullyMed/Profile](https://github.com/FullyMed/Profile) repo, so Netlify's base directory is
 `Website` (`publish = "."`, no build command). Security
 headers, including a strict Content-Security-Policy scoped to the exact external hosts the site
