@@ -1,6 +1,6 @@
 # Maximilliano Felix - Portfolio
 
-Personal portfolio website for Maximilliano Felix (傅忠明) — builder, educator, and
+Personal portfolio website for Maximilliano Felix (傅忠明) - builder, educator, and
 cross-cultural communicator based in Taichung, Taiwan.
 
 **Live site:** [maxfelix.netlify.app](https://maxfelix.netlify.app/)
@@ -14,7 +14,7 @@ A single-page portfolio (Home, Projects, Skills, Experience, About, Contact) ava
 languages, built as static HTML/CSS/JS with no build step or framework.
 
 - **Languages:** English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
-  日本語 (`index-ja.html`), 한국어 (`index-ko.html`) — selectable from the header language dropdown.
+  日本語 (`index-ja.html`), 한국어 (`index-ko.html`) - selectable from the header language dropdown.
 - **Sections:** hero, filterable project showcase, skills & tech stack, experience timeline
   (with a bilingual résumé download), about, and a contact form + interactive map.
 - **SEO:** each language page has its own native-language `<title>` and meta description.
@@ -59,12 +59,12 @@ Maximilliano Felix_CV.pdf / .docx    English résumé
 .claude/launch.json     Local static preview server config
 ```
 
-The four translated pages are structural duplicates of `index.html` — same layout, styling, and
+The four translated pages are structural duplicates of `index.html` - same layout, styling, and
 scripts, with only the visible text translated.
 
 ## Running locally
 
-No build step or dependencies — serve the folder with any static file server, e.g.:
+No build step or dependencies - serve the folder with any static file server, e.g.:
 
 ```bash
 python -m http.server 8734

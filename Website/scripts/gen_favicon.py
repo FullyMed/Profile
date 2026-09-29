@@ -6,7 +6,7 @@ Run from anywhere with Pillow installed (`pip install pillow`):
 
 Writes favicon.ico, favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png,
 android-chrome-192x192.png, and android-chrome-512x512.png to the project root.
-favicon.svg is hand-authored separately and isn't produced by this script — keep
+favicon.svg is hand-authored separately and isn't produced by this script - keep
 it in sync by eye if the design changes here.
 """
 
@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRIMARY = (59, 130, 246, 255)  # #3b82f6 — matches tailwind.config's `primary` color
+PRIMARY = (59, 130, 246, 255)  # #3b82f6 - matches tailwind.config's `primary` color
 WHITE = (255, 255, 255, 255)
 FONT_PATH = r"C:\Windows\Fonts\arialbd.ttf"
 
