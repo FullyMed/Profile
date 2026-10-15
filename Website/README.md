@@ -1,31 +1,33 @@
 # Maximilliano Felix - Portfolio
 
-Personal portfolio website for Maximilliano Felix (傅忠明) - builder, educator, and
-cross-cultural communicator based in Taichung, Taiwan.
+Personal portfolio site for Maximilliano Felix (傅忠明), a computer science student at Asia
+University in Taichung, Taiwan.
 
-**Live site:** [maxfelix.netlify.app](https://maxfelix.netlify.app/)
+Live site: [maxfelix.netlify.app](https://maxfelix.netlify.app/)
 
-> **Maintenance note:** this README and [CLAUDE.md](CLAUDE.md) should be updated together
-> whenever the site's structure, content sections, tech stack, or deployment setup change.
+> Keep this README and [CLAUDE.md](CLAUDE.md) in sync. When the site's structure, sections,
+> tech stack, or deployment setup changes, update both in the same commit.
 
 ## Overview
 
-A single-page portfolio (Home, Projects, Skills, Experience, About, Contact) available in five
-languages, built as static HTML/CSS/JS with no build step or framework.
+The site is one page (Home, Projects, Skills, Experience, About, Contact) in five languages,
+written as plain HTML, CSS, and JavaScript with no build step or framework.
 
-- **Languages:** English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
-  日本語 (`index-ja.html`), 한국어 (`index-ko.html`) - selectable from the header language dropdown.
-- **Sections:** hero, filterable project showcase, skills & tech stack, experience timeline
-  (with a bilingual résumé download), about, and a contact section with a message form, a
-  meeting-request form, and an interactive map.
-- **SEO:** each language page has its own native-language `<title>` and meta description.
-- **Loading states:** a full-screen spinner overlay while the page loads, and a spinner +
-  disabled state on each form's submit button while it's sending.
-- **Legal:** [Privacy Policy](privacy.html) and [Terms of Use](terms.html), linked from the
-  footer and the contact form on every language page. The footer's "Cookies" link goes to the
-  Privacy Policy's Cookies section.
-- **Favicons:** a full favicon/PWA-icon set (SVG, ICO, PNGs, web manifest) built around a blue
-  "MF" monogram matching the site's primary color.
+- Languages: English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
+  日本語 (`index-ja.html`), and 한국어 (`index-ko.html`). Visitors switch languages from the
+  header dropdown.
+- Sections: a hero, a project grid you can filter by type, skills and tech stack, a work
+  history timeline with an English/Chinese résumé download, an About section, and a Contact
+  section with a message form, a meeting-request form, and a map.
+- SEO: each language page has its own `<title>` and meta description, written in that language.
+- Loading states: a full-screen spinner covers the page while it loads, and each form's submit
+  button shows a spinner and disables itself while sending.
+- Legal: the footer and the contact form on every language page link to the
+  [Privacy Policy](privacy.html) and [Terms of Use](terms.html). The footer's "Cookies" link
+  opens the Cookies section of the Privacy Policy.
+- Favicons: an SVG, ICO, PNG, and web-manifest icon set, all using a blue "MF" monogram in the
+  site's primary color.
+- Copy: page text follows the plain-writing rules in `CLAUDE.md` ("Writing style").
 
 ## Tech stack
 

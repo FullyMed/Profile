@@ -19,6 +19,26 @@ No em dashes (Unicode U+2014) anywhere in this project - not in page copy, not i
 user had every em dash in the project removed on 2026-09-29; don't reintroduce them in new
 content or edits.
 
+All site copy (the 5 language pages, `privacy.html`, `terms.html`, `404.html`) and `README.md`
+got a plain-writing pass on 2026-10-15 using the Humanizer and Stop Slop skills. New or edited
+copy should match it:
+
+- First person, plain and specific. "I build web and mobile apps", not "Building digital
+  products". Name the real thing (FoodPanda orders, ARC applications, 218 games) instead of
+  abstractions ("operations", "solutions", "competencies").
+- Avoid the usual AI tells: "showcase", "comprehensive overview", "career journey",
+  "bridging cultures", "passionate", "leverage", "ensuring...", "-ing" tails that add fake depth,
+  "not X, it's Y" contrasts, forced groups of three, filler adverbs ("fully", "seamlessly"),
+  and stacked buzzwords in one sentence.
+- Don't invent facts to add color (reply times, stats, motives, achievements). Use only what's
+  already on the site, in the résumés, or what the user says.
+- Translations are written natively in each language, not translated word for word from
+  English, and follow the same rules (no "全面展現", "Gambaran lengkap", "総合的にご紹介" style
+  filler).
+- The Privacy Policy and Terms use "I", not "we" - it's a one-person site.
+- The "Builder, Educator & Cross-Cultural Communicator" tagline (hero `<h1>` and every page
+  `<title>`) is the user's brand and was deliberately kept; ask before changing it.
+
 ## Git workflow
 
 **The user commits and pushes themselves.** Never run `git commit` or `git push`, open PRs, or
@@ -172,8 +192,8 @@ with the raster version.
 `privacy.html` and `terms.html` cover the contact and meeting-request forms (Netlify Forms),
 Google reCAPTCHA, and the other third-party services listed under "Content Security Policy"
 below. If a future change adds a new external service, a tracking/analytics script, or changes
-what either form collects, update `privacy.html`'s "Information We Collect" / "Third-Party Services" sections to
-match - these pages describe actual data handling and should stay accurate, not just present.
+what either form collects, update `privacy.html`'s "What I Collect" / "Third-Party Services"
+sections to match - these pages describe actual data handling and should stay accurate, not just present.
 This content is not legal advice and hasn't been reviewed by a lawyer.
 
 ## Content Security Policy
