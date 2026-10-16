@@ -10,15 +10,20 @@ Live site: [maxfelix.netlify.app](https://maxfelix.netlify.app/)
 
 ## Overview
 
-The site is one page (Home, Projects, Skills, Experience, About, Contact) in five languages,
+The site is one page (Home, Projects, Experience, About and Skills, Contact) in five languages,
 written as plain HTML, CSS, and JavaScript with no build step or framework.
 
 - Languages: English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
   日本語 (`index-ja.html`), and 한국어 (`index-ko.html`). Visitors switch languages from the
   header dropdown.
-- Sections: a hero, a project grid you can filter by type, skills and tech stack, a work
-  history timeline with an English/Chinese résumé download, an About section, and a Contact
-  section with a message form, a meeting-request form, and a map.
+- Design: the name set at monument size ("Maximilliano" top-left, "Felix 傅忠明" bottom-right)
+  next to a full-height portrait, in Bricolage Grotesque on a black-and-white page with one blue
+  accent and a dark mode. Under the hero sentence, a small switch re-reads that sentence in
+  Indonesian, English, or Chinese. Details are in `CLAUDE.md` ("Design").
+- Sections: the hero; projects as one paragraph of names followed by a filterable list with
+  screenshots of the live demos; work history as expandable rows with an English/Chinese résumé
+  download; About with grouped skills; and Contact with a message form, a meeting-request form,
+  and a map.
 - SEO: each language page has its own `<title>` and meta description, written in that language.
 - Loading states: a full-screen spinner covers the page while it loads, and each form's submit
   button shows a spinner and disables itself while sending.
@@ -33,9 +38,10 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
 
 - HTML5 + [Tailwind CSS](https://tailwindcss.com/) (via the Play CDN, configured inline)
 - Vanilla JavaScript (no framework, no bundler)
-- [Remix Icon](https://remixicon.com/) for icons, Google Fonts (Inter)
-- [Leaflet.js](https://leafletjs.com/) (self-hosted under `vendor/leaflet/`) + CARTO basemap
-  tiles for the contact-section map
+- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) from Google Fonts,
+  [Remix Icon](https://remixicon.com/) for the few icons left
+- [Leaflet.js](https://leafletjs.com/) (self-hosted under `vendor/leaflet/`) +
+  [OpenStreetMap](https://www.openstreetmap.org/) tiles for the contact-section map
 - [Netlify Forms](https://docs.netlify.com/manage/forms/setup/) for the contact and
   meeting-request forms (plus Google reCAPTCHA on the contact form)
 - Deployed on [Netlify](https://www.netlify.com/)
@@ -53,7 +59,8 @@ privacy.html            Privacy Policy (English-only utility page)
 terms.html              Terms of Use (English-only utility page)
 netlify.toml           Deploy config + security headers (CSP, HSTS, etc.)
 vendor/leaflet/         Self-hosted Leaflet.js, CSS, and marker assets
-Images/                 Site images (profile photo)
+Images/                 Portrait (Profile_Picture.webp)
+Images/projects/        Screenshots of the live project demos (.webp)
 favicon.svg, favicon.ico, favicon-*.png,
 android-chrome-*.png, apple-touch-icon.png,
 site.webmanifest       Favicon / PWA icon set

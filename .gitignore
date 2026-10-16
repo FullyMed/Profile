@@ -19,3 +19,6 @@ secrets*.json
 # Logs / temp
 *.log
 npm-debug.log*
+
+# Design-tool working files (taste-skill inspector screenshots, direction sheet)
+.taste-skill/
