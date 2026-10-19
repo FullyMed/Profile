@@ -16,7 +16,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet" />
 
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
@@ -26,7 +26,7 @@
         theme: {
           extend: {
             colors: { primary: "#3b82f6", secondary: "#10b981" },
-            fontFamily: { sans: ["Bricolage Grotesque", "system-ui", "sans-serif"] },
+            fontFamily: { sans: ["Geist", "system-ui", "sans-serif"] },
           },
         },
       };
@@ -38,27 +38,24 @@
     </script>
 
     <style>
-      :root { --bg: #ffffff; --ink: #18181b; --muted: #52525b; --accent: #2563eb; --btn: #2563eb; --btn-ink: #ffffff; --btn-hover: #1d4ed8; }
-      .dark { --bg: #18181b; --ink: #fafafa; --muted: #a1a1aa; --accent: #60a5fa; --btn: #60a5fa; --btn-ink: #18181b; --btn-hover: #93c5fd; }
+      :root { --bg: #f6f6f7; --ink: #18181b; --muted: #52525b; --accent: #2563eb; --btn: #18181b; --btn-ink: #ffffff; --btn-hover: #2c2c31; }
+      .dark { --bg: #111113; --ink: #f4f4f5; --muted: #a1a1aa; --accent: #60a5fa; --btn: #f4f4f5; --btn-ink: #18181b; --btn-hover: #ffffff; }
       html, body { overflow-x: clip; }
       body {
-        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-family: "Geist", system-ui, sans-serif;
         background: var(--bg); color: var(--ink);
         -webkit-font-smoothing: antialiased;
       }
       :where([class^="ri-"])::before { content: "\f3c2"; }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      .code {
-        font-weight: 800; line-height: 0.82; letter-spacing: -0.04em;
-        font-size: clamp(9rem, 40vw, 34rem);
-        font-variation-settings: "wdth" 75, "opsz" 96;
-      }
+      .code { font-weight: 600; line-height: 1; letter-spacing: -0.05em; font-size: clamp(6rem, 20vw, 11rem); color: var(--muted); }
       .btn {
-        display: inline-flex; align-items: center; gap: 0.5rem; min-height: 48px; padding: 0 22px;
+        display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 18px; border-radius: 999px;
         background: var(--btn); color: var(--btn-ink); font-weight: 600;
-        transition: background-color 0.2s, transform 0.2s;
+        transition: background-color 200ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
       }
-      .btn:hover { background: var(--btn-hover); transform: translateY(-2px); }
+      .btn:active { transform: scale(0.97); }
+      @media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--btn-hover); } }
       .link { text-decoration: underline; text-underline-offset: 0.22em; transition: color 0.2s; }
       .link:hover { color: var(--accent); }
       .muted { color: var(--muted); }

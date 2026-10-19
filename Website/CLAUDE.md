@@ -58,46 +58,66 @@ Pushing to `main` auto-deploys to Netlify (see "Deployment"), so deploys are the
 - **Tailwind stays on the Play CDN.** Its "should not be used in production" console warning is
   known and accepted - it's a warning, not an error. Don't precompile Tailwind unless asked.
 
-## Design (redesigned 2026-10-16, confirmed with the user)
+## Design (redesigned 2026-10-17, confirmed with the user)
 
-The site was redesigned with the redesign-skill, ui-ux-pro-max, taste-skill and frontend-design
-skills. Direction: **"the name as a monument"**. The user chose: full redesign, keep the blue
-accent, skills as a grouped list without percentages, and real screenshots of the live demos.
+**Direction: calm & refined** (the user's pick, in the spirit of Linear / Vercel / emilkowal.ski),
+built with Emil Kowalski's `emil-design-eng` and `animate` skills. It replaced a 2026-10-16
+"name as a monument" design (huge condensed type, stark white) that the user found ugly - the
+two things they disliked most were **huge squashed text** and **a stark, empty page**. Don't bring
+either back. Earlier user choices still hold: blue accent kept, skills as grouped lists without
+percentages, real screenshots of the live demos.
 
-- **Hero:** "Maximilliano" set huge top-left, "Felix 傅忠明" bottom-right (the two halves are
-  `aria-hidden` visual text; the real `<h1>` is a visually hidden "Maximilliano Felix 傅忠明"),
-  the portrait as a full-height right column on desktop. Between them: the tagline, one sentence,
-  a "View Projects" button and a "Get in Touch" link. On phones the two name halves stack at the
-  top, then the photo, then the copy.
-- **The one interactive feature:** under the hero sentence, a three-button switch
-  (`#line-switch`, Bahasa Indonesia / English / 中文) rewrites that sentence in the three
-  languages the user works in. The three versions live in `data-line-id/-en/-zh` on
-  `#hero-line` and are the same on every page; the switch is `hidden` until JS runs.
-- **Projects:** every project name runs as one large paragraph (with small inline screenshot
-  frames), then filter buttons, then one row per project: a sticky left column (name, stack,
-  links) next to a screenshot and description. Projects with live demos come first. Projects
-  without a demo (`.no-shot`) show the description at lead size instead of a picture.
-- **Experience:** the word "Experience" at display size, then one `<details>` bar per job (first
-  one open), with the résumé download in a sticky side column.
-- **About + Skills:** side facts (`<dl>`) next to the About paragraphs; Skills is plain grouped
-  lists (no percentages, no icon grid) - user's decision, don't bring the bars back.
-- **Contact:** "Get In Touch" at display size, message form and meeting form side by side, map
-  below. **Footer** (inverse colours): the email address at display size, contact facts, link
-  columns, and "Maximilliano Felix" cropped by the bottom edge.
-- **Type:** Bricolage Grotesque (Google Fonts, variable: `opsz,wdth,wght`), one family. The
-  display size uses the condensed width (`font-variation-settings: "wdth" 75`). Five steps as
-  CSS variables: `--step-small`, `--step-body`, `--step-lead`, `--step-head`, `--step-display`.
-  CJK text falls back to system fonts through the `--font` stack.
-- **Colour:** tokens on `:root`, swapped under `.dark` (white/zinc ink in light, zinc-900 ground
-  in dark; the footer uses the `--inv-*` tokens). Blue is the only accent: `#2563eb` for the
-  button and links (white text passes 4.5:1), `#3b82f6` stays the favicon/`theme-color`.
-- **House rules the design follows** (checked by the taste-skill inspector): no small label above
-  headings, no gradients, no shadows on resting elements (only the header when scrolled and the
-  dropdown menus), no 1px divider lines, no icon-topped card grids, square corners, text 13px or
-  larger, running text in full ink. Keep new work inside these rules.
-- **Checking a change:** the taste-skill scripts (`lint.mjs`, `inspect.mjs`) write to
-  `Website/.taste-skill/`, which is gitignored. The last full run on 2026-10-16 had 0 FAIL on the
-  language pages; the only warning was "no video", deliberately left (no honest footage exists).
+- **Layout:** a centred `.container` (max 1120px), soft off-white page (`--bg`), content in white
+  rounded `.card`s (20px radius, 1px `--border`, very soft `--shadow`). Pills (999px radius) for
+  buttons, chips, tags and the segmented controls.
+- **Header:** sticky, translucent with `backdrop-filter` blur, gains a bottom border once scrolled
+  (`.scrolled`). Avatar + name on the left, pill nav links (active one filled), language menu,
+  moon/sun theme button (a visually hidden `#theme-toggle` checkbox inside a `<label>`), mobile
+  menu button.
+- **Hero:** name "Maximilliano Felix 傅忠明" as the real `<h1>` at a sane size (max 4.5rem,
+  weight 600), tagline, the sentence, the language switch, a dark primary button + outlined
+  secondary button, three fact chips; portrait in a rounded frame on the right with a small blurred
+  pill of social icons over its bottom edge. A faint dot grid (`.hero-bg`, masked to fade out)
+  sits behind the hero so the top isn't stark.
+- **The one interactive feature:** `#line-switch` (Bahasa Indonesia / English / 中文) rewrites
+  `#hero-line` from its `data-line-id/-en/-zh` attributes (same on every page); `hidden` until JS
+  runs. The swap crossfades with a 4px blur (`.swap`, 240ms).
+- **Projects:** a 2x2 grid of `.project-card.featured` cards (screenshot in an inset rounded
+  frame, title + category tag, description, tech chips, links) for the four projects with live
+  demos, then a "More projects" list of `.project-card.compact` rows for the three without.
+  Both wrappers carry `data-filter-group`; the filter script hides a whole group (heading
+  included) when the filter leaves it empty.
+- **Experience:** `<details class="job card">` rows (first open) with the date and a chevron on
+  the right, sticky résumé card beside them. The rows open with a CSS height transition via
+  `interpolate-size: allow-keywords` + `::details-content` (progressive: older browsers just snap
+  open).
+- **About + Skills:** About paragraphs (first one larger, in ink) next to a facts card (`<dl>`);
+  Skills is 5 cards of chips in a 3-column grid where "Languages & frameworks" (`.wide`) spans two.
+- **Contact:** message form card on the left; contact-info card and meeting form card on the
+  right; map in a card below. **Footer:** small and quiet - brand, link columns, copyright.
+- **Type:** Geist (Google Fonts, 400-700) for everything. 傅忠明 uses Noto Sans TC loaded with
+  `&text=` for just those three characters, so the name never falls back to a mismatched system
+  font. Other CJK text uses system fonts through the `--font` stack.
+- **Colour:** tokens on `:root`, swapped under `.dark`. Ink-black primary buttons (white in dark
+  mode); blue (`#2563eb`, `#60a5fa` in dark) only for links on hover, tags, bullets, focus rings
+  and the active filter. `#3b82f6` stays the favicon/`theme-color`.
+- **Motion (Emil's rules - keep to them):**
+  - Easing tokens: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` for anything entering or
+    responding, `--ease-in-out` for on-screen movement. Never `ease-in`, never `transition: all`,
+    only `transform`/`opacity` (plus colours) are animated.
+  - Press feedback: `.btn`/`.icon-btn`/segmented buttons scale to 0.97/0.94/0.96 on `:active`
+    in 160ms.
+  - Popovers (`.popover`: language menu, mobile menu) open from their trigger
+    (`transform-origin` top right / top center) with `scale(0.96)` + fade in 180ms, driven by a
+    `data-open` attribute (not the `hidden` class) so they can animate both ways.
+  - Hero: one staggered entrance (`[data-enter]`, 500ms, 60ms steps) after the loader lifts
+    (`is-ready`). Sections: `[data-reveal]` fade-up of 12px, 500ms, once, 60ms stagger via `--i`.
+  - Hover effects (card lift of 2px, screenshot zoom to 1.02, link arrow nudge) are wrapped in
+    `@media (hover: hover) and (pointer: fine)` so taps on phones don't trigger them.
+  - `prefers-reduced-motion`: movement is dropped, fades stay.
+- **Screenshots for review:** `shots.mjs`-style headless captures at 1440 and 390 in both themes
+  were checked on 2026-10-17. The taste-skill inspector's "no shadows / no borders / square
+  corners" house rules belonged to the previous design and **no longer apply**.
 
 ## File structure
 
@@ -116,7 +136,7 @@ The site lives in the repo's `Website/` subfolder next to unrelated personal fil
   part of the "5 files move together" rule below and doesn't need a translated duplicate.
 - `privacy.html`, `terms.html` - Privacy Policy and Terms of Use. Same "utility page" treatment
   as `404.html`: intentionally English-only, self-contained (their own minimal header/footer,
-  not the full site header/nav/reveal machinery), set in the same Bricolage Grotesque, and they
+  not the full site header/nav/reveal machinery), set in the same Geist font, and they
   read the shared `theme` localStorage
   key in a tiny `<head>` script (before first paint, so dark mode doesn't flash light) so the
   dark-mode preference carries over from the main site. Linked from the footer ("Privacy Policy" /
@@ -182,7 +202,7 @@ revisit its title/description too so they stay accurate.
 ## Styling & scripts
 
 - Tailwind is loaded via `<script src="https://cdn.tailwindcss.com/3.4.16">` with an inline
-  `tailwind.config` in `<head>` (dark mode via `class`, Bricolage Grotesque as `sans`). There is
+  `tailwind.config` in `<head>` (dark mode via `class`, Geist as `sans`). There is
   no compiled Tailwind build - don't introduce one without being asked. The design itself is
   mostly custom CSS on the tokens described under "Design", in the single `<style>` block in
   `<head>`; Tailwind utilities are used for small layout jobs and the `hidden`/`sr-only`/
@@ -195,8 +215,8 @@ revisit its title/description too so they stay accurate.
   column, the résumé column) - this happened once during the redesign.
 - All behavior lives in `<script>` blocks at the end of `<body>`, in this order: the page loader
   (also adds `is-ready` to `<html>`, which starts the hero entrance animation), dark-mode toggle
-  (persisted to `localStorage`), header (adds `scrolled` past half a screen, `tucked` hides it
-  while scrolling down and it returns on any scroll up or focus) + back-to-top + mobile menu,
+  (persisted to `localStorage`), header (adds `scrolled` once the page moves) + back-to-top +
+  mobile menu (`data-open`, closes on link click, outside click or Escape),
   language dropdown (also carries the current `#section` hash over when switching language),
   scroll-reveal (`IntersectionObserver` adding `.visible` to `[data-reveal]` elements, staggered
   by their `--i` style), active nav link on scroll, the hero sentence switch, project filter

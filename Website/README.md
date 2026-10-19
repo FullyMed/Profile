@@ -16,14 +16,15 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
 - Languages: English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
   日本語 (`index-ja.html`), and 한국어 (`index-ko.html`). Visitors switch languages from the
   header dropdown.
-- Design: the name set at monument size ("Maximilliano" top-left, "Felix 傅忠明" bottom-right)
-  next to a full-height portrait, in Bricolage Grotesque on a black-and-white page with one blue
-  accent and a dark mode. Under the hero sentence, a small switch re-reads that sentence in
-  Indonesian, English, or Chinese. Details are in `CLAUDE.md` ("Design").
-- Sections: the hero; projects as one paragraph of names followed by a filterable list with
-  screenshots of the live demos; work history as expandable rows with an English/Chinese résumé
-  download; About with grouped skills; and Contact with a message form, a meeting-request form,
-  and a map.
+- Design: calm and minimal, in the style of Linear or Vercel. A soft off-white page with white
+  rounded cards, the Geist typeface, quiet motion (press feedback, menus that open from their
+  button, a gentle fade-up as sections appear), and a dark mode. Under the hero sentence, a small
+  switch re-reads that sentence in Indonesian, English, or Chinese. Details are in `CLAUDE.md`
+  ("Design").
+- Sections: the hero with the portrait; projects as screenshot cards for the four live demos plus
+  a list of the other three, with filters; work history as expandable cards with an
+  English/Chinese résumé download; About with grouped skills; and Contact with a message form, a
+  meeting-request form, and a map.
 - SEO: each language page has its own `<title>` and meta description, written in that language.
 - Loading states: a full-screen spinner covers the page while it loads, and each form's submit
   button shows a spinner and disables itself while sending.
@@ -38,8 +39,8 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
 
 - HTML5 + [Tailwind CSS](https://tailwindcss.com/) (via the Play CDN, configured inline)
 - Vanilla JavaScript (no framework, no bundler)
-- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque) from Google Fonts,
-  [Remix Icon](https://remixicon.com/) for the few icons left
+- [Geist](https://fonts.google.com/specimen/Geist) (plus a three-character Noto Sans TC subset for
+  傅忠明) from Google Fonts, [Remix Icon](https://remixicon.com/) for icons
 - [Leaflet.js](https://leafletjs.com/) (self-hosted under `vendor/leaflet/`) +
   [OpenStreetMap](https://www.openstreetmap.org/) tiles for the contact-section map
 - [Netlify Forms](https://docs.netlify.com/manage/forms/setup/) for the contact and
