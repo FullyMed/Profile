@@ -16,11 +16,12 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
 - Languages: English (`index.html`), 中文 (`index-zh.html`), Indonesia (`index-id.html`),
   日本語 (`index-ja.html`), and 한국어 (`index-ko.html`). Visitors switch languages from the
   header dropdown.
-- Design: calm and minimal, in the style of Linear or Vercel. A soft off-white page with white
-  rounded cards, the Geist typeface, quiet motion (press feedback, menus that open from their
-  button, a gentle fade-up as sections appear), and a dark mode. Under the hero sentence, a small
-  switch re-reads that sentence in Indonesian, English, or Chinese. Details are in `CLAUDE.md`
-  ("Design").
+- Design: clean and modern, in the style of Linear or Vercel, with colour: a soft off-white page,
+  white rounded cards, the Geist typeface, a blue-to-violet gradient on the name and main buttons,
+  soft colour glows behind the hero, and one colour per project category, job and skill group.
+  Quiet motion (press feedback, menus that open from their button, a gentle fade-up as sections
+  appear) and a dark mode. Visitors pick a language from the menu in the top-right corner.
+  Details are in `CLAUDE.md` ("Design").
 - Sections: the hero with the portrait; projects as screenshot cards for the four live demos plus
   a list of the other three, with filters; work history as expandable cards with an
   English/Chinese résumé download; About with grouped skills; and Contact with a message form, a

@@ -58,49 +58,62 @@ Pushing to `main` auto-deploys to Netlify (see "Deployment"), so deploys are the
 - **Tailwind stays on the Play CDN.** Its "should not be used in production" console warning is
   known and accepted - it's a warning, not an error. Don't precompile Tailwind unless asked.
 
-## Design (redesigned 2026-10-17, confirmed with the user)
+## Design (redesigned 2026-10-17, colour added 2026-10-19, confirmed with the user)
 
 **Direction: calm & refined** (the user's pick, in the spirit of Linear / Vercel / emilkowal.ski),
 built with Emil Kowalski's `emil-design-eng` and `animate` skills. It replaced a 2026-10-16
 "name as a monument" design (huge condensed type, stark white) that the user found ugly - the
 two things they disliked most were **huge squashed text** and **a stark, empty page**. Don't bring
 either back. Earlier user choices still hold: blue accent kept, skills as grouped lists without
-percentages, real screenshots of the live demos.
+percentages, real screenshots of the live demos. On 2026-10-19 the user asked for **colour, not
+just black and white - gradients welcome**, and for the language choice to live only in the
+top-right menu (the hero's "same line in..." switch was removed).
 
 - **Layout:** a centred `.container` (max 1120px), soft off-white page (`--bg`), content in white
   rounded `.card`s (20px radius, 1px `--border`, very soft `--shadow`). Pills (999px radius) for
   buttons, chips, tags and the segmented controls.
 - **Header:** sticky, translucent with `backdrop-filter` blur, gains a bottom border once scrolled
-  (`.scrolled`). Avatar + name on the left, pill nav links (active one filled), language menu,
-  moon/sun theme button (a visually hidden `#theme-toggle` checkbox inside a `<label>`), mobile
-  menu button.
+  (`.scrolled`). Avatar + name on the left, pill nav links (active one tinted blue), the language
+  menu (`#lang-dropdown`, visible at **every** width - it is the only language switcher; the
+  mobile menu holds just the section links), moon/sun theme button (a visually hidden
+  `#theme-toggle` checkbox inside a `<label>`), mobile menu button. Under 380px wide the name
+  text (`.brand-name`) hides and only the avatar shows, so the language button never overlaps it.
 - **Hero:** name "Maximilliano Felix 傅忠明" as the real `<h1>` at a sane size (max 4.5rem,
-  weight 600), tagline, the sentence, the language switch, a dark primary button + outlined
-  secondary button, three fact chips; portrait in a rounded frame on the right with a small blurred
-  pill of social icons over its bottom edge. A faint dot grid (`.hero-bg`, masked to fade out)
-  sits behind the hero so the top isn't stark.
-- **The one interactive feature:** `#line-switch` (Bahasa Indonesia / English / 中文) rewrites
-  `#hero-line` from its `data-line-id/-en/-zh` attributes (same on every page); `hidden` until JS
-  runs. The swap crossfades with a 4px blur (`.swap`, 240ms).
+  weight 600) with "Felix 傅忠明" in gradient text (`.grad-text`), tagline, one sentence in the
+  page's language, a gradient primary button + outlined secondary button, three fact chips with
+  coloured icons; portrait in a rounded frame on the right with a small blurred pill of social
+  icons over its bottom edge. Behind it: three blurred colour blobs (`.hero-glow`: blue, violet,
+  pink) drifting slowly over 18-26s (transform only, masked to fade out at the bottom, stopped
+  under reduced motion) plus a faint dot grid (`.hero-bg`).
 - **Projects:** a 2x2 grid of `.project-card.featured` cards (screenshot in an inset rounded
-  frame, title + category tag, description, tech chips, links) for the four projects with live
+  frame, title + coloured category tag, description, tech chips, links) for the four projects with live
   demos, then a "More projects" list of `.project-card.compact` rows for the three without.
   Both wrappers carry `data-filter-group`; the filter script hides a whole group (heading
   included) when the filter leaves it empty.
-- **Experience:** `<details class="job card">` rows (first open) with the date and a chevron on
-  the right, sticky résumé card beside them. The rows open with a CSS height transition via
+- **Experience:** `<details class="job card">` rows (first open), each with its own colour set by
+  `--c` on the `<details>` (PX Mart amber, Student Assistant blue, ELTA emerald, Game Master
+  violet) that tints its icon tile and bullets; date and chevron on the right; sticky résumé card
+  (soft blue-violet tint) beside them. The rows open with a CSS height transition via
   `interpolate-size: allow-keywords` + `::details-content` (progressive: older browsers just snap
   open).
 - **About + Skills:** About paragraphs (first one larger, in ink) next to a facts card (`<dl>`);
-  Skills is 5 cards of chips in a 3-column grid where "Languages & frameworks" (`.wide`) spans two.
+  Skills is 5 cards of chips in a 3-column grid where "Languages & frameworks" (`.wide`) spans two;
+  each card's heading has a coloured icon tile.
 - **Contact:** message form card on the left; contact-info card and meeting form card on the
   right; map in a card below. **Footer:** small and quiet - brand, link columns, copyright.
 - **Type:** Geist (Google Fonts, 400-700) for everything. 傅忠明 uses Noto Sans TC loaded with
   `&text=` for just those three characters, so the name never falls back to a mismatched system
   font. Other CJK text uses system fonts through the `--font` stack.
-- **Colour:** tokens on `:root`, swapped under `.dark`. Ink-black primary buttons (white in dark
-  mode); blue (`#2563eb`, `#60a5fa` in dark) only for links on hover, tags, bullets, focus rings
-  and the active filter. `#3b82f6` stays the favicon/`theme-color`.
+- **Colour:** tokens on `:root`, swapped under `.dark` (lighter tints in dark mode).
+  - `--grad` (blue `#2563eb` to violet `#7c3aed`) for primary buttons (their gradient slides on
+    hover via `background-position`), card borders on hover, the bar under each section heading,
+    and the footer's top line. `--grad-text` (blue, violet, pink) for "Felix 傅忠明".
+  - One hue per thing via `--c` + the `.tint` / `.tag` helpers (12% tinted background, full-colour
+    icon or text): `--c-blue`, `--c-violet`, `--c-emerald`, `--c-amber`, `--c-pink`, `--c-cyan`.
+    Project categories: Data violet, Web cyan, Mobile amber. Contact icons: email blue, phone
+    emerald, location pink.
+  - Accent blue (`#2563eb` / `#60a5fa`) for links on hover, the active nav link and active
+    filter/résumé pill, focus rings. `#3b82f6` stays the favicon/`theme-color`.
 - **Motion (Emil's rules - keep to them):**
   - Easing tokens: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` for anything entering or
     responding, `--ease-in-out` for on-screen movement. Never `ease-in`, never `transition: all`,
@@ -112,11 +125,14 @@ percentages, real screenshots of the live demos.
     `data-open` attribute (not the `hidden` class) so they can animate both ways.
   - Hero: one staggered entrance (`[data-enter]`, 500ms, 60ms steps) after the loader lifts
     (`is-ready`). Sections: `[data-reveal]` fade-up of 12px, 500ms, once, 60ms stagger via `--i`.
-  - Hover effects (card lift of 2px, screenshot zoom to 1.02, link arrow nudge) are wrapped in
+  - The hero glow's slow drift is the only looping motion (decorative, behind content, seen on
+    page load); it's off under reduced motion.
+  - Hover effects (card lift of 2px + gradient border, screenshot zoom to 1.02, link arrow
+    nudge) are wrapped in
     `@media (hover: hover) and (pointer: fine)` so taps on phones don't trigger them.
   - `prefers-reduced-motion`: movement is dropped, fades stay.
 - **Screenshots for review:** `shots.mjs`-style headless captures at 1440 and 390 in both themes
-  were checked on 2026-10-17. The taste-skill inspector's "no shadows / no borders / square
+  were checked on 2026-10-17 and again (colour pass, plus 360px phones) on 2026-10-19. The taste-skill inspector's "no shadows / no borders / square
   corners" house rules belonged to the previous design and **no longer apply**.
 
 ## File structure
@@ -219,16 +235,16 @@ revisit its title/description too so they stay accurate.
   mobile menu (`data-open`, closes on link click, outside click or Escape),
   language dropdown (also carries the current `#section` hash over when switching language),
   scroll-reveal (`IntersectionObserver` adding `.visible` to `[data-reveal]` elements, staggered
-  by their `--i` style), active nav link on scroll, the hero sentence switch, project filter
+  by their `--i` style), active nav link on scroll, project filter
   buttons, the Netlify Forms handler for both forms, the résumé language toggle, the footer
-  year, and the Leaflet map. The custom cursor and the skill-bar animation were removed in the
-  redesign.
+  year, and the Leaflet map. The custom cursor, the skill-bar animation and the hero sentence
+  language switch were removed in redesigns.
 - Every `localStorage` read/write is wrapped in `try/catch` - it throws when a browser blocks
   storage, and an uncaught throw would kill the theme toggle. Keep that for any new storage use.
 - Icon-only controls carry an `aria-label` translated per language: the theme toggle, mobile menu
   button (plus `aria-expanded`), language button (plus `aria-expanded`), and back-to-top link.
-  Social links are text links in the footer ("GitHub", "LinkedIn", ...). The project filter,
-  résumé toggle and hero switch buttons keep `aria-pressed` in sync with their `active` state.
+  Social links are text links in the footer ("GitHub", "LinkedIn", ...). The project filter
+  and résumé toggle buttons keep `aria-pressed` in sync with their `active` state.
 - No `id` collisions or globals beyond what's already there - keep new script blocks
   self-scoped (IIFE) like the existing ones.
 
