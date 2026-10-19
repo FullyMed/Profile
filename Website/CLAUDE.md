@@ -69,7 +69,9 @@ percentages, real screenshots of the live demos. On 2026-10-19 the user asked fo
 just black and white - gradients welcome**, and for the language choice to live only in the
 top-right menu (the hero's "same line in..." switch was removed).
 
-- **Layout:** a centred `.container` (max 1120px), soft off-white page (`--bg`), content in white
+- **Layout:** a centred `.container` (max 1280px; Tailwind's own `container` plugin is switched off
+  in `tailwind.config` via `corePlugins: { container: false }` because it silently overrode this
+  rule and grew to 1536px on big screens), soft off-white page (`--bg`), content in white
   rounded `.card`s (20px radius, 1px `--border`, very soft `--shadow`). Pills (999px radius) for
   buttons, chips, tags and the segmented controls.
 - **Header:** sticky, translucent with `backdrop-filter` blur, gains a bottom border once scrolled
@@ -86,8 +88,10 @@ top-right menu (the hero's "same line in..." switch was removed).
   pink) drifting slowly over 18-26s (transform only, masked to fade out at the bottom, stopped
   under reduced motion) plus a faint dot grid (`.hero-bg`).
 - **Projects:** a 2x2 grid of `.project-card.featured` cards (screenshot in an inset rounded
-  frame, title + coloured category tag, description, tech chips, links) for the four projects with live
-  demos, then a "More projects" list of `.project-card.compact` rows for the three without.
+  frame, title + coloured category tag, description, tech chips, links) for the four projects with
+  live demos, then Three Frogs as a full-width `.featured.wide` card (its screenshot is a wide
+  banner, shown whole), then a "More projects" list of `.project-card.compact` rows for Taiwan
+  Fare Finder and Prambanan Batik, which have no screenshot.
   Both wrappers carry `data-filter-group`; the filter script hides a whole group (heading
   included) when the filter leaves it empty.
 - **Experience:** `<details class="job card">` rows (first open), each with its own colour set by
@@ -168,9 +172,10 @@ The site lives in the repo's `Website/` subfolder next to unrelated personal fil
   original it was converted from; no page references it any more.
 - `Images/projects/*.webp` - 1440x900 screenshots of the live demos (BoardGames Analyzer,
   Talent_AI, JourneySet, PX Mart Finder), taken with headless Edge on 2026-10-16. Retake them if
-  a demo's look changes. Taiwan Fare Finder and Prambanan Batik have no demo; Three Frogs' domain
-  (threefrogsboardgame.com) stopped resolving in October 2026, so its "Live Demo" link was
-  removed - restore it if the domain comes back.
+  a demo's look changes. `three-frogs.webp` (1440x557) is a screenshot the user supplied on
+  2026-10-19. Taiwan Fare Finder and Prambanan Batik have no demo or screenshot. Three Frogs'
+  domain (threefrogsboardgame.com) still didn't resolve on 2026-10-19, so its card has no
+  "Live Demo" link - restore it if the domain comes back.
 - `favicon.svg`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
   `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png`,
   `site.webmanifest` - the favicon set (see "Favicons" below). Shared across every page; not

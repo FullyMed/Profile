@@ -31,6 +31,7 @@
     <script>
       tailwind.config = {
         darkMode: "class",
+        corePlugins: { container: false }, // the page uses its own .container below
         theme: {
           extend: {
             colors: { primary: "#3b82f6" },
@@ -126,7 +127,7 @@
       ::selection { background: var(--accent); color: #fff; }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
       section[id], [id^="p-"] { scroll-margin-top: calc(var(--header-h) + 24px); }
-      .container { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+      .container { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 20px; }
       @media (min-width: 768px) { .container { padding-inline: 32px; } }
       .section { padding-block: clamp(72px, 9vw, 120px); }
       .section-head { max-width: 40rem; }
@@ -356,6 +357,10 @@
         .project-card.featured:hover { transform: translateY(-2px); }
         .project-card.featured:hover .shot img { transform: scale(1.02); }
       }
+      .project-card.featured.wide { grid-column: 1 / -1; }
+      .project-card.featured.wide .shot { aspect-ratio: 1440 / 557; }
+      .project-card.featured.wide .shot img { object-position: center; }
+      @media (min-width: 768px) { .project-card.featured.wide .desc { max-width: 46rem; } }
       .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
       .card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
       .card-top h3 { font-size: 1.1875rem; font-weight: 600; }
@@ -707,6 +712,19 @@
                 </div>
               </div>
             </article>
+
+            <!-- Three Frogs (wide: its screenshot is a 2.6:1 banner) -->
+            <article id="p-frogs" class="project-card featured wide card" data-category="web" data-reveal>
+              <div class="shot"><img src="Images/projects/three-frogs.webp" alt="Screenshot of Three Frogs" width="1440" height="557" loading="lazy" /></div>
+              <div class="card-body">
+                <div class="card-top"><h3>Three Frogs</h3><span class="tag tag-web">Web</span></div>
+                <p class="desc">A website for a board game café in Surabaya. Customers can browse about 218 games, create an account, and book a table, and the server enforces booking hours and cancellation limits.</p>
+                <ul class="chips"><li>PHP</li><li>MySQL</li><li>jQuery</li></ul>
+                <div class="card-links">
+                  <a href="https://github.com/FullyMed/My_Projects/tree/main/Website/Three%20Frogs" target="_blank" rel="noopener noreferrer" class="text-link">GitHub <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </article>
           </div>
 
           <div data-filter-group>
@@ -732,15 +750,6 @@
                 <a href="https://github.com/FullyMed/My_Projects/tree/main/Website/Prambanan_Batik" target="_blank" rel="noopener noreferrer" class="text-link">GitHub <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
               </article>
 
-              <!-- Three Frogs -->
-              <article id="p-frogs" class="project-card compact card" data-category="web" data-reveal style="--i:2">
-                <div><h3>Three Frogs</h3><span class="tag tag-web">Web</span></div>
-                <div>
-                  <p class="desc">A website for a board game café in Surabaya. Customers can browse about 218 games, create an account, and book a table, and the server enforces booking hours and cancellation limits.</p>
-                  <ul class="chips"><li>PHP</li><li>MySQL</li><li>jQuery</li></ul>
-                </div>
-                <a href="https://github.com/FullyMed/My_Projects/tree/main/Website/Three%20Frogs" target="_blank" rel="noopener noreferrer" class="text-link">GitHub <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
-              </article>
             </div>
           </div>
 

@@ -22,8 +22,8 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
   Quiet motion (press feedback, menus that open from their button, a gentle fade-up as sections
   appear) and a dark mode. Visitors pick a language from the menu in the top-right corner.
   Details are in `CLAUDE.md` ("Design").
-- Sections: the hero with the portrait; projects as screenshot cards for the four live demos plus
-  a list of the other three, with filters; work history as expandable cards with an
+- Sections: the hero with the portrait; projects as screenshot cards (the four live demos plus
+  Three Frogs) and a short list of the two without screenshots, with filters; work history as expandable cards with an
   English/Chinese résumé download; About with grouped skills; and Contact with a message form, a
   meeting-request form, and a map.
 - SEO: each language page has its own `<title>` and meta description, written in that language.
