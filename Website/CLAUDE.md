@@ -57,23 +57,18 @@ the user at the start of a new session; when one is done, remove it here and in 
    for both `contact` (live since 2026-09-16) and `meeting`. The user should send one test of each
    from the live site, then enable email notifications for both in the Netlify dashboard
    (Forms, then Form notifications) so new messages don't sit unseen.
-2. **Link previews (offered, waiting for a yes).** No Open Graph / Twitter card tags, so sharing
-   maxfelix.netlify.app on LinkedIn, LINE or WhatsApp shows no image or headline. Plan: add
-   `og:title`, `og:description`, `og:image`, `og:url`, `og:locale`, `twitter:card` per language page
-   (title/description reuse each page's native SEO text), plus a 1200x630 preview image made from
-   the portrait and name in the site's blue-violet gradient style, saved under `Images/`.
-3. **Search engine setup (offered together with 2).** Add `<link rel="alternate" hreflang>` tags
-   linking all 5 language pages (plus `x-default` to `index.html`) and a canonical URL on each,
-   and create `sitemap.xml` and `robots.txt` at the site root. Absolute URLs use
-   `https://maxfelix.netlify.app/`. These are structural `<head>` changes, so all 5 pages move
-   together.
-4. **Three Frogs "Live Demo" link.** threefrogsboardgame.com was still a non-existent domain on
+2. **Check link previews + submit the sitemap once deployed (user does this).** The Open Graph /
+   hreflang / sitemap work (see "SEO metadata") was added on 2026-10-24, after the state above.
+   Once it's live, paste the URL into LinkedIn's Post Inspector to check the card (it also clears
+   LinkedIn's cache), and optionally add the site to Google Search Console and submit
+   `https://maxfelix.netlify.app/sitemap.xml`.
+3. **Three Frogs "Live Demo" link.** threefrogsboardgame.com was still a non-existent domain on
    2026-10-24. Restore the link on the `#p-frogs` card (all 5 pages) if it comes back.
-5. **"Certifications coming soon"** is still a placeholder in the About facts card. The user may
+4. **"Certifications coming soon"** is still a placeholder in the About facts card. The user may
    fill it in, or ask to hide it. Don't invent certifications.
-6. **`Images/Profile_Picture.jpg` is unused** (pages use the `.webp`). Can be deleted if the user
+5. **`Images/Profile_Picture.jpg` is unused** (pages use the `.webp`). Can be deleted if the user
    agrees.
-7. **Commit messages are all "New".** Suggestion only (the user commits themselves): short
+6. **Commit messages are all "New".** Suggestion only (the user commits themselves): short
    descriptive messages would make history easier to search and undo.
 
 ## Content decisions (confirmed with the user, 2026-09-29)
@@ -207,6 +202,9 @@ The site lives in the repo's `Website/` subfolder next to unrelated personal fil
   2026-10-19. Taiwan Fare Finder and Prambanan Batik have no demo or screenshot. Three Frogs'
   domain (threefrogsboardgame.com) still didn't resolve on 2026-10-19, so its card has no
   "Live Demo" link - restore it if the domain comes back.
+- `Images/og-image.jpg` - the 1200x630 link-preview image used by `og:image` / `twitter:image`
+  on all 5 language pages (see "SEO metadata").
+- `sitemap.xml`, `robots.txt` - for search engines, at the site root (see "SEO metadata").
 - `favicon.svg`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
   `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png`,
   `site.webmanifest` - the favicon set (see "Favicons" below). Shared across every page; not
@@ -215,6 +213,8 @@ The site lives in the repo's `Website/` subfolder next to unrelated personal fil
 - `scripts/gen_favicon.py` - regenerates the favicon PNG/ICO set from the "MF" monogram design.
   Not part of the deployed site (no build step touches it); a standalone Pillow script to rerun
   by hand if the icon needs to change.
+- `scripts/og-image.html` - the template `Images/og-image.jpg` is rendered from (headless Edge
+  screenshot). No page links to it.
 - `Maximilliano Felix_CV.pdf/.docx` and `傅忠明_CV.pdf/.docx` - English and Chinese résumés,
   switched by the "Download Resume" language toggle in the Experience section.
 - `.claude/launch.json` - local static preview server (`python -m http.server 8734`).
@@ -236,7 +236,10 @@ i18n framework to "fix" this unless explicitly asked.
 
 One deliberate exception to "only text content differs": `<title>` and `<meta name="description">`
 in `<head>` are **per-page SEO content**, each written natively in that page's language rather
-than translated line-for-line from the English copy - keep them that way when editing.
+than translated line-for-line from the English copy - keep them that way when editing. The same
+goes for the values that follow them: the `og:`/`twitter:` title and description copy them, and
+`canonical`, `og:url`, `og:locale` and the `og:locale:alternate` list differ per page (see
+"SEO metadata"). The number and order of those tags stays identical across the 5 files.
 
 `404.html`, `privacy.html`, and `terms.html` are outside this rule entirely - they're
 intentionally English-only utility/legal pages, not translated duplicates. Don't create
@@ -250,6 +253,32 @@ written natively in that page's language (not a translation of the English tag w
 `404.html` keeps a generic English title and `<meta name="robots" content="noindex">` instead -
 it shouldn't be indexed. When editing on-page copy that changes what a page is actually about,
 revisit its title/description too so they stay accurate.
+
+Right after the description, every language page has two more blocks (added 2026-10-24). Absolute
+URLs all use `https://maxfelix.netlify.app/`; the English page's URL is the root `/`, the others
+are `/index-xx.html`.
+
+- **Search engines:** `<link rel="canonical">` to the page's own URL, then the same six
+  `<link rel="alternate" hreflang>` tags on every page (`en`, `zh-Hant`, `id`, `ja`, `ko`, and
+  `x-default` pointing at the root).
+- **Link previews:** `og:type`, `og:site_name`, `og:title` / `og:description` (copies of that
+  page's `<title>` and meta description, HTML-escaped), `og:url` (same as canonical), `og:locale`
+  (`en_US`, `zh_TW`, `id_ID`, `ja_JP`, `ko_KR`) plus the other four as `og:locale:alternate`,
+  `og:image` + type/size/alt, and the `twitter:card` (`summary_large_image`) set.
+
+So when a page's `<title>` or description changes, update its `og:`/`twitter:` title and
+description to match. If a language page is added or renamed, update the hreflang block on all 5
+pages, the `og:locale:alternate` lists, and `sitemap.xml`.
+
+- **Preview image:** `Images/og-image.jpg` (1200x630, about 80 KB), one image shared by all 5
+  pages: name with the gradient on "Felix 傅忠明", tagline, URL pill, and the portrait, on the
+  hero's off-white + blurred blue/violet/pink glow. Rendered from `scripts/og-image.html` with
+  headless Edge (the command is in that file's top comment), then saved as JPEG at quality 88.
+  Regenerate it if the portrait, name or tagline changes.
+- **`sitemap.xml`:** the 5 language pages, each with `xhtml:link` hreflang alternates, plus
+  `privacy.html` and `terms.html`. Bump `<lastmod>` when a page's content changes meaningfully.
+- **`robots.txt`:** allows everything and points to the sitemap. `404.html` stays out of the
+  sitemap and keeps its `noindex`.
 
 ## Styling & scripts
 

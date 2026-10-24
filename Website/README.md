@@ -26,7 +26,11 @@ written as plain HTML, CSS, and JavaScript with no build step or framework.
   Three Frogs) and a short list of the two without screenshots, with filters; work history as expandable cards with an
   English/Chinese résumé download; About with grouped skills; and Contact with a message form, a
   meeting-request form, and a map.
-- SEO: each language page has its own `<title>` and meta description, written in that language.
+- SEO: each language page has its own `<title>` and meta description, written in that language,
+  a canonical URL, and `hreflang` links to the other four. `sitemap.xml` and `robots.txt` sit at
+  the site root.
+- Link previews: Open Graph and Twitter card tags on every language page, so a shared link shows
+  the page's title, description, and a 1200x630 preview image (`Images/og-image.jpg`).
 - Loading states: a full-screen spinner covers the page while it loads, and each form's submit
   button shows a spinner and disables itself while sending.
 - Legal: the footer and the contact form on every language page link to the
@@ -61,12 +65,14 @@ privacy.html            Privacy Policy (English-only utility page)
 terms.html              Terms of Use (English-only utility page)
 netlify.toml           Deploy config + security headers (CSP, HSTS, etc.)
 vendor/leaflet/         Self-hosted Leaflet.js, CSS, and marker assets
-Images/                 Portrait (Profile_Picture.webp)
+Images/                 Portrait (Profile_Picture.webp), link-preview image (og-image.jpg)
 Images/projects/        Screenshots of the live project demos (.webp)
+sitemap.xml, robots.txt For search engines
 favicon.svg, favicon.ico, favicon-*.png,
 android-chrome-*.png, apple-touch-icon.png,
 site.webmanifest       Favicon / PWA icon set
 scripts/gen_favicon.py Regenerates the favicon PNG/ICO set (Pillow)
+scripts/og-image.html  Template the link-preview image is rendered from (headless Edge)
 Maximilliano Felix_CV.pdf / .docx    English résumé
 傅忠明_CV.pdf / .docx                  Chinese résumé
 .claude/launch.json     Local static preview server config
@@ -100,9 +106,8 @@ Left to do as of 2026-10-24 (details in `CLAUDE.md`, "Open items"):
 
 - Send a test message through both forms on the live site and turn on Netlify form email
   notifications. Neither form had received a submission yet.
-- Add link-preview tags (Open Graph) and a preview image, so shared links show a card.
-- Add language tags (`hreflang`), canonical URLs, `sitemap.xml` and `robots.txt` for search
-  engines.
+- Once the link-preview and search-engine changes are live, check the preview card with
+  LinkedIn's Post Inspector, and optionally submit `sitemap.xml` in Google Search Console.
 - Restore the Three Frogs "Live Demo" link if threefrogsboardgame.com comes back.
 - Fill in or hide the "Certifications coming soon" placeholder.
 - Delete the unused `Images/Profile_Picture.jpg`.

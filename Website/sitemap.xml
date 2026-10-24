@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://maxfelix.netlify.app/</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxfelix.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://maxfelix.netlify.app/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://maxfelix.netlify.app/index-id.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maxfelix.netlify.app/index-ja.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://maxfelix.netlify.app/index-ko.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxfelix.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/index-zh.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxfelix.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://maxfelix.netlify.app/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://maxfelix.netlify.app/index-id.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maxfelix.netlify.app/index-ja.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://maxfelix.netlify.app/index-ko.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxfelix.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/index-id.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxfelix.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://maxfelix.netlify.app/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://maxfelix.netlify.app/index-id.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maxfelix.netlify.app/index-ja.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://maxfelix.netlify.app/index-ko.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxfelix.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/index-ja.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxfelix.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://maxfelix.netlify.app/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://maxfelix.netlify.app/index-id.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maxfelix.netlify.app/index-ja.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://maxfelix.netlify.app/index-ko.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxfelix.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/index-ko.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://maxfelix.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://maxfelix.netlify.app/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://maxfelix.netlify.app/index-id.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://maxfelix.netlify.app/index-ja.html" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://maxfelix.netlify.app/index-ko.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://maxfelix.netlify.app/" />
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/privacy.html</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://maxfelix.netlify.app/terms.html</loc>
+    <lastmod>2026-10-24</lastmod>
+  </url>
+</urlset>

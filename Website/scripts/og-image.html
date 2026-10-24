@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+  Template for Images/og-image.jpg, the 1200x630 link-preview image (og:image / twitter:image).
+  Not part of the deployed pages. To regenerate, from the Website folder:
+
+    "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --screenshot="%CD%\og-image.png" "%CD%\scripts\og-image.html"
+
+  then convert og-image.png to Images/og-image.jpg (Pillow, quality 88) and delete the PNG.
+  Colours and type follow the site's tokens (--bg, --grad-text, hero glows, Geist).
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@600&text=%E5%82%85%E5%BF%A0%E6%98%8E&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        position: relative; background: #f6f6f7; color: #18181b;
+        font-family: "Geist", "Microsoft JhengHei", sans-serif;
+      }
+      .glow { position: absolute; inset: 0; opacity: 0.55; overflow: hidden; }
+      .glow span { position: absolute; border-radius: 50%; filter: blur(80px); }
+      .glow span:nth-child(1) { width: 560px; height: 560px; left: -140px; top: -180px; background: #60a5fa; }
+      .glow span:nth-child(2) { width: 480px; height: 480px; right: -80px; top: -120px; background: #a78bfa; }
+      .glow span:nth-child(3) { width: 420px; height: 420px; left: 360px; bottom: -260px; background: #f9a8d4; }
+      .dots {
+        position: absolute; inset: 0;
+        background-image: radial-gradient(rgba(24, 24, 27, 0.07) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: radial-gradient(ellipse 70% 70% at 35% 45%, #000 30%, transparent 80%);
+      }
+      .wrap { position: relative; height: 100%; display: flex; align-items: center; gap: 64px; padding: 0 72px 0 80px; }
+      .text { flex: 1; min-width: 0; }
+      .mono {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 56px; height: 56px; border-radius: 13px; background: #3b82f6;
+        color: #fff; font-weight: 600; font-size: 24px; letter-spacing: -0.02em;
+      }
+      h1 { margin-top: 36px; font-size: 76px; font-weight: 600; line-height: 1.04; letter-spacing: -0.035em; }
+      .grad {
+        background: linear-gradient(100deg, #2563eb 0%, #7c3aed 55%, #db2777 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .cjk { font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif; letter-spacing: 0; }
+      .tag { margin-top: 22px; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; }
+      .url { margin-top: 40px; display: inline-flex; padding: 10px 20px; border-radius: 999px; background: #fff;
+        border: 1px solid rgba(24, 24, 27, 0.08); font-size: 22px; color: #5f5f69; }
+      .photo {
+        flex: none; width: 380px; height: 475px; object-fit: cover; object-position: 50% 30%;
+        border-radius: 28px; border: 1px solid rgba(24, 24, 27, 0.08);
+        box-shadow: 0 30px 70px -30px rgba(79, 70, 229, 0.55);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow"><span></span><span></span><span></span></div>
+    <div class="dots"></div>
+    <div class="wrap">
+      <div class="text">
+        <div class="mono">MF</div>
+        <h1>Maximilliano<br /><span class="grad">Felix <span class="cjk" lang="zh-Hant">傅忠明</span></span></h1>
+        <p class="tag">Builder, Educator &amp; Cross-Cultural Communicator</p>
+        <p class="url">maxfelix.netlify.app</p>
+      </div>
+      <img class="photo" src="../Images/Profile_Picture.webp" alt="" />
+    </div>
+  </body>
+</html>
