@@ -66,8 +66,8 @@ the user at the start of a new session; when one is done, remove it here and in 
    2026-10-24. Restore the link on the `#p-frogs` card (all 5 pages) if it comes back.
 4. **"Certifications coming soon"** is still a placeholder in the About facts card. The user may
    fill it in, or ask to hide it. Don't invent certifications.
-5. **`Images/Profile_Picture.jpg` is unused** (pages use the `.webp`). Can be deleted if the user
-   agrees.
+5. **`Images/Profile_Picture.jpg` is unused** (pages use the `.webp`, and since 2026-10-24 the
+   `.jpg` isn't even the current photo). Can be deleted if the user agrees.
 6. **Commit messages are all "New".** Suggestion only (the user commits themselves): short
    descriptive messages would make history easier to search and undo.
 
@@ -194,8 +194,12 @@ The site lives in the repo's `Website/` subfolder next to unrelated personal fil
   site uses.
 - `vendor/leaflet/` - self-hosted Leaflet.js + CSS + marker images (used by the contact-section
   map instead of pulling Leaflet from a CDN not on the CSP allowlist).
-- `Images/Profile_Picture.webp` - the hero portrait (979x1280). `Profile_Picture.jpg` is the
-  original it was converted from; no page references it any more.
+- `Images/Profile_Picture.webp` - the portrait (591x767): hero photo, header and footer avatar,
+  and `og-image.jpg`. Replaced on 2026-10-24 with a photo the user supplied (dark shirt, warm
+  lounge background), used as-is (no EXIF/GPS in it). The hero `<img>` carries
+  `width="591" height="767"` on all 5 pages; update those if the photo changes, and re-render
+  the preview image. `Profile_Picture.jpg` is the older photo the previous `.webp` was converted
+  from; no page references it any more.
 - `Images/projects/*.webp` - 1440x900 screenshots of the live demos (BoardGames Analyzer,
   Talent_AI, JourneySet, PX Mart Finder), taken with headless Edge on 2026-10-16. Retake them if
   a demo's look changes. `three-frogs.webp` (1440x557) is a screenshot the user supplied on
@@ -270,7 +274,7 @@ So when a page's `<title>` or description changes, update its `og:`/`twitter:` t
 description to match. If a language page is added or renamed, update the hreflang block on all 5
 pages, the `og:locale:alternate` lists, and `sitemap.xml`.
 
-- **Preview image:** `Images/og-image.jpg` (1200x630, about 80 KB), one image shared by all 5
+- **Preview image:** `Images/og-image.jpg` (1200x630, about 90 KB), one image shared by all 5
   pages: name with the gradient on "Felix 傅忠明", tagline, URL pill, and the portrait, on the
   hero's off-white + blurred blue/violet/pink glow. Rendered from `scripts/og-image.html` with
   headless Edge (the command is in that file's top comment), then saved as JPEG at quality 88.
