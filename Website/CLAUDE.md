@@ -46,13 +46,44 @@ offer to commit ("want me to commit this?") unless the user explicitly asks in t
 finished changes in the working tree and summarize what changed so they can review and commit.
 Pushing to `main` auto-deploys to Netlify (see "Deployment"), so deploys are the user's call too.
 
+## Open items (as of 2026-10-24)
+
+State on that date: everything was committed, pushed and live on Netlify, and checked (no console
+errors, map tiles load, both forms registered on Netlify). These were left open. Raise them with
+the user at the start of a new session; when one is done, remove it here and in the README's
+"Open items" section.
+
+1. **Test the forms + turn on notifications (user does this).** Netlify showed 0 submissions ever
+   for both `contact` (live since 2026-09-16) and `meeting`. The user should send one test of each
+   from the live site, then enable email notifications for both in the Netlify dashboard
+   (Forms, then Form notifications) so new messages don't sit unseen.
+2. **Link previews (offered, waiting for a yes).** No Open Graph / Twitter card tags, so sharing
+   maxfelix.netlify.app on LinkedIn, LINE or WhatsApp shows no image or headline. Plan: add
+   `og:title`, `og:description`, `og:image`, `og:url`, `og:locale`, `twitter:card` per language page
+   (title/description reuse each page's native SEO text), plus a 1200x630 preview image made from
+   the portrait and name in the site's blue-violet gradient style, saved under `Images/`.
+3. **Search engine setup (offered together with 2).** Add `<link rel="alternate" hreflang>` tags
+   linking all 5 language pages (plus `x-default` to `index.html`) and a canonical URL on each,
+   and create `sitemap.xml` and `robots.txt` at the site root. Absolute URLs use
+   `https://maxfelix.netlify.app/`. These are structural `<head>` changes, so all 5 pages move
+   together.
+4. **Three Frogs "Live Demo" link.** threefrogsboardgame.com was still a non-existent domain on
+   2026-10-24. Restore the link on the `#p-frogs` card (all 5 pages) if it comes back.
+5. **"Certifications coming soon"** is still a placeholder in the About facts card. The user may
+   fill it in, or ask to hide it. Don't invent certifications.
+6. **`Images/Profile_Picture.jpg` is unused** (pages use the `.webp`). Can be deleted if the user
+   agrees.
+7. **Commit messages are all "New".** Suggestion only (the user commits themselves): short
+   descriptive messages would make history easier to search and undo.
+
 ## Content decisions (confirmed with the user, 2026-09-29)
 
 - **Location is Taichung, Taiwan everywhere** - About copy, contact info, footer, and the map
   pin/popup. Surabaya only appears where it's historically accurate (the 3 Frogs job and the
   Three Frogs project).
 - **No newsletter.** The footer newsletter signup was removed (it had no backend); the footer is
-  3 columns (brand, Quick Links, Contact). Don't re-add one without a real mailing-list backend.
+  brand + three link columns (Quick Links, Connect With Me, Legal). Don't re-add a signup without
+  a real mailing-list backend.
 - **"Cookies" footer link points to `privacy.html#cookies`** (the Privacy Policy's Cookies
   section), not a separate cookie policy page.
 - **Tailwind stays on the Play CDN.** Its "should not be used in production" console warning is
@@ -232,8 +263,8 @@ revisit its title/description too so they stay accurate.
   only hide content when it's present, so nothing stays invisible without JS) and applies the
   saved dark theme before first paint.
 - `html` and `body` use `overflow-x: clip`, **not** `hidden`. `hidden` turns `<body>` into a
-  scroll container and silently breaks every `position: sticky` (the header, the pinned project
-  column, the résumé column) - this happened once during the redesign.
+  scroll container and silently breaks every `position: sticky` (the header and the résumé card)
+  - this happened once during the 2026-10-16 redesign.
 - All behavior lives in `<script>` blocks at the end of `<body>`, in this order: the page loader
   (also adds `is-ready` to `<html>`, which starts the hero entrance animation), dark-mode toggle
   (persisted to `localStorage`), header (adds `scrolled` once the page moves) + back-to-top +

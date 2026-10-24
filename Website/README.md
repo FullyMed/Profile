@@ -94,6 +94,19 @@ Auto-deployed by Netlify from the `main` branch, so a change goes live when it's
 headers, including a strict Content-Security-Policy scoped to the exact external hosts the site
 uses, are defined in [netlify.toml](netlify.toml).
 
+## Open items
+
+Left to do as of 2026-10-24 (details in `CLAUDE.md`, "Open items"):
+
+- Send a test message through both forms on the live site and turn on Netlify form email
+  notifications. Neither form had received a submission yet.
+- Add link-preview tags (Open Graph) and a preview image, so shared links show a card.
+- Add language tags (`hreflang`), canonical URLs, `sitemap.xml` and `robots.txt` for search
+  engines.
+- Restore the Three Frogs "Live Demo" link if threefrogsboardgame.com comes back.
+- Fill in or hide the "Certifications coming soon" placeholder.
+- Delete the unused `Images/Profile_Picture.jpg`.
+
 ## Contact
 
 - Email: [maxfelix05@gmail.com](mailto:maxfelix05@gmail.com)
